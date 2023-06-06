@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script language="javascript1.2" src="/staticresources/js/checktext.js">
+</script>
+<script language="javascript1.2">
+
+  function inserisci()
+  {
+    doForm('inserisci.x');
+  }
+
+  function modifica()
+  {
+    var radio=document.form1.radiobutton;
+    if (!radio)
+    {
+      alert("Nessun allevamento!");
+      return;
+    }
+    if (!radio.length)
+    {
+      if (radio.checked)
+      {
+        doForm('modifica.x');
+        return;
+      }
+    }
+    else
+    {
+      var count=0;
+      for(i=0;i<radio.length;i++)
+      {
+        if (radio[i].checked)
+        {
+          count=count+1;
+        }
+      }
+      if (count==1)
+      {
+        doForm('modifica.x');
+        return;
+      }
+      else
+      {
+        if (count>0)
+        {
+          alert("Selezionare soltanto un allevamento!");
+          return;
+        }
+      }
+    }
+    alert("Selezionare un allevamento!");
+  }
+  
+  function modificaMultipla()
+  {
+    var radio=document.form1.radiobutton;
+    if (!radio)
+    {
+      alert("Nessun allevamento!");
+      return;
+    }
+    if (!radio.length)
+    {
+      if (radio.checked)
+      {
+        doFormPage('modificaMultipla.x','../layout/modificaAllevamentoMultipla.htm');
+        return;
+      }
+    }
+    else
+    {
+      for(i=0;i<radio.length;i++)
+      {
+        if (radio[i].checked)
+        {
+          doFormPage('modificaMultipla.x','../layout/modificaAllevamentoMultipla.htm');
+          return;
+        }
+      }
+    }
+    alert("Selezionare almeno un allevamento!");
+  }
+  
+
+  function checkStorico()
+  {
+    if (document.form1.storico.checked)
+    {
+      window.location.href='../layout/elencoAllevamentoBis.htm';
+    }
+    else
+    {
+      window.location.href=window.location.protocol+"//"+window.location.hostname+":"+window.location.port+window.location.pathname;
+    }
+  }
+
+  function elimina()
+  {
+    var radio=document.form1.radiobutton;
+    if (!radio)
+    {
+      alert("Nessun allevamento!");
+      return;
+    }
+    var currentSelection=document.form1.currentSel.value;
+    if (!radio.length)
+    {
+      if (radio.checked)
+      {
+        currentSelection=radio.value;
+        doForm("elimina.x");
+        return;
+      }
+    }
+    else
+    {
+      for(i=0;i<radio.length;i++)
+      {
+        if (radio[i].checked)
+        {
+          currentSelection=radio[i].value;
+          doForm("elimina.x");
+          return;
+        }
+      }
+    }
+    alert("Selezionare un allevamento!");
+  }
+
+  function dettaglio()
+  {
+    var radio=document.form1.radiobutton;
+    var idAllevamento;
+    if (!radio)
+    {
+      alert("Nessun allevamento!");
+      return;
+    }
+    if (radio.length)
+    {
+      for(i=0;i<radio.length;i++)
+      {
+        if (radio[i].checked)
+        {
+          if (idAllevamento)
+          {
+            alert("selezionare un solo elemento");
+            return;
+          }
+          idAllevamento=radio[i].value;
+        }
+      }
+    }
+    else
+    {
+      if (radio.checked)
+      {
+        idAllevamento=radio.value;
+      }
+    }
+    if (!idAllevamento)
+    {
+      alert("Selezionare un allevamento!");
+    }
+    else
+    {
+      pop('../layout/dettaglioAllevamentoPOP.htm?idAllevamento='+idAllevamento,640,480,'dettaglioAllevamentoPOPView');
+    }
+  }
+
+</script>
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+
+   <form  method="post" name="form1" action="elencoAllevamento.htm">
+                                    <input type="hidden" name="currentSel" value="">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo"> <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli</a> &gt; ditta UMA &gt; allevamenti</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+              <!-- cella che contiene i menu -->
+              
+              <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                   <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+</div>
+ <!--						 @@blkMenuDittaUMA -->
+<div class="menu">
+  <span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span>
+  <div class="sottomenu">
+    <span class="voceAttiva">Allevamenti</span> <!--						 @@blkVISUALIZZA_ALLEVAMENTI-->
+    <a href="javascript: dettaglio();">dettaglio</a>
+<!-- @@blkVISUALIZZA_ALLEVAMENTI-->
+<!-- @@blkAGGIORNA_ALLEVAMENTI -->
+    <a href="javascript: modifica()">$$lblLavorazioniModifica</a>
+    <a href="javascript: modificaMultipla()">modifica multipla</a>
+    <!-- @@blkPRE_GESTIONE_FASCICOLO -->
+    <a href="javascript: elimina()">elimina</a>
+    <a href="javascript: inserisci()" id="inserisci">inserisci</a>
+    <!-- @@blkPRE_GESTIONE_FASCICOLO -->
+<!-- @@blkAGGIORNA_ALLEVAMENTI -->
+  </div>
+</div>
+ <!--						 @@blkMenuDittaUMA -->
+<!-- @@blkMenuAssegnazione -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante</a></span></div>
+<!-- @@blkMenuAssegnazione -->
+<!-- @@blkMenuBuoni -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span></div>
+<!-- @@blkMenuBuoni -->
+<!-- @@blkMenuMacchine -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span></div>
+<!-- @@blkMenuMacchine -->
+</td>
+            <td><!-- cella di destra, contiene i "tabelloni"-->
+               <p class="datiazienda">azienda selezionata </p>
+              <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+              <p class="datiaziendaB">Ditta N. $$umaNumAzienda /$$umaTipoDitta</p>
+              <p class="datiazienda"> provincia di competenza $$umaProvinciaDitta</p>
+        <br>
+
+            <table class="data">
+            <col width="35%" />
+             <col width="65%" />
+                  <tr>
+                    <th><input type="checkbox" name="storico" value="yes">
+                        Visualizza variazioni storiche </th>
+                    <td><a href="javascript: checkStorico()" class="pulsante">aggiorna</a></td>
+                  </tr>
+                   </table>
+                  
+                  <br>
+        <div class="bottone"> 
+<a href="#" class="pulsante" onclick="selezionaTutti(document.form1.radiobutton,true);return false;">seleziona tutti</a>
+<a href="#" class="pulsante" onclick="selezionaTutti(document.form1.radiobutton,false);return false;">deseleziona tutti</a>
+        </div>
+        <div class="paginazione">
+        <p class="left">Numero allevamenti dell'azienda:
+                        $$numAllevamenti</p>
+        <div class="right">
+                  @@prev<a href="javascript: goToLine($$prevPage)" class="pulsante" >&lt;&lt;</a>@@prev
+                  pag.$$currentPage di $$maxPage @@next<a href="javascript: goToLine($$nextPage)" class="pulsante" >&gt;&gt;</a>@@next</div>
+           </div>       
+                  <br />
+
+                @@blkIntermediario
+                <div class="alert-warning">
+                  Gli allevamenti evidenziati in rosso sono stati modificati dall'intermediario
+                </div>
+                @@blkIntermediario
+
+                @@blkIntestazione
+                <table class="dataCol">
+                <tr>
+                  <td>&nbsp;</td>
+                  <th>Specie</th>
+                  <th>Categoria</th>
+                  <th>Quantit&agrave;</th>
+                  <th>Soccida</th>
+                  <th>Data carico</th>
+                  <th>Lavorazioni praticate</th>
+                  <th>Uba</th>
+                </tr>
+                @@blkIntestazione
+                @@blkAllevamento
+                <tr>
+                  <td class="radio"> <input type="checkbox" name="radiobutton" value="$$idAllevamento" $$checked> </td>
+                  <td>$$specie</td>
+                  <td>$$categoria</td>
+                  <td>$$quantita $$unitaDiMisura</td>
+                  <td>$$soccida</td>
+                  <td>$$dataCarico</td>
+                  <td>$$lavorazioni</td>
+                  <td class="text-right">$$uba</td>
+                </tr>
+                @@blkAllevamento
+                @@blkTotaleUba
+                <tr>
+                  <td colspan="7" class="text-right"><strong>Totale uba allevamenti in carico:</strong>
+                  <td class="text-right"><strong>$$totaleUba</strong></td>
+                </tr>
+                @@blkTotaleUba
+                @@blkIntestazione
+                </table>
+                @@blkIntestazione
+                <!-- @@blkConsistenza -->
+                              <div class="alert-info"><p>Dati validati in Anagrafe il $$dataConsistenza </p></div>
+                 <!-- @@blkConsistenza -->
+        </td>
+          </tr>
+        </table>
+        <!-- fine della tabella a due colonne -->
+    </div>
+   <div id="hiddenElement"><!-- necessario per l'invio dei dati --></div>
+  </form>
+        <form action="elencoAllevamento.htm" method="post" name="paginazione">
+          <input type="hidden" name="startRow" value="">
+        </form>
+  	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>
+

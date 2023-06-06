@@ -1,0 +1,17 @@
+<!-- Funzioni per messaggistica -->
+<script language="JavaScript" type="text/javascript" src="/app.name/js/messaggistica.js" ></script>
+<script>
+  //Tutti i browser != IE < 9
+  window.addEventListener("load", function() {
+    scriviMessaggi();
+  }, false); 
+  
+  // IE < 9
+  window.attachEvent("onload", function() {
+    scriviMessaggi();
+  });
+  
+  function scriviMessaggi() {
+    systemMessages('$$txtMessaggioTestataUtente', '$$txtNumMessaggiDaLeggere');    
+  }
+</script>

@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+ <script src="/staticresources/js/checktext.js"></script>
+
+<script language="JavaScript">
+<!--
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+
+function scegliComune(mypage, myname, w, h, scroll,provincia,comune) {
+  var winl = (screen.width - w) / 2;
+  var wint = (screen.height - h) / 2;
+  var provenienza = 'nonEstinto';
+  if(provincia ==  '' && comune == '') {
+    alert('Inserire una provincia o un comune!');
+  }
+  else if(!mappaOggetti(provincia) || !mappaOggetti(comune)) {
+  }
+  else {
+    winprops =    'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+',resizable';
+    win = window.open(mypage+'?provincia='+provincia+'&comune='+comune+'&provenienza='+provenienza, myname, winprops);
+    if (parseInt(navigator.appVersion) >= 4) {
+      win.window.focus();
+    }
+  }
+}
+
+//-->
+
+var hWin;
+
+function chiudiPopup() {
+	if (hWin != null) {
+		hWin.close();
+	}
+}
+
+//funzione di callbak della popup file allegati 
+function reload() {
+	document.getElementById('force').value = '';	
+	document.form1.submit();
+}
+
+function allegaFile(idDitta) {
+		console.log('allegaFile');
+		var strPage = '../layout/popup_allega_file.htm';
+		var strParametri = 'toolbar=no, location=no, status=yes, menubar=no, scrollbars=yes, resizable=yes, width=750, height=420';
+		var chiamante = 'variazioneDittaUma';
+
+		if (hWin == null) {
+			hWin = window.open(strPage + '?chiamante='+chiamante+ '&idPadre='+idDitta, 'allega', strParametri);
+			if (parseInt(navigator.appVersion) >= 4) {
+				hWin.window.focus();
+			}
+		} else {
+			alert('Finestra allega file già aperta');
+		}
+}
+function visualizzaFile(idFile) {
+		console.log('visualizzaFile');
+		var oldAction = document.form1.action;
+
+		document.form1.idFile.value = idFile;
+		document.form1.chiamante.value = 'modificaDittaUma';
+
+		document.form1.action = '../layout/visualizza_file_allegato.htm';
+		document.form1.submit();
+		document.form1.action = oldAction;
+}
+
+
+</script>
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+        <form name="form1" action="../../ditta/ctrl/variazioneDittaUmaControl.jsp" method="post">
+        <input type="hidden" name="idFile" />
+        <input type="hidden" name="force" id="force" value="force" /> 
+        <input type="hidden" name="chiamante" />
+        <input type="hidden" name="azione" value="" />
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+          <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli </a> &gt; ditta UMA
+            &gt; modifica</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+              <!-- cella che contiene i menu -->
+              
+              <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                   <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+</div>
+               <!--						 @@blkMenuDittaUMA -->
+                  <div class="menu">
+                 	<span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span>
+                    <!--  @@blkVISUALIZZA_DATI_DITTA-->
+                <a href="../../anag/layout/dettaglioAzienda.htm">dettaglio</a>
+                  <!-- @@blkVISUALIZZA_DATI_DITTA-->
+                  <!-- @@blkAGGIORNA_DATI_DITTA-->
+                  <span class="inattivo"> modifica</span>
+                  <!-- @@blkAGGIORNA_DATI_DITTA-->
+                  <!-- @@blkCESSAZIONE_DITTA_UMA-->
+                  <a href="../../ditta/layout/cessaDittaUma.htm">cessazione</a>
+                  <!-- @@blkCESSAZIONE_DITTA_UMA-->
+                  <!-- @@blkELIMINA_DITTA-->
+                  <a href="../../anag/layout/confermaEliminaDittaUma.htm">eliminazione</a>
+                  <!-- @@blkELIMINA_DITTA-->
+                  <!-- @@blkBLOCCO_DITTA-->
+                  <a href="../layout/elencoBlocchi.htm">blocco/sblocco</span> </a>
+                  <!-- @@blkBLOCCO_DITTA-->
+                  <!-- @@blkIMPORTA_DATI-->
+                  <a href="../../anag/layout/importaDati.htm">importa dati</a>
+                  <!-- @@blkIMPORTA_DATI-->
+                  <!-- @@blkSTAMPA_26-->
+                  <a href="../../ditta/layout/stampa_26.htm">stampa Modello 26</a>                  
+                  <!-- @@blkSTAMPA_26-->
+                  <!-- @@blkVISUALIZZA_TERRENI-->
+                  <a href="../../ditta/layout/elencoSuperfici.htm" id="ocra">superfici e colture</a>
+                  <!-- @@blkVISUALIZZA_TERRENI-->
+                  <!-- @@blkVISUALIZZA_ALLEVAMENTI-->
+                  <a href="../../ditta/layout/elencoAllevamento.htm" id="ocra">allevamenti</a>
+                  <!-- @@blkVISUALIZZA_ALLEVAMENTI-->
+                  <!-- @@blkVISUALIZZA_SERRE-->
+                  <a href="../../ditta/layout/elencoSerre.htm" id="ocra">serre</a>
+                  <!-- @@blkVISUALIZZA_SERRE-->
+                  <!-- @@blkVISUALIZZA_LAV_CONTO_PROPRIO -->
+  					<a href="../../ditta/layout/elencoLavContoProprio.htm" id="ocra">Lavorazioni Conto Proprio</a>
+				  <!-- @@blkVISUALIZZA_LAV_CONTO_PROPRIO -->
+                  <!-- @@blkVISUALIZZA_TERRENI_CP-->
+					<a href="../../ditta/layout/elencoSuperficiCp.htm" id="ocra">superfici per lavorazioni Conto Terzi</a>
+				  <!-- @@blkVISUALIZZA_TERRENI_CP-->
+                  <!-- @@blkVISUALIZZA_CONTOTERZI-->
+                  <a href="../../ditta/layout/elencoLavContoTerzi.htm" id="ocra">Lavorazioni eseguite per Conto Terzi</a>
+                  <!-- @@blkVISUALIZZA_CONTOTERZI-->
+				  <!-- @@blkVISUALIZZA_CONTOTERZI-->
+                  <!--<a href="../../ditta/layout/elencoLavDaContoTerzi.htm" id="ocra">Lavorazioni da Conto Terzi</a>-->
+                  <!-- @@blkVISUALIZZA_CONTOTERZI-->                
+				  <!-- @@blkVISUALIZZA_CONSORZI-->
+                  <a href="../../ditta/layout/elencoLavConsorzi.htm" id="ocra">Lavorazioni consorzi e cooperative</a>
+                  <!-- @@blkVISUALIZZA_CONSORZI-->
+                  </div>
+<!-- @@blkMenuDittaUMA -->
+<!-- @@blkMenuAssegnazione -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante</a></span></div>
+<!-- @@blkMenuAssegnazione -->
+<!-- @@blkMenuBuoni -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span></div>
+<!-- @@blkMenuBuoni -->
+<!-- @@blkMenuMacchine -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span></div>
+<!-- @@blkMenuMacchine -->
+</td>
+            <td>
+              <!-- cella di destra, contiene i "tabelloni"-->
+                  <p class="datiazienda">azienda selezionata </p>
+                  <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+                  <p class="datiaziendaB">Ditta N. $$umaNumAzienda /$$umaTipoDitta</p>
+                  <p class="datiazienda"> provincia di competenza $$umaProvinciaDitta</p>
+                                  <br>
+                    <table class="data">
+ <col width="25%" />
+  <col width="75%" />                 <tr>
+                    <th>Denominazione </th>
+                    <td>$$denominazione</td>
+                  </tr>
+                  <tr>
+                    <th>C.U.A.A. (codice fiscale)</th>
+                    <td>$$cuaa</td>
+                  </tr>
+                  <tr>
+                    <th>Partita I.V.A.</th>
+                    <td>$$partitaIVA</td>
+                  </tr>
+                  <tr>
+                    <th>Provincia competenza </th>
+                    <td>$$descProvinciaUma</td>
+                  </tr>
+                  <tr>
+                    <th>Numero ditta </th>
+                    <td>$$dittaUMA / $$tipoDitta</td>
+                  </tr>
+                  <tr>
+                    <th>Data di iscrizione</th>
+                    <td>$$dataIscrizione</td>
+                  </tr>
+                  <tr>
+                    <th> Tipo conduzione azienda </th>
+                    <td>$$cmb_tipiConduzione $$err_tipiConduzione &nbsp;</td>
+                  </tr>
+                  <tr>
+                    <th>Comune principale attivit&agrave;</th>
+                    <td>
+                      <input type="text" name="provincia" id="sedelegProvincia" size="2" maxlength="2" value="$$provincia">
+                      <input type="text" name="comune" id="descComune" value="$$comune">
+                      $$err_comune <a href="javascript: scegliComune('../../layout/sceltaComune.htm','scegli_comune','600','300','yes',document.getElementById('sedelegProvincia').value,document.getElementById('descComune').value);" class="pulsante" >cerca</a>
+                    </td>
+                    <input type="hidden" name="cap" value="$$cap">
+                    <input type="hidden" name="dataIscrizioneStr" value="$$dataIscrizione">
+                    <input type="hidden" name="istatComune" value="$$istatComune">
+                    <input type="hidden" name="idDitta" value="$$idDitta">
+                  </tr>
+                  <tr>
+                    <th>Indirizzo consegna carburante</th>
+                    <td>
+                      <textarea name="indirizzoConsegna" cols="40" rows="4">$$indirizzoConsegna</textarea>
+                      $$err_indirizzoConsegna </td>
+                  </tr>
+                  <tr>
+                    <th>Note</th>
+                    <td>
+                      <textarea name="noteDitta" cols="40" rows="4">$$noteDitta</textarea>
+                      $$err_noteDitta</td>
+                  </tr>
+                  <tr>
+                    <th>Registrazione della domanda di verifica presentata entro il 30/06 dell'anno in corso</th>
+                    <td>
+                      <input type="checkbox" name="flagRicezDocumAssegnaz" value="S" $$flagDisabled $$flagChecked />
+                    </td>
+                  </tr>                  
+                </table>
+                                                            
+                <table cellspacing="3" class="data">  	
+            			<tr>
+			              <th scope="row">
+			                  <label for="allegati">
+			                    Allegati
+			                  </label>
+			              </th>
+			              <td>																																								 
+						    <a href="javascript:allegaFile('$$idDitta')" class="pulsante">allega file</a>
+						  </td>  																										
+						  <!-- @@blkFilePresenti -->						
+						  <td>
+							    <a href="javascript:visualizzaFile('$$idAllegato', '$$nomeFile')">
+							    $$nomeFile
+						     </a>
+						  </td>
+						  <!-- @@blkFilePresenti -->			
+			            </tr>
+            	</table>
+                
+                <p>I campi contrassegnati con asterisco sono obbligatori</p> <br>
+               
+             <div class="bottone">
+                      <div class="left"><input type="submit" name="conferma.x" value="salva"></div>
+                       <div class="right"><input type="submit" name="annulla.x" value="annulla"></div>       
+              </div>
+
+                </td>
+          </tr>
+        </table>
+
+                              <p>$$exception</p>
+        <!-- fine della tabella a due colonne -->
+    </div>
+    </form>
+  	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+  
+  
+
+</script>
+
+  </body>
+</html>

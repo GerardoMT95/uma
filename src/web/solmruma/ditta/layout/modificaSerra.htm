@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" />
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript" >
+var NUMERO_ORE_RICALDAMENTO_ANNO=8760;
+
+//flag per la gestione dell'inserimento delle dimensioni
+var impostaDimensioni=true;
+
+var indiceSel;
+var formaSerra;
+var SEPARATORE = "_";
+var NUMERO_CARATTERI_SEPARATORE = 2;
+var posSeparatore;
+var fattore;
+
+//Gestisce i parametri legati alla forma serra (tipo e fattore di cubatura)
+function setTipiFormaSerra(){
+  //window.alert("setTipiFormaSerra()");
+  var objTipiFormaSerra = document.getElementById("tipiFormaSerra");
+  //objTipiFormaSerra.attachEvent("onchange", checkImpostaDimensioni);
+  objTipiFormaSerra.onchange=checkImpostaDimensioni;
+  checkImpostaDimensioni();
+}
+
+// calcola il volume della serra in base ai dati inseriti nei campi
+// implementare controlli sui campi?
+function calcolaVolume()
+{
+  if(document.form1.volumeMetriCubiStr.disabled == true)
+  {
+  lunghezzaStr = commaCheck(document.form1.lunghezzaStr.value);
+  //window.alert("lunghezzaStr: "+lunghezzaStr);
+    if(isNaN(lunghezzaStr) == true){
+      window.alert("La lunghezza deve essere numerica");
+      return;
+    }
+  larghezzaStr = commaCheck(document.form1.larghezzaStr.value);
+  //window.alert("larghezzaStr: "+larghezzaStr);
+    if(isNaN(larghezzaStr) == true){
+      window.alert("La larghezza deve essere numerica");
+      return;
+    }
+  altezzaStr = commaCheck(document.form1.altezzaStr.value);
+  //window.alert("altezzaStr: "+altezzaStr);
+    if(isNaN(altezzaStr) == true){
+      window.alert("L'altezza deve essere numerica");
+      return;
+    }
+    if(document.form1.tipiFormaSerra != null && document.form1.tipiFormaSerra.value != "")
+    {
+      var H = altezzaStr;
+      var LA = larghezzaStr;
+      var LU = lunghezzaStr;
+      var fattore = 0;
+      var formaSerra = 0;
+
+      //ricava dal valore del radiobutton serre il fattore di cubatura
+      //es: serra = "100&&10";
+      var indiceSel = document.form1.tipiFormaSerra.selectedIndex;
+      //window.alert("indiceSel: "  + indiceSel);
+      var formaSerra = document.form1.tipiFormaSerra.options[indiceSel].value;
+      //window.alert("formaSerra: "  + formaSerra);
+
+      SEPARATORE = "_";
+      NUMERO_CARATTERI_SEPARATORE = 2;
+
+      posSeparatore = formaSerra.indexOf(SEPARATORE) + NUMERO_CARATTERI_SEPARATORE;
+      fattore = formaSerra.substring(posSeparatore,formaSerra.length);
+      //window.alert("fattore: "  + fattore);
+
+      var volume = Math.ceil( LU * LA * H * fattore );
+      //window.alert("volume: "  + volume);
+      document.form1.volumeMetriCubiStr.value = volume;
+    }
+    else{
+      window.alert("Selezionare una forma Serra");
+    }
+  }
+  else{
+    window.alert("Selezionare le dimensioni della serra per il calcolo Volume");
+  }
+
+  return;
+}
+
+//Verifica che il tipo di forrma serra non sia specificata o non definito
+function checkImpostaDimensioni(){
+  //window.alert("checkImpostaDimensioni()");
+
+  indiceSel = document.form1.tipiFormaSerra.selectedIndex;
+  formaSerra = document.form1.tipiFormaSerra.options[indiceSel].value;
+  posSeparatore = formaSerra.indexOf(SEPARATORE) + NUMERO_CARATTERI_SEPARATORE;
+  fattore = formaSerra.substring(posSeparatore,formaSerra.length);
+
+  //window.alert("fattore: "+fattore);
+  if (fattore==".0" || fattore==null){
+  impostaDimensioni=true;
+    document.form1.altezzaStr.value='0';
+    document.form1.larghezzaStr.value='0';
+    document.form1.lunghezzaStr.value='0';
+  document.form1.misure[1].checked=true;
+  document.form1.misure[0].disabled=true;
+  document.form1.misure[1].disabled=true;
+    document.form1.altezzaStr.disabled = true;
+    document.form1.larghezzaStr.disabled = true;
+    document.form1.lunghezzaStr.disabled = true;
+  //document.form1.misure[0].checked=true;
+  }
+  else{
+    impostaDimensioni=false;
+  document.form1.misure[0].disabled=false;
+  document.form1.misure[1].disabled=false;
+  }
+  if( document.form1.misure[0].checked==true ){
+    document.form1.volumeMetriCubiStr.disabled = true;
+  }else{
+    document.form1.volumeMetriCubiStr.disabled = false;
+  }
+}
+
+// Se si seleziona il radiobutton "volume" disabilita i campi contenenti le
+// dimensioni della serra. Se si se
+function switchMisure(value)
+{
+  //window.alert("switch(\""+value+"\")");
+  if(value == "volume")
+  {
+    document.form1.altezzaStr.value='0';
+    document.form1.larghezzaStr.value='0';
+    document.form1.lunghezzaStr.value='0';
+    document.form1.altezzaStr.disabled = true;
+    document.form1.larghezzaStr.disabled = true;
+    document.form1.lunghezzaStr.disabled = true;
+    document.form1.volumeMetriCubiStr.disabled = false;
+  }
+  if(value == "dimensioni")
+  {
+    document.form1.volumeMetriCubiStr.value = '0';
+    document.form1.altezzaStr.disabled = false;
+    document.form1.larghezzaStr.disabled = false;
+    document.form1.lunghezzaStr.disabled = false;
+    document.form1.volumeMetriCubiStr.disabled = true;
+  }
+}
+
+function mesiOK()
+{
+  //window.alert("document.form1.mesiDiRiscaldamentoStr.value: "+document.form1.mesiDiRiscaldamentoStr.value);
+  if(document.form1.mesiDiRiscaldamentoStr.value < 1 || document.form1.mesiDiRiscaldamentoStr.value > 12){
+    document.form1.mesiDiRiscaldamentoStr.focus();
+    alert("Mesi di riscaldamento deve essere compreso tra 1 e 12");
+  }
+}
+
+function limiteOreAnno(){
+  //window.alert("document.form1.oreDiRiscaldamentoStr.value: "+document.form1.oreDiRiscaldamentoStr.value);
+  //window.alert("NUMERO_ORE_RICALDAMENTO_ANNO: "+NUMERO_ORE_RICALDAMENTO_ANNO);
+  if( parseInt(document.form1.oreDiRiscaldamentoStr.value) > parseInt(NUMERO_ORE_RICALDAMENTO_ANNO)){
+    document.form1.oreDiRiscaldamentoStr.focus();
+    alert("Numero Ore di riscaldamento deve essere inferiore a "+NUMERO_ORE_RICALDAMENTO_ANNO);
+  }
+}
+
+function riabilita()
+{
+    document.form1.altezzaStr.disabled = false;
+    document.form1.larghezzaStr.disabled = false;
+    document.form1.lunghezzaStr.disabled = false;
+    document.form1.volumeMetriCubiStr.disabled = false;
+    document.form1.misure[0].disabled = false;
+    document.form1.misure[1].disabled = false;
+}
+function onUndefinedDimensions()
+{
+  altezza = Number(document.form1.altezzaStr.value.replace(',',''));
+  lunghezza = Number(document.form1.lunghezzaStr.value.replace(',',''));
+  larghezza = Number(document.form1.larghezzaStr.value.replace(',',''));
+
+  if(altezza == 0 && lunghezza == 0 && larghezza == 0)
+  {
+    document.form1.altezzaStr.disabled = true;
+    document.form1.larghezzaStr.disabled = true;
+    document.form1.lunghezzaStr.disabled = true;
+    document.form1.volumeMetriCubiStr.disabled = false;
+    document.form1.misure[1].checked = true;
+  }
+}
+</script>
+$$messaggistica</head>
+<body onLoad="$$err_error;setTipiFormaSerra();onUndefinedDimensions()">
+<form  method="post" name="form1" action="../layout/modificaSerra.htm">
+  <input type="hidden" name="radiobutton" value="$$idSerra">
+  <input type="hidden" name="idSerra" value="$$idSerra">
+  <input type="hidden" name="idFormaSerra" value="$$idFormaSerra">
+  <input type="hidden" name="pageFrom" value="$$pageFrom">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+  <div id="titoloEmenu">
+    <h2> UMA - Utenti motori agricoli </h2>
+    <p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+  </div>
+  <div id="corpo">
+    <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli </a> &gt;
+      ditta UMA &gt; serre &gt; modifica</div>
+    <!-- tabella a due colonne per il contenuto -->
+    <table id="contenuto">
+      <tr>
+      
+      <td class="elenco"><!-- cella che contiene i menu -->
+        <div class="menu">
+          <!-- @@blkRICERCA_DITTA -->
+          <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+          <!-- @@blkRICERCA_DITTA -->
+          <!-- @@blkAZIENDE_TITOLARE -->
+          <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+          <!-- @@blkAZIENDE_TITOLARE -->
+          <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+          <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca macchina</a>
+          <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+          <!-- @@blkNUOVA_DITTA -->
+          <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+          <!-- @@blkNUOVA_DITTA -->
+          <!-- @@blkSTAMPA_ELENCHI -->
+          <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+          <!-- @@blkSTAMPA_ELENCHI -->
+          <!-- @@blkMenuDatiSistema -->
+          <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+          <!-- @@blkMenuDatiSistema -->
+        </div>
+        <div class="menu"> <span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA </a></span>
+          <div class="sottomenu"> <a href="elencoSerre.htm" id="ocra">serre</a> <span class="inattivo2">modifica</span></div>
+        </div>
+        <!-- @@blkMenuAssegnazione -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante</a></span></div>
+        <!-- @@blkMenuAssegnazione -->
+        <!-- @@blkMenuBuoni -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span></div>
+        <!-- @@blkMenuBuoni -->
+        <!-- @@blkMenuMacchine -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span></div>
+        <!-- @@blkMenuMacchine -->
+      </td>
+      <td>
+      
+      <!-- cella di destra, contiene i "tabelloni"-->
+      <p class="datiazienda">azienda selezionata </p>
+      <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+      <p class="datiaziendaB">Ditta N. $$umaNumAzienda /$$umaTipoDitta</p>
+      <p class="datiazienda"> provincia di competenza $$umaProvinciaDitta</p>
+      <br>
+      <table class="data">
+        <col width="25%" />
+        <col width="75%" />
+        <tr>
+          <th> Tipo e Forma*</th>
+          <td><!-- Tipi di Serra -->
+            <!-- Deve contenere il fattore cubatura, ed attivare
+                                                       una funzione js che calcoli il volume della serra -->
+            $$cmb_tipiFormaSerra $$err_tipiFormaSerra
+            <!--
+                                                    <select name="tipiSerra">
+                                                      @@blkElencoTipiSerra
+                                                        <option value="$$fattoreCubatura">$$descrizioneTipoFormaSerra</option>
+                                                      @@blkElencoTipiSerra
+                                                    </select>
+                                                    -->
+          </td>
+        </tr>
+        <tr>
+          <th><input type="hidden" name="idDittaUma" value="$$idDittaUma">
+            Coltura *
+          <th> <!-- elenco tipi colture -->
+            $$cmb_tipiColturaInSerra $$err_tipiColturaInSerra
+        </td>
+        
+        </tr>
+        
+        <tr>
+          <th>Data carico *</th>
+          <td><input type="text" name="dataCaricoStr" size="15" value="$$dataCaricoStr">
+            $$err_dataCaricoStr </td>
+        </tr>
+        <tr>
+          <th>Data scarico </th>
+          <td><input type="text" name="dataScaricoStr" size="15" value="$$dataScaricoStr">
+            $$err_dataScaricoStr </td>
+        </tr>
+      </table>
+      <br />
+      <div class="alert-info">Digitare il volume o calcolarlo mediante le dimensioni della serra.</div>
+      <table class="data">
+        <tr>
+          <td colspan="4"><input type="radio" name="misure" value="dimensioni" $$checkedDimesioni onClick="switchMisure(this.value);">
+            <strong>Dimensione della serra</strong>
+            <input type="radio" name="misure" value="volume" $$checkedMisure onClick="switchMisure(this.value);">
+            <strong>Volume della serra</strong></td>
+        </tr>
+        <tr>
+          <th>Lunghezza </th>
+          <td><input type="text" name="lunghezzaStr"  value="$$lunghezzaStr" onBlur="value=dotCheck(value)" $$disabledLunghezzaStr >
+            <br>
+            $$err_lunghezzaStr metri</td>
+          <th>Volume * </th>
+          <td><input type="text" name="volumeMetriCubiStr"  value="$$volumeMetriCubiStr" onBlur="value=dotCheck(value)" $$disabledVolumeStr>
+            <br>
+            $$err_volumeMetriCubiStr metri cubi</td>
+        </tr>
+        <tr>
+          <th>Larghezza </th>
+          <td><input type="text" name="larghezzaStr" value="$$larghezzaStr" onBlur="value=dotCheck(value)" $$disabledLarghezzaStr >
+            <br>
+            $$err_larghezzaStr metri</td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <th>Altezza </th>
+          <td><input type="text" name="altezzaStr" value="$$altezzaStr" onBlur="value=dotCheck(value)" $$disabledAltezzaStr >
+            <br>
+            $$err_altezzaStr metri</td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+      </table>
+      <div class="bottone"><a href="javascript:calcolaVolume()" class="pulsante">Calcola  volume</a></div>
+      <!-- <table class="data">
+        <tr>
+          <th>Mesi di riscaldamento annuali *</th>
+          <td><input type="text" name="mesiDiRiscaldamentoStr" size="10" value="$$mesiDiRiscaldamentoStr" >
+            <br>
+            $$err_mesiDiRiscaldamentoStr </td>
+        </tr>
+        <tr>
+          <th>Ore di riscaldamento annuali *</th>
+          <td><input type="text" name="oreDiRiscaldamentoStr" size="10" value="$$oreDiRiscaldamentoStr" >
+            <br>
+            $$err_oreDiRiscaldamentoStr</td>
+        </tr>
+        <tr>
+          <th>Note</th>
+          <td><textarea name="note" cols="50" >$$note</textarea>
+            <br>
+            $$err_note </td>
+        </tr>-->
+      </table>
+      <p>I campi contrassegnati con asterisco sono obbligatori.</p>
+      <div class="bottone">
+        <div class="left">
+          <input type="submit" name="salva.x" onclick="riabilita()" value="salva" >
+        </div>
+        <div class="right">
+          <input type="submit" name="annulla.x" value="annulla">
+        </div>
+      </div>
+      </td>
+      
+      </tr>
+      
+    </table>
+    <!-- fine della tabella a due colonne -->
+  </div>
+  <div id="hiddenElement"></div>
+</form>
+<footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <hr />
+    <a name="footer"></a>
+    <div class="custom footerCsi row-fluid">
+      <div class="span3 col-sm-3"> <a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+      <div class="span9 col-sm-9"> Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

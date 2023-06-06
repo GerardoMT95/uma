@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+<script src="../../js/jquery-1.12.0.min.js"></script>
+
+<script language="javascript1.2" src="/staticresources/js/checktext.js">
+</script>
+
+<script language="JavaScript">
+	function submitForm(valorePulsante) {
+		document.form1.action = '../layout/assegnazioni.htm';
+		document.form1.target = '';
+		document.form1.valorePulsante.value = valorePulsante;
+		document.form1.submit();
+	}
+
+	function dettaglio() {
+		var oldAction = document.form1.action;
+		document.form1.action = "../layout/carburanteAssegnabile.htm";
+		document.form1.submit();
+		document.form1.action = oldAction;
+	}
+	function checkSelected() {
+		var selezionato = false;
+
+		var radio = document.form1.idDomAss;
+		if (!radio) {
+			alert("Nessuna Domanda di Assegnazione per la Ditta Uma");
+			return;
+		}
+
+		if (!radio.length) {
+			if (radio.checked)
+				selezionato = true;
+		} else {
+			for (i = 0; i < radio.length; i++)
+				if (radio[i].checked) {
+					selezionato = true;
+					break;
+				}
+		}
+
+		if (!selezionato)
+			alert("Selezionare una Domanda Assegnazione");
+		return selezionato;
+	}
+
+	function mod25_263(form, formName) {
+		var selezionato = false;
+
+		var radio = document.form1.idDomAss;
+		if (!radio) {
+			alert("Nessuna Domanda di Assegnazione per la Ditta Uma");
+			return;
+		}
+
+		if (!radio.length) {
+			if (radio.checked) {
+				form.idDomAss.value = radio.value;
+				selezionato = true;
+			}
+		} else {
+			for (i = 0; i < radio.length; i++) {
+				if (radio[i].checked) {
+					form.idDomAss.value = radio[i].value;
+					selezionato = true;
+				}
+			}
+		}
+
+		if (selezionato) {
+			var d = new Date();
+			var unique = (d.getUTCHours() * 60 + d.getUTCMinutes()) * 60
+					+ d.getUTCSeconds();
+			var target = formName + unique;
+			pop("", 645, 500, target);
+			form.target = target;
+			form.submit();
+		} else
+			alert("Selezionare una Domanda Assegnazione");
+
+		return;
+	}
+
+	function mod26() {
+		var d = new Date();
+		var unique = (d.getUTCHours() * 60 + d.getUTCMinutes()) * 60
+				+ d.getUTCSeconds();
+		var target = "mod26" + unique;
+		pop("", 645, 500, target);
+		document.mod26.target = target;
+		document.mod26.submit();
+	}
+
+	function pop(page, w, h, target) {
+		var winl = (screen.width - w) / 2;
+		var wint = (screen.height - h) / 2;
+		var winprops = 'height=' + h + ',width=' + w + ',top=' + wint
+				+ ',left=' + winl + ',scrollbars=yes,resizable=yes';
+		var win = window.open(page, target, winprops);
+		if (parseInt(navigator.appVersion) >= 4)
+			win.window.focus();
+		//win.document.title = "Servizi on line per il mondo rurale";
+	}
+	
+	$(document).ready(function() {
+		jQuery("tbody.toggled").hide();
+	});
+	
+	function toggleRow(year){
+		var tbody = jQuery("#"+year);
+		if(tbody.is(":visible")){
+			jQuery("#toggle"+year).attr("src","/staticresources/assets/global/images/ico_tab_espandi.gif");
+			tbody.hide();
+		}
+		else{
+			jQuery("#toggle"+year).attr("src","/staticresources/assets/global/images/ico_tab_comprimi.gif");
+			tbody.show();
+		}
+	}
+</script>
+
+
+$$messaggistica
+</head>
+  <body onLoad="$$err_error">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+					<div id="navi">
+						<a href="../../layout/index.htm">utenti motori agricoli </a> &gt;
+						assegnazione carburante
+					</div> <!-- tabella a due colonne per il contenuto -->
+					<table id="contenuto">
+                       <tr>
+                        <td class="elenco">
+								<!-- cella che contiene i menu -->
+								
+								<div class="menu">
+									<!-- @@blkRICERCA_DITTA -->
+									<a href="../../anag/layout/ricercaAzienda.htm">Ricerca
+										ditta UMA</a>
+									<!-- @@blkRICERCA_DITTA -->
+									<!-- @@blkAZIENDE_TITOLARE -->
+									<a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco
+										ditte</a>
+									<!-- @@blkAZIENDE_TITOLARE -->
+									<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+									<a href="../../macchina/layout/ricercaMacchina.htm">Ricerca
+										macchina</a>
+									<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+									<!-- @@blkNUOVA_DITTA -->
+									<a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova
+										ditta UMA</a>
+									<!-- @@blkNUOVA_DITTA -->
+									<!-- @@blkSTAMPA_ELENCHI -->
+									<a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+									<!-- @@blkSTAMPA_ELENCHI -->
+									<!-- @@blkMenuDatiSistema -->
+									<a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+									<!-- @@blkMenuDatiSistema -->
+								</div> 
+								
+								<!-- @@blkMenuDittaUMA -->
+								<div class="menu">
+									<span class="etichettamenu"><a
+										href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span>
+								</div> 
+								<!-- @@blkMenuDittaUMA --> 
+								<!-- @@blkMenuAssegnazione -->
+								<div class="menu">
+									<span class="etichettamenu"><a
+										href="../layout/assegnazioni.htm">Assegnazione carburante </a></span>
+									<a href="javascript:if(checkSelected()){doForm('dettaglio.x')}">dettaglio</a>
+									<a href="javascript:if(checkSelected()){dettaglio()}">dettaglio
+										calcolo</a>
+									<!--@@blkELIMINA_ASSEGNAZIONE-->
+									 <a
+										href="javascript:if(checkSelected()){doForm('elimina.x')}">elimina</a>
+									<!--@@blkELIMINA_ASSEGNAZIONE-->
+									<!--@@blkASSEGNAZIONE_ACCONTO -->
+									  <a href="controlliAccontoEsegui.htm">assegnazione
+										acconto anno $$annoDiRiferimento</a>
+									<!--@@blkASSEGNAZIONE_ACCONTO -->
+									<!--@@blkASSEGNAZIONE_BASE -->
+									 <a href="javascript:doForm('base.x')">verifica e
+										assegnazione anno $$annoDiRiferimento</a>
+									<!--@@blkASSEGNAZIONE_BASE -->
+									<!--@@blkASSEGNAZIONE_SUPPLEMENTO -->
+									 <a href="javascript:doForm('supplementare.x')">assegnazione
+										supplementare anno $$annoDiRiferimento</a>
+									<!--@@blkASSEGNAZIONE_SUPPLEMENTO -->
+									
+									<!--@@blkASSEGNAZIONE_SUPPLEMENTOMAGGIORAZIONE -->
+  										<a href="javascript:doForm('supplementareMaggiorazione.x')">$$titoloMaggiorazione</a>
+									<!--@@blkASSEGNAZIONE_SUPPLEMENTOMAGGIORAZIONE -->
+									
+									<!--@@blkANNULLA_ASSEGNAZIONE -->
+									 <a
+										href="javascript:if(checkSelected()){doForm('annulla.x')}">annulla</a>
+									<!--@@blkANNULLA_ASSEGNAZIONE -->
+									 <a
+										href="javascript:if(checkSelected()){doForm('controlli.x')}">controlli</a>
+									<!--@@blkSTAMPA_25 -->
+									 <a
+										href="javascript:mod25_263(document.mod25,'mod25');">stampa
+										Modello 25 / 25A</a>
+									<!--@@blkSTAMPA_25 -->
+								</div> 
+								<!-- @@blkMenuAssegnazione --> 
+								<!-- @@blkMenuBuoni -->
+								<div class="menu">
+									<span class="etichettamenu"><a
+										href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di
+											prelievo</a></span>
+								</div> 
+								<!-- @@blkMenuBuoni --> 
+								<!-- @@blkMenuMacchine --> <div class="menu">
+									<span class="etichettamenu"><a
+										href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span>
+								</div> 
+								<!-- @@blkMenuMacchine -->
+							</td>
+
+
+							<td>
+								<!-- cella di destra, contiene i "tabelloni"-->
+								<p class="datiazienda">azienda selezionata</p>
+								<p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+								<p class="datiaziendaB">Ditta N. $$umaNumAzienda
+									/$$umaTipoDitta</p>
+								<p class="datiazienda">provincia di competenza
+									$$umaProvinciaDitta</p>
+								<form name="form1" method="post"
+									action="../layout/assegnazioni.htm">
+									<input type="hidden" name="valorePulsante"
+										value="$$valorePulsante"> <input type="hidden"
+										name="elimina" value=""> <input type="hidden"
+										name="currentSel" value=""> <input type="hidden"
+										name="idDittaUMA" value="$$idDittaUMA"> <input
+										type="hidden" name="annullaBuoni" value="elencoDomande">
+									<input type="hidden" name="pageFrom"
+										value="../layout/assegnazioni.htm"> <input
+										type="hidden" name="paginaCorrente" value="$$currPage">
+									<input type="hidden" name="totalePagine" value="$$totPage">
+									<input type="hidden" name="numeroRecord" value="$$numeroRecord">
+                                    
+									<div class="paginazione">
+                                    <p class="left">Domande presentate $$numeroRecord</p>
+												<!--@@bottoneIndietro-->
+													<a href="javascript: submitForm('indietro') "
+														class="pulsante" > &lt;&lt;</a>
+													<!--@@bottoneIndietro-->
+												
+											pagina
+													$$currPage di $$totPage
+												<!--@@bottoneAvanti-->
+													<a href="javascript: submitForm('avanti') "
+														class="pulsante" > &gt;&gt;</a>
+													<!--@@bottoneAvanti-->
+												
+											</div>
+
+									<table class="dataCol">
+										<tr>
+											<td rowspan="2">&nbsp;</td>
+											<th rowspan="2">Anno</th>
+											<th rowspan="2">Tipologia</th>
+											<th rowspan="2">Stato</th>
+											<th colspan="3">Rimanenza da anno precedente</th>
+											<th colspan="3">Consumo anno precedente</th>
+											<th colspan="3">Quantit&agrave; assegnata</th>
+											<th colspan="3">Quantit&agrave; prelevata</th>
+										</tr>
+										<tr>
+											<th>Conto proprio</th><th>Conto terzi</th><th>Serre</th>
+											<th>Conto proprio</th><th>Conto terzi</th><th>Serre</th>
+											<th>Conto proprio</th><th>Conto terzi</th><th>Serre</th>
+											<th>Conto proprio</th><th>Conto terzi</th><th>Serre</th>
+										</tr>
+<!-- @@BLKASSEGNAZIONE -->
+											<!-- @@BLKANNOASSEGNAZIONE -->
+											<tbody>
+											<tr>
+												<td onclick="javascript: toggleRow($$anno);"><img id="toggle$$anno" alt="expand/collapse" src="/staticresources/assets/global/images/ico_tab_espandi.gif" /></td>
+												<td >$$anno </td>
+												<td ></td>
+												<td ></td>
+												<td $$firstLine>$$rimenzaCP litri</td>
+												<td $$firstLine>$$rimenzaCT litri</td>
+												<td $$firstLine>$$rimenzaSR litri</td>
+												<td $$firstLine>$$consumoCP litri</td>
+												<td $$firstLine>$$consumoCT litri</td>
+												<td $$firstLine>$$consumoSR litri</td>
+												<td $$firstLine>$$assegnCP litri</td>
+												<td $$firstLine>$$assegnCT litri</td>
+												<td $$firstLine>$$assegnSR litri</td>
+												<td $$firstLine>$$quantPrelCP Litri</td>
+												<td $$firstLine>$$quantPrelCT Litri</td>
+												<td $$firstLine>$$quantPrelSR Litri</td>
+											</tr>
+											</tbody>
+											<tbody id="$$anno" class="toggled">
+											<!-- @@BLKANNOASSEGNAZIONE -->
+										<tr>
+											<td class="radio">
+												<input type="radio" 
+												name="idDomAss"	value="$$idDomAss"
+												 $$checked>
+											</td>
+											<td $$firstLine> </td>
+											<td $$firstLine>$$tipologia</td>
+											<td $$firstLine>$$stato</td>
+											<td $$firstLine>-</td>
+											<td $$firstLine>-</td>
+											<td $$firstLine>-</td>
+											<td $$firstLine>-</td>
+											<td $$firstLine>-</td>
+											<td $$firstLine>-</td>
+											<td $$firstLine>$$assegnCP litri</td>
+											<td $$firstLine>$$assegnCT litri</td>
+											<td $$firstLine>$$assegnSR litri</td>
+											<td $$firstLine></td>
+											<td $$firstLine></td>
+										</tr>
+										<!-- @@BLKASSEGNAZIONE -->
+									</td>
+										</tr>
+										<!-- @@BLKASSEGNAZIONE -->
+										</tbody>
+									</table>
+									<br>
+									<div id="hiddenElement"></div>
+								</form>
+							</td>
+						</tr>
+					</table> <!-- fine della tabella a due colonne -->
+	</div>
+    <form name="mod25" method="post"
+	action="/solmruma/servlet/StampaServletMod25_25A" target="mod25">
+	<input type="hidden" name="idDomAss">
+</form>
+<form name="mod26" method="post" action="/solmruma/servlet/StampaServletMod26" target="mod26">
+	<input type="hidden" name="dittaUma" value="$$umaNumAzienda"> <input type="hidden" name="provinciaUma" value="$$umaProvinciaDitta">
+</form>
+
+     <footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
+

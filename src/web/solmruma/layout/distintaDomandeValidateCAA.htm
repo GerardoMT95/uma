@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+    <script src="/staticresources/js/checktext.js"></script>
+    <script language="javascript1.2">
+@@blkPopupReport
+
+function stampa() {
+  var d = new Date();
+  var unique = (d.getUTCHours()*60+d.getUTCMinutes())*60+d.getUTCSeconds();
+  var newtarget = "distintaDomandeValidateCAA"+unique;
+  popPdf("",645,500,newtarget);
+
+  var oldtarget=document.report.target;
+  var oldaction=document.report.action;
+
+  document.report.target = newtarget;
+  document.report.action = '../servlet/StampaServletDomandeValidateCAA';
+  document.forms[1].submit();
+  document.report.target=oldtarget;
+  document.report.action=oldaction;
+}
+
+function popPdf(page,w,h,target) {
+  var winl = (screen.width - w) / 2;
+  var wint = (screen.height - h) / 2;
+  winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars=yes,resizable=yes';
+  win = window.open(page, target, winprops);
+  if (parseInt(navigator.appVersion) >= 4) {
+   win.window.focus();
+  }
+}
+
+@@blkPopupReport
+      function selezionadeseleziona(checked)
+      {
+        var indexIntermediario=document.report.indexIntermediario;
+        if (indexIntermediario.length)
+        {
+          for(i=0;i<indexIntermediario.length;i++)
+          {
+            indexIntermediario[i].checked=checked;
+          }
+        }
+        else
+        {
+          indexIntermediario.checked=checked;
+        }
+      }
+    </script>
+  $$messaggistica</head>
+  <body onload="@@blkPopupReport stampa(); @@blkPopupReport $$err_error">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+		<table id="contenuto">
+			<form name="cerca" method="post"
+				action="distintaDomandeValidateCAA.htm">
+				<input type="hidden" name="conferma" value="conferma" />
+
+				<div id="navi">
+					<a href="../../layout/index.htm">utenti motori agricoli </a> &gt; <a
+						href="../layout/stampaElenchi.htm">stampa elenchi</a> &gt; domande
+					validate dal CAA
+				</div>
+				<!-- tabella a due colonne per il contenuto -->
+			<tr>
+				<td class="elenco">
+					<!-- cella che contiene i menu -->
+
+					<div class="menu">
+						<!-- @@blkRICERCA_DITTA -->
+						<a href="../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+						<!-- @@blkRICERCA_DITTA -->
+						<!-- @@blkAZIENDE_TITOLARE -->
+						<a href="../anag/layout/elencoAziendeRapLegale.htm">Elenco
+							ditte</a>
+						<!-- @@blkAZIENDE_TITOLARE -->
+						<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+						<a href="../macchina/layout/ricercaMacchina.htm">Ricerca
+							Macchina</a>
+						<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+						<!-- @@blkNUOVA_DITTA -->
+						<a href="../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova
+							ditta UMA</a>
+						<!-- @@blkNUOVA_DITTA -->
+						<!-- @@blkSTAMPA_ELENCHI -->
+						<span class="inattivo">Stampa elenchi</span>
+						<!-- @@blkSTAMPA_ELENCHI -->
+						<!-- @@blkMenuDatiSistema -->
+						<a href="../layout/dati_sistema.htm">Dati di sistema</a>
+					</div> <!--	 @@blkMenuDatiSistema -->
+
+				</td>
+				<td>
+					<!-- cella di destra, contiene i "tabelloni"-->
+					<h3>Parametri di ricerca impostati</h3>
+					<div class="scroll">
+						<table class="data">
+							<tr>
+								<th>Provincia *</th>
+								<td><select name="istatProvincia">
+										<option value="">- seleziona -</option>
+										<!--@@blkProvincia -->
+										<option value="$$istatProvincia" $$selected>$$descrizione</option>
+										<!--@@blkProvincia -->
+								</select>$$err_istatProvincia</td>
+							</tr>
+							<tr>
+								<th>Anno *</th>
+								<td><input type="text" name="anno" size="4" maxlength="4"
+									value="$$anno">aaaa $$err_anno </td>
+							</tr>
+							<tr>
+								<th>C.A.A. *</th>
+								<td><select name="idIntermediario">
+										<option value="">- seleziona -</option>
+										<!--@@blkOptionCAA -->
+										<option value="$$value" $$selected>$$descrizione</option>
+										<!--@@blkOptionCAA -->
+								</select>$$err_idIntermediario</td>
+							</tr>
+							<tr>
+								<th>dal Foglio *</th>
+								<td><input type="text" name="dalFoglio" size="4"
+									maxlength="4" value="$$dalFoglio">$$err_dalFoglio</td>
+							</tr>
+							<tr>
+								<th>al Foglio</th>
+								<td><input type="text" name="alFoglio" size="4"
+									maxlength="4" value="$$alFoglio">$$err_alFoglio</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bottone">
+						<div class="left">
+							<a href="distintaDomandeValidateCAA.htm"
+								onclick="document.cerca.submit();return false" class="pulsante">Ricerca</a>
+						</div>
+					</div>
+					</form> <br />
+					<!--@@blkNoRisultati -->
+					<h3>Elenco dei fogli relativi alle domande validate da ciascun
+						CAA con l'ultimo numero di riga assegnato</h3> 
+					<div class='alert-danger'>
+						<strong>$$msgErrore</strong>
+					</div> <!--@@blkNoRisultati -->
+					<form name="report" method="post"
+						action="distintaDomandeValidateCAA.htm">
+						<input type="hidden" name="conferma" value="report" />
+						<!--@@blkRisultati -->
+						<input type="hidden" name="istatProvincia"
+							value="$$hdnIstatProvincia" />
+						<input type="hidden" name="anno" value="$$hdnAnno" />
+						<input type="hidden" name="idIntermediario"
+							value="$$hdnIdIntermediario" />
+						<input type="hidden" name="dalFoglio" value="$$hdnDalFoglio" />
+						<input type="hidden" name="alFoglio" value="$$hdnAlFoglio" />
+						<input type="hidden" name="hdnNumElementi"
+							value="$$hdnNumElementi" />
+						<h3>Elenco dei fogli relativi alle domande validate da ciascun
+						CAA con l'ultimo numero di riga assegnato</h3> 
+						<table class="dataCol">
+							<tr>
+								<th rowspan="2">&nbsp;</th>
+								<th rowspan="2">Foglio</th>
+								<th colspan="2">Riga</th>
+								<th rowspan="2">C.A.A.</th>
+							</tr>
+							<tr>
+								<th>Da</th>
+								<th>A</th>
+							</tr>
+							<!--@@blkFoglio-->
+							<tr>
+								<td><input type="checkbox" name="indexIntermediario"
+									value="$$indexIntermediario" $$checked>$$err_indexIntermediario</td>
+								<td>$$numeroFoglio <input type="hidden" name="numeroFoglio"
+									value="$$numeroFoglio" />
+								</td>
+								<td><input type="text" name="rigaIniziale"
+									value="$$rigaIniziale" size="4" maxlength="4">$$err_rigaIniziale
+								</td>
+								<td><input type="text" name="rigaFinale"
+									value="$$rigaFinale" size="4" maxlength="4">$$err_rigaFinale
+								</td>
+								<td>$$desc</td>
+							</tr>
+							<!--@@blkFoglio-->
+						</table>
+						<div class="bottone">
+							<div class="left">
+								<a href="#" onclick="selezionadeseleziona(true);return false;"
+									class="pulsante">Seleziona tutti</a>
+							</div>
+							<div class="right">
+								<a href="#" onclick="selezionadeseleziona(false);return false;"
+									class="pulsante">Deseleziona</a>
+							</div>
+						</div>
+						<p>I campi contrassegnati con asterisco sono obbligatori</p>
+
+						<div class="bottone">
+							<div class="left">
+								<input type="submit" value="conferma" name="submitForm">
+							</div>
+							<div class="right">
+								<input type="submit" value="annulla" name="annulla"
+									onclick="window.location='stampaElenchi.htm';return false">
+							</div>
+						</div>
+						<!--@@blkRisultati -->
+
+						<div id="hiddenelement"></div>
+				</td>
+			</tr>
+			</form>
+		</table>
+
+
+
+
+	</div>
+	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>
+

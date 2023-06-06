@@ -1,0 +1,63 @@
+#banner1{
+	
+	height: 45px;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#banner2{
+	
+	height: 29px;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#navigazione {
+	
+	height: 19px;
+	border: 0px;
+	padding:0px 10px;
+	margin: 0px;
+	text-align: left;   
+	background-image:url(../im/sfondo_banner.gif);
+	background-repeat: no-repeat;
+	font-size: 8pt; 
+}
+
+#corpo {
+	
+	text-align: center;
+	background-image: url(../im/bkgcorpo.gif);
+	background-repeat: repeat-y;
+	padding: 10px 10px 10px 13px;
+}
+
+#piede {
+	width:725px;
+}
+
+/*
+
+colori
+
+#cdcdcd Grigio medio
+
+#e6e6e6 Grigio chiaro
+
+#005071 Blu
+
+#008536 Verde
+
+#c0d2dc
+
+*/
+
+.scroll {
+position: relative;
+overflow:auto;
+width:535px;
+visibility: visible;
+margin:0 0 8px 0;
+}

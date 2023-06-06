@@ -1,0 +1,84 @@
+<porta-delegata name="Uma">
+  <services>
+    <service name="Uma" public-interface-class="it.csi.solmr.interfaceCSI.uma.UmaCSIInterface">
+        <operations>
+        <operation name="serviceGetElencoMacchineByIdAzienda" type="synch-call" >
+          <param-list>
+             <param name="idAzienda" type="java.lang.Long" />
+             <param name="storico" type="java.lang.Boolean" />
+             <param name="idGenereMacchina" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.MacchinaVO[]"/>
+        </operation>
+         <operation name="serviceGetTipiGenereMacchina" type="synch-call" >
+          <param-list>
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.CodeDescription[]"/>
+        </operation>
+         <operation name="serviceGetMacchinaById" type="synch-call" >
+          <param-list>
+             <param name="idMacchina" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.MacchinaVO"/>
+        </operation>
+         <operation name="serviceGetElencoAziendeUtilizzatrici" type="synch-call" >
+          <param-list>
+             <param name="idMacchina" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="long[]"/>
+        </operation>
+         <operation name="serviceGetUtilizzoByIdMacchinaAndIdAzienda" type="synch-call" >
+          <param-list>
+             <param name="idMacchina" type="java.lang.Long" />
+             <param name="idAzienda" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.UtilizzoVO"/>
+        </operation>
+         <operation name="serviceGetRottmazioneByIdMacchinaAndIdAzienda" type="synch-call" >
+          <param-list>
+             <param name="idMacchina" type="java.lang.Long" />
+             <param name="idAzienda" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.RottamazioneVO"/>
+        </operation>
+         <operation name="serviceGetPossessoMacchinaByIdMacchinaAndIdAzienda" type="synch-call" >
+          <param-list>
+             <param name="idMacchina" type="java.lang.Long" />
+             <param name="idAzienda" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.PossessoVO[]"/>
+        </operation>
+         <operation name="serviceGetElencoMacchineByGnps" type="synch-call" >
+          <param-list>
+             <param name="idDatiMacchineArr" type="long[]" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.MacchinaVO[]"/>
+        </operation>
+        <operation name="serviceGetDittaUmaByIdAzienda" type="synch-call" >
+          <param-list>
+             <param name="idAzienda" type="java.lang.Long" />
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.DittaUMAVO"/>
+        </operation>
+		<operation name="serviceGetElencoMacchineByIdDittaUma" type="synch-call" >
+          <param-list>
+             <param name="idDittaUma" type="java.lang.Long" />
+			 <param name="storico" type="java.lang.Boolean" />
+			 <param name="idGenereMacchina" type="java.lang.Long" />			 
+          </param-list>
+          <ret-val type="it.csi.solmr.dto.uma.MacchinaVO[]"/>
+        </operation>
+       </operations>
+    </service>
+  </services>
+  <config>
+    <url-pa></url-pa>
+    <pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
+      <pluggable-pd
+        name="business"
+        class="it.csi.csi.porte.ejb20.PortaDelegataEJB"
+        url-pa="java:app/solmruma_ejb/PA_UmaServiceFacade!it.csi.csi.porte.ejb20.PortaApplicativaHome">
+      </pluggable-pd>
+    </pluggable-pd-list>
+  </config>
+</porta-delegata>

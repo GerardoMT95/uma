@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+ <script language="javascript1.2">
+   function sceltaSocietaLeasing()
+   {
+     var radio=document.form1.radiobutton;
+         var idSocietaLeasing=-1;
+     if (!radio)
+     {
+       alert("Nessuna società");
+       return false;
+     }
+     if (!radio.length)
+     {
+       if (radio.checked)
+       {
+                 idSocietaLeasing=0;
+       }
+     }
+     else
+     {
+       for(i=0;i<radio.length;i++)
+       {
+         if (radio[i].checked)
+         {
+                         idSocietaLeasing=i;
+         }
+       }
+     }
+
+         if(idSocietaLeasing==-1)
+         {
+           alert("Selezionare una società");
+           return(false);
+         }
+         if (!radio.length)
+         {
+           var radioArray=new Array(radio);
+           radio=radioArray;
+         }
+         var idDittaLeasing=radio[idSocietaLeasing].value;
+
+         element=document.getElementsByName("partitaIVA");
+         var partitaIVA=element[idSocietaLeasing].innerHTML;
+
+         element=document.getElementsByName("comune");
+         var comune=element[idSocietaLeasing].innerHTML;
+
+         element=document.getElementsByName("ragioneSociale");
+         var ragioneSociale=element[idSocietaLeasing].innerHTML;
+
+         element=document.getElementsByName("indirizzo");
+         var indirizzo=element[idSocietaLeasing].innerHTML;
+
+         element=document.getElementsByName("rappresentanteLegale");
+         var rappresentanteLegale=element[idSocietaLeasing].innerHTML;
+
+
+         //Imposta i campi hidden della tabella di dettaglio della Ditta di Leasing
+//        var partitaIVAOpener=window.opener.document.getElementById("partitaIVA");
+//        var ragioneSocialeOpener=window.opener.document.getElementById("ragioneSociale");
+         var idSocietaLeasingOpener=window.opener.document.form1.idSocietaLeasing;
+         var partitaIVAOpener=window.opener.document.form1.partitaIVA;
+         var ragioneSocialeOpener=window.opener.document.form1.ragioneSociale;
+         var partitaIVABakOpener=window.opener.document.form1.partitaIVABak;
+         var ragioneSocialeBakOpener=window.opener.document.form1.ragioneSocialeBak;
+
+         //Cambia lo stylesheet di visualizzazione del dettaglio della Ditta di Leasing
+         var dittaLeasingOpener=window.opener.document.getElementById("dittaLeasing");
+
+         //Imposta gli elementi della tabella di dettaglio della ditta di Leasing
+         var visDenominazioneOpener=window.opener.document.getElementById("visDenominazione");
+         var visPartitaIVAOpener=window.opener.document.getElementById("visPartitaIVA");
+         var visIndirizzoOpener=window.opener.document.getElementById("visIndirizzo");
+         var visRappresentanteLegaleOpener=window.opener.document.getElementById("visRappresentanteLegale");
+
+     //hidden
+         if (partitaIVABakOpener)
+         {
+           partitaIVABakOpener.value=partitaIVA;
+         }
+         if (ragioneSocialeBakOpener)
+         {
+           ragioneSocialeBakOpener.value=ragioneSociale;
+         }
+         if (idSocietaLeasingOpener)
+         {
+           idSocietaLeasingOpener.value=idDittaLeasing;
+         }
+         if (partitaIVAOpener)
+         {
+           partitaIVAOpener.value=partitaIVA;
+         }
+         if (ragioneSocialeOpener)
+         {
+           ragioneSocialeOpener.value=ragioneSociale;
+         }
+         //stato di visualizzazione dello stylesheet
+         //dettaglio dei campi dela ditta di leasing
+         if (visDenominazioneOpener)
+         {
+           visDenominazioneOpener.innerHTML=ragioneSociale;
+         }
+         if (visPartitaIVAOpener)
+         {
+           visPartitaIVAOpener.innerHTML=partitaIVA;
+         }
+         if (visIndirizzoOpener)
+         {
+           visIndirizzoOpener.innerHTML=indirizzo + ' ' + comune;
+         }
+         if (visRappresentanteLegaleOpener)
+         {
+           visRappresentanteLegaleOpener.innerHTML=rappresentanteLegale;
+         }
+
+         window.close();
+   }
+
+</script>
+  $$messaggistica</head>
+  <body>
+	<form name="form1" action="">
+
+<div id="titoloEmenu">
+					<h3>Elenco societ&agrave; leasing</h3>
+				</div>
+ 
+ <div id="corpo"> 
+       
+						<div class="bottone">
+                          <div class="left">
+						<input type="button" name="Seleziona" value="conferma" onClick="sceltaSocietaLeasing()">
+						</div>
+						  <div class="right">
+						<input type="button" name="Chiudi" value="chiudi" onClick="window.close()">
+						  </div>
+						</div>
+					  
+				  <table class="dataCol">
+                    <tr>
+					<td>&nbsp;</td>
+                      <th>Denominazione</th>
+                      <th>Partita IVA</th>
+                      <th>Indirizzo</th>
+                      <th>Comune</th>
+                      <th>Rappresentante legale</th>
+                    </tr>
+                    @@blkSocietaLeasing
+                    <tr>
+                      <td class="radio"><input type="radio" name="radiobutton" value="$$idSocietaLeasing"></td>
+                      <td id="ragioneSociale" name="ragioneSociale"> $$denominazione</td>
+                      <td id="partitaIVA" name="partitaIVA">$$partitaIVA</td>
+                      <td id="indirizzo" name="indirizzo">$$indirizzo</td>
+                      <td id="comune" name="comune">$$comune</td>
+                      <td id="rappresentanteLegale" name="rappresentanteLegale">$$rappresentante</td>
+                    </tr>
+                    @@blkSocietaLeasing
+                    </table>
+             <div class="bottone">
+                          <div class="left">
+                    <input type="button" name="Seleziona" value="conferma" onClick="sceltaSocietaLeasing()">
+                    </div>
+                  
+                      <div class="right">
+                    <input type="button" name="Chiudi" value="chiudi" onClick="window.close()">
+                      </div>
+                    </div>
+           
+    </div>
+</form>
+
+  </body>
+</html>
+

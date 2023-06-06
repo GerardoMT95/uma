@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+    <script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+//<!--
+function checkAll(checkbox)
+{
+  if (typeof checkbox.length=="undefined")
+    checkbox.checked=true;
+  else
+    for (var i=0; i < checkbox.length; i++)
+      checkbox[i].checked=true;
+}
+
+function unCheckAll(checkbox)
+{
+  if (typeof checkbox.length=="undefined")
+    checkbox.checked=false;
+  else
+    for (var i=0; i < checkbox.length; i++)
+      checkbox[i].checked=false;
+}
+
+function isChecked(checkbox)
+{
+  var isChecked = false;
+  if (typeof checkbox.length=="undefined" && checkbox.checked)
+    isChecked = true;
+  else
+    for (var i=0; i < checkbox.length; i++)
+      if (checkbox[i].checked)
+      {
+        isChecked = true;
+        break;
+      }
+
+  return isChecked;
+}
+
+
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+
+function stampaModello73() {
+  if (isChecked(document.mod73.idNumeroTarga))
+  {
+    var d = new Date();
+    var unique = (d.getUTCHours()*60+d.getUTCMinutes())*60+d.getUTCSeconds();
+    var target = "mod73"+unique;
+    popMod("",645,500,target);
+    document.mod73.action = "/solmruma/servlet/StampaServletMod73";
+    document.mod73.target = target;
+    document.mod73.submit();
+  }
+  else
+    alert("Selezionare almeno un elemento dell'elenco.");
+}
+
+function popMod(page,w,h,target) {
+  var winl = (screen.width - w) / 2;
+  var wint = (screen.height - h) / 2;
+  winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars=yes,resizable=yes';
+  win = window.open(page, target, winprops);
+  if (parseInt(navigator.appVersion) >= 4) {
+   win.window.focus();
+  }
+}
+
+function annullaStampa() {
+  frmAnnulla.submit();
+}
+
+//-->
+</script>
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+  <form name="mod73" method="post" action="/solmruma/servlet/StampaServletMod73" target="Modello73">
+  <input type="hidden" name="tipoTarga" value="$$tipoTarga">
+  <input type="hidden" name="targaDa" value="$$targaDa">
+  <input type="hidden" name="targaA" value="$$targaA">
+  <input type="hidden" name="dicitura" value="$$dicitura">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+          <div id="navi"> <a href="index.htm">utenti motori agricoli </a> &gt; stampa elenchi </a> &gt; Modello 73 </div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+              <!-- cella che contiene i menu -->
+              
+              <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                 <a href="../macchina/layout/ricercaMacchina.htm">Ricerca Macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+        	 			 <a href="../layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                 <a href="../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                    <a href="../layout/dati_sistema.htm">Dati di sistema</a>
+              </div>
+               <!--						 @@blkMenuDatiSistema -->
+            </td>
+            <td>
+              <h3>Parametri di stampa</h3>
+              <br>
+              <table class="data">
+                    <col width="25%" /> 
+                    <col width="75%" /> 
+                <tr>
+                  <th>Tipo targa:</th>
+                  <td>$$tipoTarga</td>
+                </tr>
+                <tr>
+                  <th>Numero targa da:</th>
+                  <td>$$targaDa</td>
+                </tr>
+                <tr>
+                  <th>Numero  targa a:</th>
+                  <td>$$targaA</td>
+                </tr>
+                <tr>
+                  <th>Intestazione distinta speciale:</th>
+                  <td>$$dicitura</td>
+                </tr>
+               </table>
+               <!--	@@blkTabellaTarghe-->
+               <br />
+
+              <table class="dataCol">
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>&nbsp; </th>
+                    <th colspan="3"> Ditta UMA </th>
+                 </tr>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>Numero targa</th>
+                    <th>Prov. </th>
+                    <th>Numero</th>
+                    <th>Ragione Sociale </th>
+                </tr>
+                <!--@@blkRigaTarghe-->
+                <tr>
+                  <td class="radio"><input type="checkbox" name="idNumeroTarga" value ="$$idNumeroTarga" checked></td>
+                  <td>$$numeroTarga</td>
+                  <td>$$provincia</td>
+                  <td>$$dittaUma</td>
+                  <td>$$denominazione</td>
+                </tr>
+                <!--@@blkRigaTarghe-->
+              </table>
+              <div class="bottone">
+                    <div class="left"> <input onClick="checkAll(document.mod73.idNumeroTarga);" type="button" name="selez" value="seleziona tutto">
+                  </div>
+                   <div class="left">
+                    <input onClick="unCheckAll(document.mod73.idNumeroTarga);" type="button" name="deselez" value="deseleziona tutto">
+                  </div>
+                  <div class="left">
+                    <input onClick="stampaModello73();" type="button" name="confermaStampa" value="conferma">
+                  </div>
+                   <div class="left">
+                    <input onClick="annullaStampa();" type="button" name="annulla" value="annulla">
+                  </div>
+              </div>
+              <!--@@blkTabellaTarghe-->
+            </td>
+          </tr>
+        </table>
+
+  </div>
+  </form>
+  <form name="frmAnnulla" method="post" action="modello73.htm">
+  </form>
+  	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" />
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<script language="javascript1.2" src="/staticresources/js/checktext.js">
+</script>
+<script language="javascript1.2">
+  function dettaglio()
+  {
+    var oldAction=document.form1.action;
+    document.form1.action="../layout/carburanteAssegnabile.htm";
+    document.form1.submit();
+    document.form1.action=oldAction;
+  }
+  function openWindow(url, titolo) 
+  {
+    alert(url);
+    window.open(url, titolo, 'height=500 width=500 resizable=yes scrollbars=yes');
+  }
+  /*************************************************************************************/
+  //Calcola in modo automatico i consumi dell'assegnazione, in base alle rimanenze
+  //  impostate e alla tipologia di carburante.
+  //Se viene modificato un consumo, reimposta il consumo con la tipologia di conduzione
+  //  gemella, valutando la tipologia di carburante sulla quale si opera
+  /*************************************************************************************/
+  function calcoloConsumo(carburante, contoProprioTerzi)
+  {
+    var totale;
+    var rimContoProprio;
+    var rimContoTerzi;
+    var consumoContoProprio;
+    var consumoContoTerzi;
+    var temp = Number(0);
+    var debug=0;
+
+    if (debug == 1){
+      window.alert("calcoloConsumo('"+carburante+"','"+contoProprioTerzi+"')");
+    }
+
+    if(carburante == 1)
+    {
+      if (debug == 1)
+      {
+        window.alert("conto Proprio");
+      }
+      totale = Number(document.form1.totDisponibilitaGasolio.value);
+      rimContoProprio = document.form1.rimanenzaContoProprioGasolio;
+      rimContoTerzi = document.form1.rimanenzaContoTerziGasolio;
+      consumoContoProprio = document.form1.consumoContoProprioGasolio;
+      consumoContoTerzi = document.form1.consumoContoTerziGasolio;
+    }
+    else
+    {
+      if (debug == 1)
+      {
+        window.alert("conto Terzi");
+      }
+      totale = Number(document.form1.totDisponibilitaBenzina.value);
+      rimContoProprio = document.form1.rimanenzaContoProprioBenzina;
+      rimContoTerzi = document.form1.rimanenzaContoTerziBenzina;
+      consumoContoProprio = document.form1.consumoContoProprioBenzina;
+      consumoContoTerzi = document.form1.consumoContoTerziBenzina;
+    }
+
+    if (debug == 1)
+    {
+      window.alert("dopo assegnazione");
+    }
+
+    if (contoProprioTerzi == 1)
+    {
+      //Conto Proprio - Non ha senso valutare se la rimanenza ï¿½ inferiore a 0
+      if(isNaN(rimContoProprio.value) || Number(rimContoProprio.value)<0)
+        return;
+      if (debug == 1)
+      {
+        window.alert("conto Proprio");
+      }
+    }
+    else
+    {
+      //Conto Terzi - Non ha senso valutare se la rimanenza ï¿½ inferiore a 0
+      if (debug == 1)
+      {
+        window.alert("conto Terzi");
+      }
+      if(isNaN(rimContoTerzi.value) || Number(rimContoTerzi.value)<0)
+      return;
+    }
+
+    if (debug == 1)
+    {
+      window.alert("dopo if (contoProprioTerzi == 1)");
+    }
+
+    if(!isNaN(rimContoProprio.value))
+      temp += Number(rimContoProprio.value);
+    if(!isNaN(rimContoTerzi.value))
+      temp += Number(rimContoTerzi.value);
+
+    if (debug == 1)
+    {
+      window.alert("contoProprioTerzi: "+contoProprioTerzi);
+    }
+    if (contoProprioTerzi == 1)
+    {
+      if (debug == 1)
+      {
+        window.alert("conto Proprio");
+      }
+      if(!isNaN(consumoContoTerzi.value))
+        temp += Number(consumoContoTerzi.value);
+      consumoContoProprio.value = totale - temp;
+      if (debug == 1)
+      {
+        window.alert("consumoContoProprio: "+consumoContoProprio.value);
+      }
+      if(consumoContoProprio.value < 0 || consumoContoProprio.value == 0)
+        consumoContoProprio.value = '';
+    }
+    else
+    {
+      if (debug == 1)
+      {
+        window.alert("conto Terzi");
+      }
+      if(!isNaN(consumoContoProprio.value))
+        temp += Number(consumoContoProprio.value);
+      consumoContoTerzi.value = totale - temp;
+      if (debug == 1)
+      {
+        window.alert("consumoContoTerzi: "+consumoContoTerzi.value);
+      }
+      if(consumoContoTerzi.value < 0 || consumoContoTerzi.value == 0)
+        consumoContoTerzi.value = '';
+    }
+  }
+</script>
+<!--$$err_dataProtocollo
+$$err_numeroProtocollo-->
+$$messaggistica</head>
+<body onLoad="$$err_error">
+<form name="form1" method="post" action="$$action">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+  <div id="titoloEmenu">
+    <h2> UMA - Utenti motori agricoli </h2>
+    <p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+  </div>
+  <div id="corpo">
+  <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli </a> &gt; assegnazione
+    carburante &gt; verifica assegnazione $$annoCorrente
+    <!-- tabella a due colonne per il contenuto -->
+  </div>
+  <table id="contenuto">
+    <tr>
+      <td class="elenco"><!-- cella che contiene i menu -->
+        <div class="menu">
+          <!-- @@blkRICERCA_DITTA -->
+          <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+          <!-- @@blkRICERCA_DITTA -->
+          <!-- @@blkAZIENDE_TITOLARE -->
+          <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+          <!-- @@blkAZIENDE_TITOLARE -->
+          <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+          <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca macchina</a>
+          <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+          <!-- @@blkNUOVA_DITTA -->
+          <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+          <!-- @@blkNUOVA_DITTA -->
+          <!-- @@blkSTAMPA_ELENCHI -->
+          <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+          <!-- @@blkSTAMPA_ELENCHI -->
+          <!-- @@blkMenuDatiSistema -->
+          <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+          <!-- @@blkMenuDatiSistema -->
+        </div>
+        <!--						 @@blkMenuDittaUMA -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span> </div>
+        <!--						 @@blkMenuDittaUMA -->
+        <!-- @@blkMenuAssegnazione -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante </a></span>
+          <!--@@blkASSEGNAZIONE_BASE -->
+          <span class="inattivo">verifica e assegnazione $$annoDiRiferimento</span>
+          <!--@@blkASSEGNAZIONE_BASE -->
+        </div>
+        <!--						 @@blkMenuAssegnazione -->
+        <!-- @@blkMenuBuoni -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span></div>
+        <!-- @@blkMenuBuoni -->
+        <!-- @@blkMenuMacchine -->
+        <div class="menu"> <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span></div>
+        <!-- @@blkMenuMacchine -->
+      </td>
+      <td><!-- cella di destra, contiene i "tabelloni"-->
+        <p class="datiazienda">azienda selezionata </p>
+        <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+        <p class="datiaziendaB">Ditta N. $$umaNumAzienda
+          /$$umaTipoDitta</p>
+        <p class="datiazienda"> provincia di competenza $$umaProvinciaDitta</p>
+        <h4>ANNO DI RIFERIMENTO: $$annoCorrente</h4>
+    </div>
+    
+    @@blkAltreMacchine
+    <div class="alert-warning">ATTENZIONE: la ditta ha in carico delle macchine che
+      non sono state considerate nel programma di calcolo automatico
+      del quantitativo massimo di carburante assegnabile<br>
+    </div>
+    @@blkAltreMacchine
+    <input type="hidden" name="fromVerificaAssegnazione" value="1">
+    <input type="hidden" name="pageFrom" value="$$pageFrom">
+    <input type="hidden" name="idDomAss" value="$$idDomandaassegnazione">
+    <input type="hidden" name="idDomandaassegnazione" value="$$idDomandaassegnazione">
+    <input type="hidden" name="idDomandaAssegnazionePrecedente" value="$$idDomandaAssegnazionePrecedente">
+    <input type="hidden" name="carbLavorazione" value="$$carbLavorazione">
+    <input type="hidden" name="carbAllevamento" value="$$carbAllevamento">
+    <input type="hidden" name="totLavorazAllevam" value="$$totLavorazAllevam">
+    <input type="hidden" name="carbAssegnato" value="$$carbAssegnato">
+    <input type="hidden" name="quantMaxAssLavorazAllevam" value="$$quantMaxAssLavorazAllevam">
+    <input type="hidden" name="quantMaxAssMietitrebb" value="$$quantMaxAssMietitrebb">
+    <input type="hidden" name="quantMaxAssEssicaz" value="$$quantMaxAssEssicaz">
+    <input type="hidden" name="quantMaxAssContoProp" value="$$quantMaxAssContoProp">
+    <input type="hidden" name="quantMaxAssContoPropSuccess" value="$$quantMaxAssContoPropSuccess">
+    <input type="hidden" name="percAssContoPropSuccess" value="$$percAssContoPropSuccess">
+    <input type="hidden" name="dataRif" value="$$dataRif">
+    <input type="hidden" name="totAssContoPropSuccess" value="$$totAssContoPropSuccess">
+    <input type="hidden" name="quantMaxAssRiscaldam" value="$$quantMaxAssRiscaldam">
+    <input type="hidden" name="quantMaxAssSerre" value="$$quantMaxAssSerre">
+    <input type="hidden" name="altreMacchine" value="$$altreMacchine">
+    <br>
+    <br>
+    <table class="data">
+      <tr>
+        <th>Quantitativo massimo assegnabile conto proprio</th>
+        <td>$$quantMaxAssContoProprio
+          <input type="hidden" value="$$quantMaxAssContoProprio" name="quantMaxAssContoProprio">
+        </td>
+        <td><a href="javascript: dettaglio()" class="pulsante">dettaglio calcolo</a></td>
+      </tr>
+      <tr>
+        <th>Quantitativo massimo assegnabile conto terzi</th>
+        <td colspan="2">$$totContoTerzi
+          <input type="hidden" value="$$totContoTerzi" name="totContoTerzi">
+          <input type="hidden" value="$$carbContoTerziLav" name="carbContoTerziLav">
+          <input type="hidden" value="$$assegnatoPrecContoTerzi" name="assegnatoPrecContoTerzi">
+          <input type="hidden" value="$$maxContoTerzi" name="maxContoTerzi">
+        </td>
+      </tr>
+      <tr>
+        <th>Quantitativo massimo assegnabile serre</th>
+        <td colspan="2"> $$quantMaxAssSerre</td>
+      </tr>
+      <tr>
+        <th>Eccedenze su lavorazioni conto terzi</th>
+        <td colspan="2"> $$eccedenza
+          <input type="hidden" value="$$eccedenza" name="eccedenza"></td>
+      </tr>
+      <!--@@blkDebitoCP-->      
+      <tr>
+        <th> Debito assegnazioni anni precedenti Conto Proprio </th>
+        <td colspan="2"> $$debitoCP
+          <input type="hidden" value="$$debitoCP" name="debitoCP">
+        </td>
+      </tr>
+      <!--@@blkDebitoCP-->
+      <!--@@blkDebitoCT-->      
+      <tr>
+        <th> Debito assegnazioni anni precedenti Conto Terzi </th>
+        <td colspan="2"> $$debitoCT
+          <input type="hidden" value="$$debitoCT" name="debitoCT">
+        </td>
+      </tr>
+      <!--@@blkDebitoCT-->     	    
+      <!--@@blkDebitoSerra-->
+      <tr>
+        <th> Debito assegnazioni anni precedenti riscaldamento serre </th>
+        <td colspan="2"> $$debitoSerra
+          <input type="hidden" value="$$debitoSerra"
+                      name="debitoSerra">
+        </td>
+      </tr>
+       <!--@@blkDebitoSerra-->           
+    </table>
+    <br />
+    <table class="dataCol">
+      <tr>
+        <td></td>
+        <th> GASOLIO</th>
+        <th colspan="2"> BENZINA</th>
+      </tr>
+      <tr>
+        <td><h3> Disponibilit&agrave;: </h3></td>
+        <td></td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Rimanenza precedente Conto Proprio</strong></td>
+        <td>$$rimanenzaPrecContoProprioGasolio
+          <input type="hidden" value="$$rimanenzaPrecContoProprioGasolio" name="rimanenzaPrecContoProprioGasolio">
+        </td>
+        <td colspan="2"><div>$$rimanenzaPrecContoProprioBenzina </div>
+          <input type="hidden" value="$$rimanenzaPrecContoProprioBenzina" name="rimanenzaPrecContoProprioBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Rimanenza precedente Conto Terzi</strong></td>
+        <td>$$rimanenzaPrecContoTerziGasolio
+          <input type="hidden" value="$$rimanenzaPrecContoTerziGasolio" name="rimanenzaPrecContoTerziGasolio">
+        </td>
+        <td colspan="2">$$rimanenzaPrecContoTerziBenzina
+          <input type="hidden" value="$$rimanenzaPrecContoTerziBenzina" name="rimanenzaPrecContoTerziBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Rimanenza precedente Serra</strong></td>
+        <td>$$rimanenzaPrecSerraGasolio
+          <input type="hidden" value="$$rimanenzaPrecSerraGasolio" name="rimanenzaPrecSerraGasolio">
+        </td>
+        <td colspan="2">$$rimanenzaPrecSerraBenzina
+          <input type="hidden" value="$$rimanenzaPrecSerraBenzina" name="rimanenzaPrecSerraBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Prelevato conto proprio</strong></td>
+        <td> $$prelevatoCPGasolio
+          <input type="hidden" value="$$prelevatoCPGasolio" name="prelevatoCPGasolio">
+        </td>
+        <td colspan="2">$$prelevatoCPBenzina
+          <input type="hidden" value="$$prelevatoCPBenzina" name="prelevatoCPBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Prelevato conto terzi</strong></td>
+        <td> $$prelevatoCTGasolio
+          <input type="hidden" value="$$prelevatoCTGasolio" name="prelevatoCTGasolio">
+        </td>
+        <td colspan="2">$$prelevatoCTBenzina
+          <input type="hidden" value="$$prelevatoCTBenzina" name="prelevatoCTBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Prelevato riscaldamento serra</strong></td>
+        <td> $$prelevatoSerraGasolio
+          <input type="hidden" value="$$prelevatoSerraGasolio" name="prelevatoSerraGasolio">
+        </td>
+        <td colspan="2">$$prelevatoSerraBenzina
+          <input type="hidden" value="$$prelevatoSerraBenzina" name="prelevatoSerraBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Totale</strong></td>
+        <td>$$totDisponibilitaGasolio
+          <input type="hidden" value="$$totDisponibilitaGasolio" name="totDisponibilitaGasolio">
+        </td>
+        <td colspan="2">$$totDisponibilitaBenzina
+          <input type="hidden" value="$$totDisponibilitaBenzina" name="totDisponibilitaBenzina">
+        </td>
+      </tr>
+      <tr>
+        <td><h3> Lavorazioni conto terzi: </h3></td>
+        <td></td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Lavorazioni dichiarate da altre aziende</strong></td>
+        <td> $$rimanenzeDichAltreAziendeGasolio
+          <input type="hidden" value="$$rimanenzeDichAltreAziendeGasolio" name="rimanenzeDichAltreAziendeGasolio">
+        </td>
+        <td colspan="2">$$rimanenzeDichAltreAziendeBenzina
+          <input type="hidden" value="$$rimanenzeDichAltreAziendeBenzina" name="rimanenzeDichAltreAziendeBenzina">
+        </td>
+      </tr>
+      <!--@@blkRimanenzeDaCessazione-->
+      <tr>
+        <td><h3>Rimanenze da Ditte UMA cessate:</h3></td>
+        <td>&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Conto Proprio</strong></td>
+        <td> $$rimCessataContoProprioGasolio </td>
+        <td colspan="2"> $$rimCessataContoProprioBenzina </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Conto Terzi</strong></td>
+        <td> $$rimCessataContoTerziGasolio </td>
+        <td colspan="2"> $$rimCessataContoTerziBenzina </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Riscaldamento Serre</strong></td>
+        <td> $$rimCessataRiscSerraGasolio
+          <!--input type="text" name="textfield216" size="10"-->
+        </td>
+        <td colspan="2"> $$rimCessataRiscSerraBenzina </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Totale</strong></td>
+        <td>$$totRimCessataGasolio</td>
+        <td colspan="2">$$totRimCessataBenzina</td>
+      </tr>
+      <!--@@blkRimanenzeDaCessazione-->
+      <!-- RIMANENZA STIMATA -->
+      <tr>
+        <td><h3> Rimanenza minima stimata al 31 / 12: </h3></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Conto Proprio</strong></td>
+        <td> $$rimanenzaMinimaCPGasolio </td>
+        <td colspan="2"> $$rimanenzaMinimaCPBenzina </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Conto Terzi</strong></td>
+        <td> $$rimanenzaMinimaCTGasolio </td>
+        <td colspan="2"> $$rimanenzaMinimaCTBenzina </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Riscaldamento Serre</strong></td>
+        <td> $$rimanenzaMinimaSerreGasolio </td>
+        <td colspan="2"> $$rimanenzaMinimaSerreBenzina </td>
+      </tr>
+      <!-- RIMANENZA STIMATA -->
+      <tr>
+        <td><h3> Rimanenza attuale (rimanenza $$annoPrecedente più eventuali anticipi $$annoCorrente) : </h3></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Rimanenza Conto Proprio</strong></td>
+        <td><input type="text" onChange="//calcoloConsumo('1','$$tipoConduzione')" maxlength="7" size="10" name="rimanenzaContoProprioGasolio" class="EDIT" value="$$rimanenzaContoProprioGasolio" ##lockedByAcconto>
+          $$err_rimanenzaContoProprioGasolio
+          <!--input type="text" name="textfield22" size="10"-->
+        </td>
+        <td colspan="2"><input type="text" onChange="//calcoloConsumo('2','$$tipoConduzione')" maxlength="7" size="10" name="rimanenzaContoProprioBenzina" class="EDIT" value="$$rimanenzaContoProprioBenzina" ##lockedByAcconto>
+          $$err_rimanenzaContoProprioBenzina
+          <!--input type="text" name="textfield23" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Rimanenza Conto Terzi</strong></td>
+        <td><input type="text" onChange="//calcoloConsumo('1','$$tipoConduzione')" maxlength="7" size="10" name="rimanenzaContoTerziGasolio" class="EDIT" value="$$rimanenzaContoTerziGasolio" ##lockedByAcconto>
+          $$err_rimanenzaContoTerziGasolio
+          <!--input type="text" name="textfield26" size="10"-->
+        </td>
+        <td colspan="2"><input type="text" onChange="//calcoloConsumo('2','$$tipoConduzione')" maxlength="7" size="10" name="rimanenzaContoTerziBenzina" class="EDIT" value="$$rimanenzaContoTerziBenzina" ##lockedByAcconto>
+          $$err_rimanenzaContoTerziBenzina
+          <!--input type="text" name="textfield27" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Rimanenza Serra</strong></td>
+        <td><input type="text" onChange="//calcoloConsumo('1','$$tipoConduzione')" maxlength="7" size="10" name="rimanenzaSerraGasolio" class="EDIT" value="$$rimanenzaSerraGasolio" ##lockedByAcconto>
+          $$err_rimanenzaSerraGasolio
+          <!--input type="text" name="textfield26" size="10"-->
+        </td>
+        <td colspan="2"><input type="text" onChange="//calcoloConsumo('2','$$tipoConduzione')" maxlength="7" size="10" name="rimanenzaSerraBenzina" class="EDIT" value="$$rimanenzaSerraBenzina" ##lockedByAcconto>
+          $$err_rimanenzaSerraBenzina
+          <!--input type="text" name="textfield27" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Totale</strong></td>
+        <td>$$totRimanenzaGasolio</td>
+        <td colspan="2">$$totRimanenzaBenzina</td>
+      </tr>
+      <tr>
+        <td><h3> Consumo anno precedente : </h3></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Consumo Conto Proprio</strong></td>
+        <td><input type="text" onChange="//calcoloConsumo('1','2')" maxlength="7" size="10" name="consumoContoProprioGasolio" class="EDIT" value="$$consumoContoProprioGasolio" ##lockedByAcconto>
+          $$err_consumoContoProprioGasolio
+          <!--input type="text" name="textfield211" size="10"-->
+        </td>
+        <td colspan="2"><input type="text" onChange="//calcoloConsumo('2','2')" maxlength="7" size="10" name="consumoContoProprioBenzina" class="EDIT" value="$$consumoContoProprioBenzina" ##lockedByAcconto>
+          $$err_consumoContoProprioBenzina
+          <!--input type="text" name="textfield212" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Consumo Conto Terzi</strong></td>
+        <td><input type="text" onChange="//calcoloConsumo('1','1')" maxlength="7" size="10" name="consumoContoTerziGasolio" class="EDIT" value="$$consumoContoTerziGasolio" ##readonly ##lockedByAcconto>
+          $$err_consumoContoTerziGasolio
+          <!--input type="text" name="textfield216" size="10"-->
+        </td>
+        <td colspan="2"><input type="text" onChange="//calcoloConsumo('2','1')" maxlength="7" size="10" name="consumoContoTerziBenzina" class="EDIT" value="$$consumoContoTerziBenzina" ##readonly ##lockedByAcconto>
+          $$err_consumoContoTerziBenzina
+          <!--input type="text" name="textfield215" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Consumo Serre</strong></td>
+        <td><input type="text" onChange="//calcoloConsumo('1','1')" maxlength="7" size="10" name="consumoSerraGasolio" class="EDIT" value="$$consumoSerraGasolio" ##lockedByAcconto>
+          $$err_consumoSerraGasolio
+          <!--input type="text" name="textfield216" size="10"-->
+        </td>
+        <td colspan="2"><input type="text" onChange="//calcoloConsumo('2','1')" maxlength="7" size="10" name="consumoSerraBenzina" class="EDIT" value="$$consumoSerraBenzina" ##lockedByAcconto>
+          $$err_consumoSerraBenzina
+          <!--input type="text" name="textfield215" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Totale</strong></td>
+        <td>$$totConsumoGasolio</td>
+        <td colspan="2">$$totConsumoBenzina</td>
+      </tr>
+      <tr>
+        <td><h3> Carburante oggetto di furto: </h3></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong> Carburante oggetto di furto</strong> </td>
+        <td><input type="text"
+                            maxlength="7" size="10" name="gasolioOggettoFurto"
+                            class="EDIT" value="$$gasolioOggettoFurto" ##lockedByAcconto>
+          $$err_gasolioOggettoFurto </td>
+        <td colspan="2"><input type="text"
+                            maxlength="7" size="10" name="benzinaOggettoFurto"
+                            class="EDIT" value="$$benzinaOggettoFurto" ##lockedByAcconto>
+          $$err_benzinaOggettoFurto </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong> Data protocollo denuncia furto</strong> </td>
+        <td colspan="3"><input type="text"
+                            maxlength="12" size="10" name="dataProtocolloDenFurto"
+                            class="EDIT" value="$$dataProtocolloDenFurto" ##lockedByAcconto>
+          (gg/mm/aaaa) 
+          $$err_dataProtocolloDenFurto </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong> Num. Protocollo denuncia furto</strong> </td>
+        <td colspan="3"><input type="text"
+                            maxlength="200" size="35" name="numProtocolloDenFurto"
+                            class="EDIT" value="$$numProtocolloDenFurto" ##lockedByAcconto>
+          $$err_numProtocolloDenFurto </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong> Estremi denuncia furto</strong> </td>
+        <td colspan="3"><textarea rows="3" cols="25" ##lockedByAcconto name="estremiDenFurto">$$estremiDenFurto</textarea>
+          $$err_estremiDenFurto </td>
+      </tr>
+      <tr>
+        <td><h3> Assegnazione netta: </h3> $$err_assegnazioneNetta</td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Conto Proprio</strong></td>
+        <td><input type="text" maxlength="7" size="10" name="assNettaContoProprioGasolio" class="EDIT" value="$$assNettaContoProprioGasolio">
+          $$err_assNettaContoProprioGasolio
+          <!--input type="text" name="textfield2112" size="10"-->
+        </td>
+        <td colspan="2"><input maxlength="7" type="text" size="10" name="assNettaContoProprioBenzina" class="EDIT" value="$$assNettaContoProprioBenzina">
+          $$err_assNettaContoProprioBenzina
+          <!--input type="text" name="textfield2122" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Conto Terzi</strong></td>
+        <td><input maxlength="7" type="text" size="10" name="assNettaContoTerziGasolio" class="EDIT" value="$$assNettaContoTerziGasolio">
+          $$err_assNettaContoTerziGasolio
+          <!--input type="text" name="textfield211" size="10"-->
+        </td>
+        <td colspan="2"><input maxlength="7" type="text" size="10" name="assNettaContoTerziBenzina" class="EDIT" value="$$assNettaContoTerziBenzina">
+          $$err_assNettaContoTerziBenzina
+          <!--input type="text" name="textfield212" size="10"-->
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Riscaldamento Serre</strong></td>
+        <td><input maxlength="7" type="text" size="10" name="assNettaRiscSerraGasolio" class="EDIT" value="$$assNettaRiscSerraGasolio">
+          $$err_assNettaRiscSerraGasolio
+          <!--input type="text" name="textfield216" size="10"-->
+        </td>
+        <td colspan="2"><input maxlength="7" type="text" size="10" name="assNettaRiscSerraBenzina" class="EDIT" value="$$assNettaRiscSerraBenzina">
+          $$err_assNettaRiscSerraBenzina </td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Totale</strong></td>
+        <td>$$totAssNettaGasolio</td>
+        <td colspan="2">$$totAssNettaBenzina</td>
+      </tr>
+      <tr>
+        <td><h3> Documentazione conto terzi: </h3></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Data consegna</strong></td>
+        <td><input type="text" name="dataConsegnaDoc" value="$$dataConsegnaDoc" size="8">
+          (gg/mm/aaaa)
+          $$err_dataConsegnaDoc </td>
+        <td class="text-right"><strong>N. documenti</strong> </td>
+        <td><input type="text" name="numeroDoc" value="$$numeroDoc" size="8" maxlength="3">
+          $$err_numeroDoc </td>
+      </tr>
+      <!--@@blkProtocolloIntermediario-->
+      <tr>
+        <td><h3> Documentazione protocollo: </h3></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>Data protocollo</strong></td>
+        <td><input type="text" name="dataProtocollo" value="$$dataProtocollo" size="8">
+          (gg/mm/aaaa)
+          ##err_dataProtocollo </td>
+        <td class="text-right"><strong>N. protocollo</strong></td>
+        <td><input type="text" name="numeroProtocollo" value="$$numeroProtocollo" size="8" maxlength="50">
+          ##err_numeroProtocollo </td>
+      </tr>
+      <!--@@blkProtocolloIntermediario-->
+      <!-- $$endCommento
+                  <tr>
+                    <td><h2> Ricezione documenti da parte dell'intermediario: <h2></td>
+                    <td ></td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td>Domanda presentata da</td>
+                    <td colspan="3" >$$cmb_tipiIntermediario $$err_tipiIntermediario</td>
+                  </tr>
+                  <tr>
+                    <td height="40">Data ricezione documenti</td>
+                    <td >
+            <input type="text" name="dataRicevutaDocumenti" value="$$dataRicevutaDocumenti" size="8">(gg/mm/aaaa)
+            $$err_dataRicevutaDocumenti
+          </td>
+                    <td>N. protocollo</td>
+                    <td >
+            <input type="text" name="numeroRicevutaDocumenti" value="$$numeroRicevutaDocumenti" size="8" maxlength="8">
+            $$err_numeroRicevutaDocumenti
+          </td>
+                  </tr>
+                  <tr>
+                    <td><h2> Ricezione documenti da parte azienda: <h2></td>
+                    <td ></td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td height="40">Data ricezione documenti</td>
+                    <td >
+            <input type="text" name="dataRicevutaDocumentiAzienda" value="$$dataRicevutaDocumentiAzienda" size="8">(gg/mm/aaaa)
+            $$err_dataRicevutaDocumentiAzienda
+          </td>
+                    <td colspan="2"></td>
+                  </tr>
+                $$initCommento -->
+    </table>
+    <div class="bottone">
+      <input type="submit" name="conferma.x" value="avanti" >
+    </div>
+    <br>
+    </td>
+    
+    </tr>
+    
+  </table>
+  <!-- fine della tabella a due colonne -->
+  </div>
+</form>
+<footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <hr />
+    <a name="footer"></a>
+    <div class="custom footerCsi row-fluid">
+      <div class="span3 col-sm-3"> <a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+      <div class="span9 col-sm-9"> Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

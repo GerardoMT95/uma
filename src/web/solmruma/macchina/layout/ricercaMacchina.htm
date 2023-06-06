@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+
+  var categoriaSelected='$$categoriaSelected';
+  @@blkGenere
+  vetCategoriaDesc$$categoria=new Array();
+
+  vetCategoriaCod$$categoria=new Array();
+
+  @@blkCategoria
+  vetCategoriaDesc$$categoria[$$index]='$$categoriaDesc';
+
+  vetCategoriaCod$$categoria[$$index]='$$categoriaCod';
+
+  @@blkCategoria
+  @@blkGenere
+
+  //Blocco di combo per selezione del genere macchina e categoria
+  function onChangeCombo()
+  {
+    var comboGenere=document.form1.idGenereMacchina;
+    var comboCategorie=document.form1.idCategoria;
+    if (comboGenere.selectedIndex==0)
+    {
+      comboCategorie.options.length=0; // Eliminazione dei vecchi valori
+      comboCategorie.options[0]=new Option("","");
+      return;
+    }
+    var vetDescr=eval('vetCategoriaDesc'+comboGenere.options[comboGenere.selectedIndex].value);
+    var vetCod=eval('vetCategoriaCod'+comboGenere.options[comboGenere.selectedIndex].value);
+    comboCategorie.options.length=0; // Eliminazione dei vecchi valori
+    comboCategorie.options[0]=new Option("","");
+    for(idx=1;idx<vetDescr.length;idx++)
+    {
+      comboCategorie.options[idx]=new Option(vetDescr[idx],vetCod[idx]);
+      if (categoriaSelected==vetCod[idx])
+      {
+        comboCategorie.options[idx].selected=true;
+        categoriaSelected='';
+      }
+    }
+
+    if(document.form1.idGenereMacchina.value == document.form1.ASM.value ||
+       document.form1.idGenereMacchina.value == document.form1.RIMORCHIO.value){
+      disabilitaCampi('TRUE');
+    }
+    else{
+      disabilitaCampi('FALSE');
+    }
+  }
+
+  function disabilitaCampi(disabilita) {
+    if(disabilita == 'TRUE'){
+      document.form1.numeroMatrice.value = '';
+      document.form1.numeroOmologazione.value = '';
+      document.form1.numeroMatrice.disabled = true;
+      document.form1.numeroOmologazione.disabled = true;
+    }
+    else{
+      document.form1.numeroMatrice.disabled = false;
+      document.form1.numeroOmologazione.disabled = false;
+    }
+  }
+
+  function ricerca(tipoRicerca){
+    document.form1.action = '../layout/ricercaMacchina.htm';
+    document.form1.target = '';
+    document.form1.tipoRicerca.value = tipoRicerca;
+    document.form1.submit();
+  }
+
+
+</script>
+$$messaggistica</head>
+<body onLoad="onChangeCombo();$$err_error">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+  <h2> UMA - Utenti motori agricoli </h2>
+  <p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+</div>
+<div id="corpo">
+<form name="form1" method="post" action="../layout/ricercaMacchina.htm">
+<input type="hidden" name="tipoRicerca" value="$$tipoRicerca">
+      <div id="navi"><a href="../../layout/index.htm">utenti motori  agricoli </a>&gt; ricerca macchina</div>
+          <!-- tabella a due colonne per il contenuto -->
+       <table id="contenuto">
+          <tr>
+             <td class="elenco">
+									
+            <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+               <span class="inattivo"> Ricerca macchina</span>
+                <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+               <a  href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta  UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+               <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+               <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+            </div>
+					
+          <td><!-- cella di destra, contiene i "tabelloni"-->
+
+             <h3>Ricerca puntuale per targa:</h3>
+              <table class="data">
+              <col width="25%" />
+              <col width="25%" />
+              <col width="25%" />
+              <col width="25%" />
+                             <tr>
+                                        <th>Tipo targa *</th>
+                                        <td>
+                                          <select name="tipoTarga">
+                                            <OPTION></OPTION>
+                                            <!--@@comboTipoTarga-->
+                                            <OPTION value="$$idTipoTarga" $$selected>$$descTipoTarga</OPTION>
+                                            <!--@@comboTipoTarga-->
+                                          </select> $$err_tipoTarga
+                                        </td>
+                                        <th>Numero targa*</th>
+                                        <td>
+                                          <input type="text" maxlength="8" size="10" name="numeroTarga" class="EDIT" value="$$numeroTarga"> $$err_numeroTarga
+                                        </td>
+                                      </tr>
+                  </table>
+            <div class="bottone"> <div class="right"><a href="javascript: ricerca('ricTarga')" class="pulsante">ricerca</a></div></div>
+        
+                                    <h3>Ricerca per caratteristiche tecniche  della macchina:</h3>
+
+              <table class="data">
+                          
+                                      <tr>
+                                        <th>Genere *</th>
+                                        <td colspan="3">
+                                          <input type="hidden" name="ASM" value="$$ASM">
+                                          <input type="hidden" name="RIMORCHIO" value="$$RIMORCHIO">
+                                          <select name="idGenereMacchina" onChange="onChangeCombo()" >
+                                          @@blkComboGenere
+                                          <option value="$$idGenereMacchina" $$checkedGenereMacchina>$$genereMacchinaDesc</option>
+                                          @@blkComboGenere
+                                          </select>
+                                          $$err_idGenereMacchina
+                                        </td></tr>
+					<tr>
+                                        <th>Categoria</th>
+                                        <td colspan="3">
+                                          <select name="idCategoria" >
+                                          @@blkComboCategoria
+                                          <option value="$$idCategoria" $$checkedCategoria>$$categoriaDesc</option>
+                                          @@blkComboCategoria
+                                          </select>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <th>Matricola telaio</th>
+                                        <td>
+                                          <input type="text" name="matricolaTelaio" value="$$matricolaTelaio" maxlength="30">
+                                        </td>
+                                        <th>Matricola motore</th>
+                                        <td>
+                                          <input type="text" name="matricolaMotore" value="$$matricolaMotore" maxlength="30">
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <th>Marca</th>
+                                        <td>
+                                          <input type="text" name="marca" value="$$marca" maxlength="30">
+                                        </td>
+                                        <th>Tipo</th>
+                                        <td>
+                                          <input type="text" name="tipo" value="$$tipo" maxlength="30">
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <th>Numero matrice</th>
+                                        <td>
+                                          <input type="text" name="numeroMatrice" value="$$numeroMatrice" maxlength="8" size="10">
+                                        </td>
+                                        <th>Numero omologazione</th>
+                                        <td>
+                                          <input type="text" name="numeroOmologazione" value="$$numeroOmologazione" maxlength="30">
+                                        </td>
+                                      </tr>
+                                  </table>
+            <div class="bottone"><div class="right"><a href="javascript: ricerca('ricCaratt')" class="pulsante">ricerca</a></div></div>
+                         
+                                                        <h3>Ricerca per numero attestazione (modello  72):</h3>
+                                                                      
+              <table class="data">
+                                      <tr>
+                                        <th>Provincia attestazione</th>
+                                        <td colspan="3">
+                                          <select name="provAttest">
+                                          <option></option>
+                                          <!--@@comboProvAttest-->
+                                          <option value="$$idProvAttest" $$idProvAttestSel>$$siglaProvAttest</option>
+                                          <!--@@comboProvAttest-->
+                                          </select>
+                                          $$err_provAttest
+                                        </td>
+                                        <!--td>&nbsp; </td>
+                                        <td>&nbsp; </td-->
+                                      </tr>
+                                      <tr>
+                                        <th>Anno attestazione</th>
+                                        <td>
+                                          <input type="text" name="annoAttestazione" value ="$$annoAttestazione"size="6" maxlength="4">
+                                          $$err_annoAttestazione
+                                        </td>
+                                        <th>Numero attestazione</th>
+                                        <td>
+                                          <input type="text" name="numeroAttestazione" value="$$numeroAttestazione" size="8" maxlength="6">
+                                          $$err_numeroAttestazione
+                                        </td>
+                                      </tr>
+                                    </table>
+           <div class="bottone"><div class="right"><a href="javascript: ricerca('ricAttestaz')" class="pulsante" >ricerca</a>
+                                        </div></div>
+                                   </td>
+                                   </tr>
+                                   </table><!-- fine della tabella a due colonne -->
+                                   </form>  </div>
+                                     <footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+                                      </body>
+                                   </html>

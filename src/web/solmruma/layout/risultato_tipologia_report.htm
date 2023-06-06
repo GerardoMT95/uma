@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+<!--
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+//-->
+</script>
+$$messaggistica</head>
+<script language="JavaScript" type="text/javascript" src="../js/util.js" ></script>
+
+<script type="text/javascript">
+  function customDoForm(page)
+  {
+    var oldAction = document.form1.action;
+    document.form1.action=page;
+    document.form1.submit();
+    document.form1.action=oldAction;
+  }
+  
+	function scarica()
+	{
+		//Download csv
+		var winprops ='toolbar=no,location=no,status=yes,menubar=yes,scrollbars=yes,resizable=yes,width=800,height=430';
+		window.open('risultato_tipologia_report.sxls' ,'reportPopupExcel',winprops);
+		
+		//window.alert('1');
+	  //var winprops ='toolbar=no,location=no,status=yes,menubar=yes,scrollbars=yes,resizable=yes,width=800,height=430';
+	  //window.alert('2');
+	  //urlPopup = 'risultato_tipologia_report.htm?excel=excel&idTipologiaReport='+form1.idTipologiaReport.value;
+		//window.alert('3');
+	  //window.open(urlPopup ,'reportPopupExcel',winprops);
+		//window.alert('4');
+	}
+	
+	function getExcel()
+	{
+		window.alert('getExcel()');
+		form1.excel.value = 'excel';
+		form1.submit();
+	}
+	
+	function chiudi()
+	{
+	  window.close();
+	}
+</script>
+<body onload="$$err_error;">
+<!-- CORPO -->
+<!--@@bloccoPulsanti-->
+<div id="corpo">
+<br />
+
+<div class="bottone">
+<div class="left"><a href="javascript:window.print();" title="stampa" class="pulsante">stampa</a>  <a href="javascript:scarica()" title="scarica in formato excel" class="pulsante">scarica in formato excel</a></div>
+<div class="right"><a href="javascript:chiudi();" title="chiudi" class="pulsante">chiudi</a></div>
+</div>
+<!--@@bloccoPulsanti-->
+<!-- @@maxRigheRisultato -->
+<br>
+<div class=" alert-danger"><p>Attenzione! Il risultato del report selezionato prevede $$numeroRighe righe. A video verranno visualizzate esclusivamente le prime $$numeroMaxRighe.
+Il risultato completo sarà consultabile nel file excel prodotto.<br>n.b. Il numero di righe massimo gestito da excel è 65536.</p></div>
+<br>
+<!-- @@maxRigheRisultato -->
+@@noRigheRisultato
+<div class="alert-danger">Non sono presenti valori per il report</div>
+@@noRigheRisultato
+<table class="data">
+@@blkRigaRisultatoHeader
+<tr>
+@@blkColonnaRisultatoHeader
+<td>$$valoreColonnaHeader</td>
+@@blkColonnaRisultatoHeader
+</tr>
+@@blkRigaRisultatoHeader
+@@blkRigaRisultato
+<tr>
+@@blkColonnaRisultato
+<td>$$valoreColonna</td>
+@@blkColonnaRisultato
+</tr>
+@@blkRigaRisultato
+</table>
+<!--@@bloccoPulsanti-->
+<!-- FINE TABELLA -->
+<form action="risultato_tipologia_report.htm" method="post" name="form1">
+	<input type="hidden" name="excel" value="" />
+	<input type="hidden" name="idTipologiaReport" value="$$idTipologiaReport" />
+</form>
+<div class="bottone">
+<div class="left"><a href="javascript:window.print();" title="stampa" class="pulsante">stampa</a>
+<a href="javascript:scarica()" title="scarica in formato excel" class="pulsante">scarica in formato excel</a></div>
+<!--div id="azione"><a href="javascript:getExcel()" title="scarica in formato excel">scarica in formato excel</a></div-->
+<div class="right"><a href="javascript:chiudi();" title="chiudi" class="pulsante">chiudi</a></div>
+</div>
+<!--@@bloccoPulsanti-->
+</div>
+</body>
+</html>

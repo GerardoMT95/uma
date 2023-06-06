@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+    
+<script language="JavaScript" >
+function confermaAzienda() {
+  //alert("Sono in conferma Azienda ");
+  var selectedValue;
+ // alert("document.selezioneAzienda.idAzienda vale:  "+document.selezioneAzienda.idAzienda);
+  if(document.selezioneAzienda.idAzienda !=null) {
+  		var radio;
+  		//alert("document.selezioneAzienda.idAzienda.length vale:  "+document.selezioneAzienda.idAzienda.length);
+  		
+     	for(var i=0; i<document.selezioneAzienda.idAzienda.length || i < 1; i++) {
+     		//alert('I VALE: '+i);
+     		radio=document.selezioneAzienda.idAzienda[i];
+     		//alert('radio vale: '+radio);
+     		if(radio==null){
+     			radio = document.selezioneAzienda.idAzienda;
+     		}
+      		if(radio.checked) {
+ 		        selectedValue = radio.value;
+ 		        //alert('selectedValue: '+selectedValue);
+ 		        /* Se la pagina chiamante e' 'Inserimento per conto terzi' (INS_LAV_PER_CT) :
+ 		            - controllo che per l'azienda selezionata sia valorizzato il 'Numero registro imprese'
+ 		            - controllo che l'Ateco dell'azienda selezionata sia riconosciuta con Attività Agricola
+ 		        */
+ 		        var paginaChiamante = document.selezioneAzienda.paginaChiamante.value; 		        
+ 		        // --------- CASO pagina chiamante = nuovaLavContoTerzi.htm
+ 		        if(paginaChiamante != null && paginaChiamante =='INS_LAV_PER_CT'){
+ 		          // -- Controllo il numero registro imprese  		         
+ 		          //alert('valoreNumRegImprese: '+document.getElementById("numRegImprese_"+selectedValue).value);		          
+ 		          var valoreNumRegImprese = document.getElementById("numRegImprese_"+selectedValue).value; 		          
+ 		          if(valoreNumRegImprese == null || valoreNumRegImprese == ''){
+ 		            alert("Operazione non permessa. L'azienda selezionata non risulta iscritta al Registro delle Imprese.");
+ 		            return;
+ 		          } 		          
+ 		          else{
+ 		           // -- Controllo che l'Ateco dell'azienda selezionata sia riconosciuta con Attività Agricola
+ 		           /*var valoreFlagAttAgricola = document.getElementById("flagAttAgricola_"+selectedValue).value;
+ 		           if(valoreFlagAttAgricola == null || valoreFlagAttAgricola != 'S'){
+ 		             alert("Operazione non permessa. L'azienda selezionata non effettua attivita' agricola (codice ATECO non agricolo relativo all'attivita' principale o alle attivita' secondarie).");
+ 		             return;
+ 		           } */
+ 		           
+ 		            // -- Se i controlli sono andati a buon fine, si può proseguire
+ 		            var provincia = document.selezioneAzienda.siglaProvincia[i];
+		        	var descComune = document.selezioneAzienda.comune[i];
+		        	var sedelegaleIndirizzo = document.selezioneAzienda.sedelegaleIndirizzo[i];
+		        	var sedeLegale = document.selezioneAzienda.sedeLegale[i];
+		        	var cuaa = document.selezioneAzienda.cuaa[i];
+		        	var denominazione = document.selezioneAzienda.denominazione[i];
+		        	var partitaIva = document.selezioneAzienda.partitaIva[i];
+		          var numeroDittaUma = document.selezioneAzienda.numeroDittaUma[i]; 
+		       
+		  			if(provincia == null) {
+		          		provincia = document.selezioneAzienda.siglaProvincia;
+		        	}
+		        	if(descComune == null) {
+		          		descComune = document.selezioneAzienda.comune;
+		        	}
+		        	if(sedelegaleIndirizzo == null) {
+		          		sedelegaleIndirizzo = document.selezioneAzienda.sedelegaleIndirizzo;
+		        	}
+		        	if(sedeLegale == null) {
+		          		sedeLegale = document.selezioneAzienda.sedeLegale;
+		        	}
+		        	if(cuaa == null) {
+		          		cuaa = document.selezioneAzienda.cuaa;
+		        	}
+		        	if(denominazione == null) {
+		          		denominazione = document.selezioneAzienda.denominazione;
+		        	}
+		        	if(partitaIva == null) {
+		          		partitaIva = document.selezioneAzienda.partitaIva;
+		        	}
+		        	if(numeroDittaUma == null) {
+                  numeroDittaUma = document.selezioneAzienda.numeroDittaUma;
+              }
+		        
+		 			opener.document.form1.idAziendaPop.value = selectedValue;
+		 			//alert("provincia vale "+provincia);
+		 		
+		        	opener.document.form1.provincia.value = provincia.value;
+		        	//alert("descComune vale "+descComune);
+		        	opener.document.form1.comune.value = descComune.value;
+		       
+		        	//alert("sedelegaleIndirizzo vale "+sedelegaleIndirizzo.value);
+		        	opener.document.form1.sedelegaleIndirizzo.value = sedelegaleIndirizzo.value;
+		        	//alert("sedeLegale vale "+sedeLegale);    
+		        	opener.document.form1.sedeLegale.value = sedeLegale.value;
+		            
+		        	opener.document.form1.cuaaStr.value = cuaa.value;
+		        	//alert("cuaa vale "+cuaa);
+		       
+		        	opener.document.form1.denominazioneStr.value = denominazione.value;     
+		        	
+		        	opener.document.form1.idDittaUmaAssociata.value = numeroDittaUma.value;
+		       
+		        	opener.document.form1.partitaIvaStr.value = partitaIva.value;     
+		          
+		        	//alert("prima di fare opener submint");
+        			opener.document.form1.submit();
+        			window.close();
+        			return;
+ 		          }  
+ 		        } // fine CASO pagina chiamante = 'INS_LAV_PER_CT'
+ 		        
+ 		        
+ 		        // ----  In tutti gli altir casi di pagine chiamanti, non sono necessari controlli sull'azienda selezionata
+		        var provincia = document.selezioneAzienda.siglaProvincia[i];
+		        var descComune = document.selezioneAzienda.comune[i];
+		        var sedelegaleIndirizzo = document.selezioneAzienda.sedelegaleIndirizzo[i];
+		        var sedeLegale = document.selezioneAzienda.sedeLegale[i];
+		        var cuaa = document.selezioneAzienda.cuaa[i];
+		        var denominazione = document.selezioneAzienda.denominazione[i];
+		        var partitaIva = document.selezioneAzienda.partitaIva[i];
+		        
+		        
+		        //alert("sedelegaleIndirizzo vale "+sedelegaleIndirizzo);
+		  		/*alert("provincia vale "+provincia);
+		  		alert("descComune vale "+descComune);
+		  		
+		  		alert("sedeLegale vale "+sedeLegale);
+		  		alert("cuaa vale "+cuaa);
+		  		alert("denominazione vale "+denominazione);
+		  		alert("partitaIva vale "+partitaIva);*/
+		  		if(provincia == null) {
+		          provincia = document.selezioneAzienda.siglaProvincia;
+		        }
+		        if(descComune == null) {
+		          descComune = document.selezioneAzienda.comune;
+		        }
+		        if(sedelegaleIndirizzo == null) {
+		          sedelegaleIndirizzo = document.selezioneAzienda.sedelegaleIndirizzo;
+		        }
+		        if(sedeLegale == null) {
+		          sedeLegale = document.selezioneAzienda.sedeLegale;
+		        }
+		        if(cuaa == null) {
+		          cuaa = document.selezioneAzienda.cuaa;
+		        }
+		        if(denominazione == null) {
+		          denominazione = document.selezioneAzienda.denominazione;
+		        }
+		        if(partitaIva == null) {
+		          partitaIva = document.selezioneAzienda.partitaIva;
+		        }
+		        
+		 		opener.document.form1.idAziendaPop.value = selectedValue;
+		 		//alert("provincia vale "+provincia);
+		 		
+		        opener.document.form1.provincia.value = provincia.value;
+		        //alert("descComune vale "+descComune);
+		        opener.document.form1.comune.value = descComune.value;
+		       
+		        //alert("sedelegaleIndirizzo vale "+sedelegaleIndirizzo.value);
+		        opener.document.form1.sedelegaleIndirizzo.value = sedelegaleIndirizzo.value;
+		        //alert("sedeLegale vale "+sedeLegale);    
+		        opener.document.form1.sedeLegale.value = sedeLegale.value;
+		            
+		        opener.document.form1.cuaaStr.value = cuaa.value;
+		        //alert("cuaa vale "+cuaa);
+		       
+		        opener.document.form1.denominazioneStr.value = denominazione.value;     
+		       
+		        opener.document.form1.partitaIvaStr.value = partitaIva.value;     
+		          
+		        //alert("prima di fare opener submint");
+        		opener.document.form1.submit();
+        		window.close();
+        		return; 
+		        
+      		}
+    	}
+   		alert("Selezionare un' azienda!");
+	 }
+}
+    </script>
+    
+  </head>
+  
+  
+  <form name="selezioneAzienda" method="post" action="../ctrl/nuovaLavContoTerziCtrl">
+    <input type="hidden" name="paginaChiamante" value="$$paginaChiamante">
+  <body>
+	
+		<div id="portalHeader">
+		  <noscript class="alert_js">
+		  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+		    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+		    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+		  </noscript>
+		  <!--<div id="intestazione">-->
+		  <div class="row-fluid menupaprivati">
+		    <ul class="nav menu pull-right">
+		      <li class="active parent"> </li>
+		    </ul>
+		    <ul class="nav menu pull-right">
+		      <li class="parent"> </li>
+		    </ul>
+		    <ul class="nav menu menuTopSx pull-left">
+		      <li> </li>
+		      <li>  </li>
+		    </ul>
+		  </div>
+		  <div class="header">
+		    <h1>Regione TOBECONFIG</h1>
+		  </div>
+		</div>
+		<div id="titoloEmenu">
+					<h3>Ricerca azienda</h3>
+				</div>
+
+ 
+           <div id="corpo">  
+			
+            	@@blkSiAziende
+				 <p><strong>Selezionare un'azienda tra quelle elencate:</strong></p>
+				@@blkSiAziende
+				
+				@@blkErrore
+				<div class="alert-danger">$$messaggio</div>
+				@@blkErrore
+				
+				@@blkNoAziende
+				<div class="alert-danger">Nessuna azienda risponde ai criteri di ricerca impostati o l'azienda risulta essere cesssata.</div>
+				@@blkNoAziende
+     
+			
+	 @@blkDati
+					<table class="dataCol">
+					<tr>
+					  <td>&nbsp;</td>
+					  <th>CUAA</th>
+					  <th>Partita IVA</th>
+					  <th>Denominazione</th>
+					  <th>Forma giuridica</th>
+					  <th>Provincia REA</th>
+					  <th>Numero REA</th>
+					  <th>Anno Iscrizione Registro Imprese</th>
+					  <th>Numero Registro Imprese</th>
+					  <th>Sede legale</th>
+					  <th>Numero ditta UMA</th>
+					  <th>Data cessazione ditta UMA</th>
+					  <th>Tipologia azienda</th>
+					</tr>
+					@@blkRiga
+					<tr>
+					  <td> <input type="radio" name="idAzienda" value="$$idAzienda" $$checked>
+					  <input type="hidden" name="numRegImprese_$$idAzienda" id="numRegImprese_$$idAzienda" value="$$numRegImprese">
+					  <input type="hidden" name="flagAttAgricola_$$idAzienda" id="flagAttAgricola_$$idAzienda" value="$$flagAttivitaAgricola">
+					  </td>
+					 <input type="hidden" name="siglaProvincia" value=$$siglaProvincia>
+	<input type="hidden" name="comune" value=$$comune>
+	<input type="hidden" name="sedelegaleIndirizzo" value="$$sedelegaleIndirizzo">
+	<input type="hidden" name="sedeLegale" value="$$sedeLegale">
+	<input type="hidden" name="cuaa" value="$$cuaa">
+	<input type="hidden" name="denominazione" value="$$denominazione">
+	<input type="hidden" name="partitaIva" value="$$partitaIva">
+	<input type="hidden" name="numeroDittaUma" value="$$numeroDittaUma">
+					  <td>$$cuaa</td>
+					  <td>$$partitaIva</td>
+					  <td>$$denominazione</td>
+					  <td>$$formaGiuridica</td>
+					  <td>$$provinciaREA</td>
+					  <td>$$numeroREA</td>
+					  <td>$$annoIscrizioneRegistroImprese</td>
+					  <td>$$numeroRegistroImprese</td>
+					  <td>$$sedeLegale</td>
+					  <td>$$numeroDittaUma</td>
+					  <td>$$dataCessazioneUma</td>
+					  <td>$$tipologiaAzienda</td>
+					</tr>
+					@@blkRiga
+					</table>
+            <div class="bottone">
+			<div class="left">
+                             <a href="javascript:confermaAzienda()" class="pulsante" >conferma</a>
+                       </div>
+					   <div class="right">
+                             <a href="javascript:window.close();" class="pulsante" >chiudi</a>
+							 </div>
+                    </div>
+           
+@@blkDati
+     
+    </form>
+
+          </body>
+          </html>

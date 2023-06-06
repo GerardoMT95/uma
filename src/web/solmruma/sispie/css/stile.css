@@ -1,0 +1,538 @@
+/* Sezione che formatta in generale i font e il comportamento dei link */
+
+div, table, p, td {  font: 11px Arial, Verdana,  Helvetica, sans-serif; }
+
+a:link, a:visited {  color: #7f7f7f;}
+
+/*selettore contestuale.
+Funziona solo nella td id=navigazione formattando il contenuto del tag span con fondo bianco */
+
+td#banner2{ border-bottom:0px solid #ccc;}
+
+td#navigazione{
+	font-weight: bold;
+	/*
+	display:none;
+	color: #FFF;
+	height:50px;*/
+}
+
+#navigazione span{
+	background-color: white;
+	color:#333333;
+	font-weight: bold;
+	padding:5px;
+}
+
+/* sezione per la formattazione del "filo di arianna"*/
+
+#navi {
+/*margin: 0px 0px 10px 0px;*/
+/*background:none;*/
+/*border-bottom: 1px solid #7e7e7e;*/
+text-align: left;
+ 	color :#fff;
+ /*   background:#C41B04;*/
+    background:#cc9900;
+    font-size	: 1em;
+	line-height:1.5em;
+	font-weight:bold;
+margin: 0 0 3px 0;
+	padding:0 0 0 6px;
+	height:16px;
+	line-height:15px;
+ }
+
+#navi a:link, a:visited {
+text-decoration:none;
+/*color: #7f7f7f;*/
+color: #fff;
+border: 0;
+background:none;
+
+}
+
+#navi a:hover {
+text-decoration:none;
+color: black;
+border: 0;
+background:none;
+
+}
+
+/* fine "filo di arianna */
+
+/* sezione per la formattazione delle tabelle di dati o per i form:
+fondi grigi
+celle di intestazione (th) fondo rosso
+intestazione di tabella (caption) colore testo rosso
+*/
+
+table.data {margin:0px 10px 10px 0px;
+border: 1px solid #c41b04;
+}
+
+table.data td {
+font-size: 10px;
+background-color:#ccc;
+margin:8px;
+padding: 4px;
+height:18px;
+
+}
+
+table.data th {
+	/*background-color: #cc9900;*/
+    /*background-color: #c41b04;*/
+	background-color:#eaeaea;
+/*font-size:10px;*/
+color: #000;
+font-weight:bold;
+
+}
+
+table.data caption {
+	text-align: left;
+	height: 16px;
+	background:transparent;
+	padding-left:2px;
+	margin:0px;
+	color:#c41b04;
+	font-size: 12px;
+	font-weight:bold;
+}
+
+/* fine sezione tabella dati */
+
+/* sezione per la formattazione dei menu verticali */
+
+/* .elenco è applicata alla td */
+
+.elenco {
+	margin: 0px;
+	padding: 0px;
+
+
+	}
+
+/* questa regola fa sì che all'interno della td elenco i <br> non abbiano effetto
+i <br> sono inseriti per consentire una migliore visualizzazione nell'uso di dreamwaver 4
+ */
+
+div.menu br {
+	display: none;
+}
+
+/* contestuali (agiscono solo nella td class="elenco") */
+
+/*costruisce il blocco contenente il menu (bordo 1px) */
+
+.elenco div.menu{
+font-size: 11px;
+background-color:#ffffff;
+border: 1px solid #7f7f7f;
+margin:0px;
+width:152px;
+text-align:center;
+}
+
+/* costruisce il blocco contenente il sottomenu (bordo 1px) */
+
+.elenco div.sottomenu{
+font-size: 11px;
+background-color:#ffffff;
+border: 1px solid #7f7f7f;
+margin:4px 0px 0px 0px;
+width:142px;
+text-align:center;
+}
+
+/* formatta l'intestazione dei menu*/
+
+.elenco span.etichettamenu {
+	display: block;
+	margin: 0px;
+	color:#000;
+	/*background-color: #cc9900;*/
+	/*background-color: #c41b04;/*rosso*/
+	background-color: #bbb;
+	border: 0px;
+	height: 20px;
+	font-weight: bold;
+	}
+
+.elenco .etichettamenu a:link, 
+.elenco .etichettamenu a:visited, 
+.elenco .etichettamenu a:hover {
+ display: block;
+ margin: 0px;
+color:#000;
+	/*background-color: #cc9900;*/
+    /*background-color: #c41b04;/*rosso*/
+	background-color: #bbb;
+ border:0px;
+ height: 20px;
+ font-weight: bold;
+ }
+
+/*.elenco #inserisci { background-color: #ffffff;}*/
+
+/* formatta l'intestazione dei sottomenu (contestuale a .sottomenu */
+
+.sottomenu span.etichetta{
+display:block;
+margin:0px 0px 4px 0px;
+/*background-color: #cc9900;*/
+/*background-color: #c41b04;*/
+/*background-color:#eaeaea;grigio chiaro*/
+/*background-color:#eebeb7;rosa*/
+background-color:#cc9900;
+border-bottom: 1px #7f7f7f solid;
+width:142px;
+height: 20px;
+font-weight:bold;
+text-decoration: none;
+padding:2px;
+/*color:#c41b04;*/
+/*color:#333333;*/
+color:#fff;
+}
+
+#ocra {
+	/*background-color: #cc9900;*/
+    /*background-color: #c41b04;*/
+background-color:#eaeaea;/*grigio chiaro*/
+	color: #000;
+}
+
+.sottomenu a:link#ocra, 
+.sottomenu a:visited#ocra{
+display: block;
+margin: 0px 0px 4px 0px;
+padding:2px;
+border-right: 1px #7f7f7f solid;
+border-bottom: 1px #7f7f7f solid;
+border-left: 1px #f7f7f7 solid;
+border-top: 1px #f7f7f7 solid;
+width:142px;
+height: 20px;
+font-weight:bold;
+text-decoration: none;
+padding:2px;
+font-size:11px;
+}
+
+.sottomenu a:hover#ocra{
+display:block;
+margin: 0px 0px 4px 0px;
+padding:2px;
+border-right: 1px #f7f7f7 solid;
+border-bottom: 1px  #f7f7f7 solid;
+border-left: 1px #000000 solid;
+border-top: 1px #000000 solid;
+width:142px;
+height: 20px;
+font-weight:bold;
+text-decoration: none;
+padding:2px;
+font-size:11px;
+}
+
+/*  agiscono sui link contenuti nella td class="elenco" dando l'effetto "bottone" */
+
+.elenco a:link, .elenco a:visited{
+display: block;
+margin: 4px;
+padding:4px;
+/*background-color: #e6e6e6;*/
+background-color:#eaeaea;/*grigio chiaro*/
+border-right: 1px #7f7f7f solid;
+border-bottom: 1px #7f7f7f solid;
+border-left: 1px #f7f7f7 solid;
+border-top: 1px #f7f7f7 solid;
+width:140px;
+height: 20px;
+color: black;
+font-weight:bold;
+text-decoration: none;
+padding:2px;
+}
+
+.elenco a:hover{
+display:block;
+margin: 4px;
+padding:4px;
+background-color: #e6e6e6;
+border-right: 1px #f7f7f7 solid;
+border-bottom: 1px  #f7f7f7 solid;
+border-left: 1px #000000 solid;
+border-top: 1px #000000 solid;
+width:140px;
+height: 20px;
+color: black;
+font-weight:bold;
+text-decoration: none;
+padding:2px;
+}
+
+/*  fine link contenuti nella td class="elenco"  */
+
+/*  formatta la voce di menu quando il link è inattivo */
+
+
+.elenco span.inattivo{
+display:block;
+margin: 4px;
+padding:4px;
+/*background-color: #e6e6e6;*/
+/*background-color:#eebeb7;rosa*/
+background-color:#cc9900;
+border-right: 1px #7f7f7f solid;
+border-bottom: 1px #7f7f7f solid;
+border-left: 1px #e6e6e6 solid;
+border-top: 1px #e6e6e6 solid;
+width:140px;
+height: 20px;
+font-weight:bold;
+text-decoration: none;
+padding:2px;
+/*color:#cc9900;*/
+/*color:#f15f49;*/
+/*color:#c41b04;*/
+/*color:#333333;nero*/
+color:#FFFFFF;
+}
+
+.elenco span.inattivo2{
+display:block;
+/*background-color: #e6e6e6;*/
+background-color:#fff;
+border-right: 1px #7f7f7f solid;
+border-bottom: 1px #7f7f7f solid;
+border-left: 1px #e6e6e6 solid;
+border-top: 1px #e6e6e6 solid;
+margin:1px;
+padding: 1px;
+font-size:10px;
+width:140px;
+height: 14px;
+font-weight:bold;
+text-decoration: none;
+/*color:#cc9900;*/
+/*color:#f15f49;*/
+/*color:#c41b04;rosso*/
+color:#cc9900;
+font-weight:bold;
+}
+
+/*  agiscono sui link contenuti nel div class="sottomenu" dando l'effetto "bottone" */
+
+.sottomenu a:link, 
+.sottomenu a:visited,
+.sottomenu #inserisci{
+ margin:1px;
+ padding: 1px;
+ font-size:10px;
+ width:140px;
+ height: 14px;
+background-color: #ffffff;
+}
+
+.sottomenu a:hover,
+.sottomenu a#inserisci:hover{
+
+ margin:1px;
+ padding: 1px;
+ font-size:10px;
+ width:140px;
+ height: 14px;
+background-color: #CCC;
+}
+
+/*  fine link contenuti nel div class="sottomenu"  */
+
+input.puls {
+	/*background-color: #cc9900;*/
+/*    background-color: #f15f49;*/
+		/*background-color:#eebeb7;rosa*/
+background-color:#cc9900;
+/*color: #000;*/
+color:#fff;
+font-size: 10px;
+height: 22px;
+font-weight: bold;
+border: 1px ridge;
+}
+
+/*  queste regole permettono di formattare bottoni (input)
+il bottone deve stare in una td class="bottone", ed assume automaticamente l'aspetto grafico desiderato
+
+  */
+
+td.bottone	{margin:10px;}
+
+td.bottone input {
+	/*background-color: #cc9900;*/
+    /*background-color: #f15f49;*/
+		/*	background-color:#eebeb7;rosa*/
+background-color:#cc9900;
+		/*color: #000;*/
+color:#fff;
+		font-size: 10px;
+		height: 22px;
+		font-weight: bold;
+		padding: 0px;
+		border: 1px ridge;
+		margin: 8px;
+		}
+
+td.bottone_dis input {
+		background-color: #c0c0c0;
+		color: #ffffff;
+		font-size: 10px;
+		height: 22px;
+		font-weight: bold;
+		padding: 0px;
+		border: 1px ridge;
+		margin: 8px;
+		}
+
+/*  utilizzati per definire aree di testo con sfondo v. ad esempio il box grigio
+contenente i dati utente ed ente
+le dimensioni (height e width) devono essere definite con stili in linea)
+
+ */
+
+p.marrone {
+	/*background-color: #cc9900;*/
+   /* background-color: #f15f49;*/
+ 	/*background-color:#eebeb7;rosa*/
+background-color:#cc9900;
+		color: #ffffff;
+		font-size: 12px;
+
+		font-weight: bold;
+		padding-left: 2px;
+		border: none;
+		text-align: left;
+		}
+
+p.rosso {
+		background-color: #c41b04;
+		color: #ffffff;
+		font-size: 12px;
+
+		font-weight: bold;
+		padding-left: 2px;
+		border: none;
+		text-align: left;
+		}
+
+p.grigio {
+		background-color: #e6e6e6;
+		color: #000000;
+		font-size: 10px;
+		font-weight: normal;
+		padding: 3px;
+		border: none;
+		text-align: left;
+		}
+
+/* per formattare le etichette sopra le tabelle (dati azienda ecc.) */
+
+p.etichette {
+	text-align: center;
+	width:100px;
+	height: 16px;
+	background-color: #ffffff;
+	margin:0px;
+	float:left;
+	border: solid #c41b04;
+	border-width: 1px 1px 0px 1px;
+	font-weight: bold;
+	}
+	/*aggiunto 19/12/2006*/
+p.etichette a,
+p.etichette a:link,
+p.etichette a:active,
+p.etichette a:visited,
+p.etichette a:hover{
+	color:gray;
+	text-decoration:underline;}
+	/*fine aggiunto 19/12/2006*/
+p.datiAzienda {
+	text-align: left;
+	background: transparent;
+	color: #c41b04;
+	margin:0px 0px 3px 0px;
+	padding-left:2px;
+	}
+p.datiAziendaB {
+	text-align: left;
+	background: transparent;
+	color: #c41b04;
+	font-weight: bold;
+	margin:0px 0px 3px 0px;
+	padding-left:2px;
+	font-size:12pt;
+	}
+p.datiAziendaBrupar {
+	text-align: left;
+	background: transparent;
+	color: #c41b04;
+	font-weight: bold;
+	margin:0px 0px 3px 0px;
+	padding-left:2px;
+	font-size:12pt;
+	}
+h1 {
+	font-family: Arial, Verdana,  Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	margin: 1px;
+/*color:#cc9900;*/
+color:#f15f49;
+	}
+h2 {
+	font-family: Arial, Verdana,  Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+	text-align: left;
+	margin: 1px;
+	color: #c41b04;
+	}
+/*a.pulsante:visited {
+	background-color: #cc9900;
+	color: #ffffff;
+	text-align: center;
+	font-size: 11px;
+	height: 22px;
+	font-weight: bold;
+	padding: 2px;
+	border: 1px ridge;
+	margin: 4px;
+	}*/
+/*stile da applicare al link testuale per avere l'effetto bottone. La larghezza deve
+essere definita in modo contestuale con codice style="width:nnnpx;"*/
+a.pulsante:link, a.pulsante:visited{
+	/*background-color: #cc9900;*/
+    /*background-color: #f15f49;*/
+	/*background-color:#eebeb7;*/
+background-color:#cc9900;
+	/*color: #000;*/
+color:#FFFFFF;
+	text-align: center;
+	font-size: 11px;
+	height: 22px;
+	font-weight: bold;
+	padding: 2px;
+	border: 1px ridge;
+	margin: 4px;
+	text-decoration: none;
+ }
+.lista {
+      width: 350px;
+}
+
+#piede{ background: url}

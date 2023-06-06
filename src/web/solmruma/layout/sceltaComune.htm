@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+  $$messaggistica</head>
+        <script src="/staticresources/js/checktext.js"></script>
+ <body>
+<div id="titoloEmenu">
+ <h3>Scelta comune</h3>
+ </div>
+  <div id="corpo">
+    <form name="sceltaComune" method="post" action="../layout/anagraficaSede_mod.htm">
+    
+               <div class="bottone">
+                          <div class="left"> <input type="hidden" name="obiettivo" value="$$obiettivo"/><a href="javascript:confermaComune()" class="pulsante" >conferma</a></div>
+                <div class="right"> <a href="javascript:window.close();" class="pulsante">chiudi</a></div></div>
+                 
+
+                <table class="dataCol">
+                  <tr>
+                    <td class="radio">&nbsp; </td>
+                    <th>Comune</th>
+                    <th>Provincia</th>
+                    <th> ISTAT</th>
+                    <th> CAP</th>
+                  </tr>
+                  @@elencoComuni
+                  <tr>
+                    <td class="radio"> <input type="radio" name="istat" value="$$istat"></td>
+                    <td> $$comune</td>
+                    <td class="etichettamenu">$$provincia</td>
+                    <td class="etichettamenu"> $$istat</td>
+                    <td> $$cap</td>
+                    <input type="hidden" name="siglaProvincia" value="$$siglaProvincia">
+                    <input type="hidden" name="istatProvincia" value="$$istatProvincia">
+                    <input type="hidden" name="istatComune" value="$$istatComune">
+                    <input type="hidden" name="comune" value="$$comune">
+                    <input type="hidden" name="cap" value="$$cap">
+                    <input type="hidden" name="zonaAltimetrica" value="$$zonaAltimetrica">
+                    <input type="hidden" name="codiceFiscaleComune" value="$$codiceFiscaleComune">
+                  </tr>
+                  @@elencoComuni
+
+                </table>
+                                <br>
+                               
+                    <!-- @@conferma -->
+                    <div class="bottone">
+                          <div class="left">
+                             <a href="javascript:confermaComune()" class="pulsante">conferma</a>
+                           </div>
+                       
+                        <div class="right">
+                             <a href="javascript:window.close();" class="pulsante">chiudi</a>
+                           </div>
+                          </div>
+                    <!-- @@conferma -->
+                    <!-- @@chiudi -->
+                   <div class="bottone">
+                     <div class="right">
+                         <a href="javascript:window.close();" class="pulsante">chiudi</a>
+                     </div>
+                    </div>
+                    <!-- @@chiudi -->
+                   
+                   </form>
+              
+    </div>
+  </body>
+</html>

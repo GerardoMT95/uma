@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" />
+<meta name="description"
+	content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css"
+	media="screen" id="skin" />
+<script type="text/javascript" src="../../js/util.js"></script>
+<script type="text/javascript" src="/staticresources/js/checktext.js"></script>
+<script type="text/javascript">
+	function conferma() {
+		  document.form1.funzione.value = '$$conferma';
+		  document.form1.submit();
+		  return;
+	}
+	
+	function dettaglio(id) {
+	  var oldAction = document.form1.action;
+	  document.form1.action = 'dettaglio_messaggi_utente_login.htm';
+	  document.form1.idElencoMessaggi.value = id;
+	  document.form1.submit();
+	  document.form1.action = oldAction;
+	  return;
+	}
+</script>
+</head>
+<body onLoad="$$err_error">
+	<!-- INTESTAZIONE -->
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+	<div id="titoloEmenu">
+		<h2>UMA - Utenti motori agricoli</h2>
+		<p class="grigio">
+			utente: $$utente <span class="ente"> ente: $$ente</span>
+		</p>
+	</div>
+
+	<!-- CORPO -->
+	<div id="corpo">
+		<div id="navi">Messaggi utente</div>
+		<!-- tabella a due colonne per il contenuto -->
+
+		<table id="contenuto">
+			<tr>
+				<td class="elenco">
+					<!-- cella che contiene i menu -->
+
+					<div class="menu">
+						<span class="inattivo">Messaggi utente</span>
+					</div>
+				</td>
+				<td>
+					<!-- SECONDA COLONNA -->
+
+					<form action="messaggi_utente_login.htm" method="post"
+						name="form1">
+						<!-- Campo hidden di appoggio per il ritorno sul folder per revoca delega -->
+						<input type="hidden" name="funzione" value="" />
+						<input type="hidden" name="idElencoMessaggi" value="" />
+						<input type="hidden" name="chiamante" value="messaggi_utente_login.htm" />
+
+						
+						<h3>Elenco messaggi con lettura obbligatoria rivolti agli utenti del Sistema Informativo Agricoltura del TOBECONFIG</h3>
+						<div class="scroll">
+						<table class="dataCol">
+							<col width="50%" /> 
+			                <col width="25%" /> 
+			                <col width="25%" /> 
+							<tr>
+								<th>Titolo</th>
+								<th>Data inserimento</th>
+								<th>Allegati</th>
+							</tr>
+							<!--@@blkMessaggio-->
+							<tr>
+								<td><a href="javascript:dettaglio('$$idMessaggio');">$$titolo</a></td>
+								<td>$$dataInserimento</td>
+								<td>$$flagAllegati</td>
+							</tr>
+							<!--@@blkMessaggio-->
+						</table>
+						<div class="bottone">
+							<div id="azione" class="left">
+								<input type="button" value="avanti"	onclick="javascript:conferma()">
+							</div>
+						</div>
+					</form>
+					</div>
+					<div class="alert-warning">I messaggi riportati sopra devono essere letti
+						obbligatoriamente; fare click sul titolo per aprire un messaggio e
+						confermarne l'avvenuta lettura</div>
+		</table>
+		<!-- fine della tabella a due colonne -->
+	</div>
+
+	<!-- PIE' DI PAGINA -->
+	<footer class="footer" role="contentinfo">
+	<div class="container-fluid">
+		<hr />
+		<a name="footer"></a>
+		<div class="custom footerCsi row-fluid">
+			<div class="span3 col-sm-3">
+				<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG"
+					src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a>
+			</div>
+			<div class="span9 col-sm-9">
+				Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766
+			</div>
+		</div>
+	</div>
+	</footer>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-7226140-1' ]);
+		_gaq.push([ '_trackPageview' ]);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+</body>
+</html>

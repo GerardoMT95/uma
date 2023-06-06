@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+    <script language="JavaScript">
+      function getBuoniDettaglio(){
+        document.form1.buoniPrelievo.value = 'true';
+        document.form1.submit();
+        document.form1.buoniPrelievo.value = '';
+      }
+      function alertMessage(msg) {
+        if (msg != '') {
+          alert(msg);
+        }
+      }
+      function submitForm(tipoOperazione) {
+        document.form1.action = '../layout/elencoBuoniEmessi.htm';
+        document.form1.operazione.value = tipoOperazione;
+        document.form1.submit();
+        document.form1.action = '../layout/elencoBuoniEmessi.htm';
+      }
+      function emetti() {
+        var daAction = document.form1.action;
+        document.form1.action = "../../domass/layout/emissioneBuono.htm";
+        document.form1.submit();
+        document.form1.action = daAction;
+      }
+
+      function readRadio()
+      {
+        var selezionato=false;
+
+        var radio=document.form1.radiobuttonPrelievo;
+        if (!radio)
+          radio=document.form1.radiobuttonRest;
+
+        if (!radio)
+        {
+          alert("Nessun Buono di Prelievo per la Domanda di Assegnazione");
+          return;
+        }
+
+        if (!radio.length)
+        {
+          if (radio.checked)
+          {
+            document.mod101.idBuonoPrelievo.value=radio.value;
+            selezionato=true;
+          }
+        }
+        else
+        {
+          for(i=0;i<radio.length;i++)
+          {
+            if (radio[i].checked)
+            {
+              document.mod101.idBuonoPrelievo.value=radio[i].value;
+              selezionato=true;
+            }
+          }
+        }
+        return selezionato;
+      }
+
+      function readRadioNotSet()
+      {
+        var selezionato=false;
+
+        var radio=document.form1.radiobuttonPrelievo;
+        if (!radio)
+          radio=document.form1.radiobuttonRest;
+
+        if (!radio)
+        {
+          alert("Nessun Buono di Prelievo per la Domanda di Assegnazione");
+          return;
+        }
+
+        if (!radio.length)
+        {
+          if (radio.checked)
+          {
+            selezionato=true;
+          }
+        }
+        else
+        {
+          for(i=0;i<radio.length;i++)
+          {
+            if (radio[i].checked)
+            {
+              selezionato=true;
+            }
+          }
+        }
+        return selezionato;
+      }
+
+      function mod101test()
+      {
+        if (readRadio())
+        {
+          document.mod101.action="../../domass/layout/modello101.htm";
+                  //window.alert('idBuonoPrelievo: ' + document.mod101.idBuonoPrelievo.value);
+          document.mod101.target="";
+          document.mod101.submit();
+        }
+        else
+          alert("Selezionare un buono di prelievo");
+      }
+
+      function mod101()
+      {
+        if(readRadio())
+        {
+          var d = new Date();
+          var unique = (d.getUTCHours()*60+d.getUTCMinutes())*60+d.getUTCSeconds();
+          var target = "mod101"+unique;
+          pop("",645,500,target);
+                  //window.alert('idBuonoPrelievo: ' + document.mod101.idBuonoPrelievo.value);
+          document.mod101.target = target;
+          document.mod101.submit();
+        }
+        else
+          alert("Selezionare un buono di prelievo");
+      }
+
+      function pop(page,w,h,target)
+      {
+        var winl = (screen.width - w) / 2;
+        var wint = (screen.height - h) / 2;
+        var winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars=yes,resizable=yes';
+        var win = window.open(page, target, winprops);
+        if (parseInt(navigator.appVersion) >= 4)
+          win.window.focus();
+      }
+
+      function checkSelected()
+      {
+        var selezionato=false;
+
+        var radio=document.form1.radiobuttonPrelievo;
+        if (!radio)
+        {
+          alert("Nessun buono per la domanda di assegnazione.");
+          return;
+        }
+
+        if (!radio.length)
+        {
+          if (radio.checked)
+            selezionato=true;
+        }
+        else
+        {
+          for(i=0;i<radio.length;i++)
+            if (radio[i].checked)
+            {
+              selezionato=true;
+              break;
+            }
+        }
+
+        if (!selezionato)
+          alert("Selezionare un buono.");
+        return selezionato;
+      }
+    </script>
+  $$messaggistica</head>
+  <body onLoad="javascript: alertMessage(document.form1.msg.value); $$err_error; $$mod101open">
+    <form name="form1" method="post" action="../layout/elencoBuoniEmessi.htm">
+    <input type="hidden" name="operazione" value="">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+              <div id="navi">
+                <a href="../../layout/index.htm">utenti motori agricoli </a> &gt; buoni di prelievo
+              </div>
+              <!-- tabella a due colonne per il contenuto -->
+              <table id="contenuto">
+       <tr>
+             <td class="elenco">
+                  <!-- cella che contiene i menu -->
+                  
+                  <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                     <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca Macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                     <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova Ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                     <a href="../../layout/stampaElenchi.htm">Stampa Elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                     <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+                  </div>
+                   <!--						 @@blkMenuDittaUMA -->
+                  <div class="menu">
+                    <span class="etichettamenu">
+                      <a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a>
+                    </span>
+                  </div>
+                   <!--						 @@blkMenuDittaUMA -->
+<!-- @@blkMenuAssegnazione -->
+                    <div class="menu">
+                      <span class="etichettamenu">
+                        <a href="../layout/assegnazioni.htm"> Assegnazione carburante</a>
+                      </span>
+                    </div>
+                                                                 <!--						 @@blkMenuAssegnazione -->
+<!-- @@blkMenuBuoni -->
+                    <div class="menu">
+                      <span class="etichettamenu"><a href="#">Buoni di prelievo</a></span>
+<!-- @@blkVISUALIZZA_BUONO -->
+                      <!--@@blkDettaglio1-->
+                      <a href="javascript:submitForm('dettaglio1');">dettaglio</a>
+                      <!--@@blkDettaglio1-->
+                      <!--@@blkDettaglio2-->
+                      <a href="javascript:submitForm('dettaglio2');">dettaglio</a>
+                      <!--@@blkDettaglio2-->
+<!-- @@blkVISUALIZZA_BUONO -->
+<!-- @@blkRESTITUZIONE_BUONO -->
+                      <a href="javascript:if(checkSelected()){submitForm('restituisci');}">restituisci</a>
+<!-- @@blkRESTITUZIONE_BUONO -->
+<!-- @@blkEMISSIONE_BUONO_ANNULLA -->
+                      <a href="javascript:if(checkSelected()){submitForm('annulla');}">annulla</a>
+<!-- @@blkEMISSIONE_BUONO_ANNULLA -->
+<!-- @@blkRESTITUZIONE_BUONO -->
+                      <a href="javascript:if(checkSelected()){submitForm('elimina');}">cancella restituzione</a>
+<!-- @@blkRESTITUZIONE_BUONO -->
+<!-- @@blkEMISSIONE_BUONO_EMISSIONE -->
+                      <a href="javascript:emetti()">emissione</a>
+<!-- @@blkEMISSIONE_BUONO_EMISSIONE -->
+<!-- @@blkSTAMPA_101 -->
+                     <!--  <a href="javascript:mod101();">stampa Modello 101</a>-->
+<!-- @@blkSTAMPA_101 -->
+<!-- @@blkSTAMPA_ELENCO_PRELIEVI -->
+                      <a href="../layout/stampaPrelievi.htm">Stampa prelievi carburante</a>
+<!-- @@blkSTAMPA_ELENCO_PRELIEVI -->
+                    </div>
+               <!--						 @@blkMenuBuoni -->
+<!-- @@blkMenuMacchine -->
+                    <div class="menu">
+                      <span class="etichettamenu">
+                        <a href="../../macchina/layout/elencoMacchine.htm">Macchine</a>
+                      </span>
+                    </div>
+<!-- @@blkMenuMacchine -->
+                  </td>
+                  <td>
+                  <!-- cella di destra, contiene i "tabelloni"-->
+                  <p class="datiazienda">azienda selezionata</p>
+                  <p class="datiaziendaB">$$CUAA $$denominazione</p>
+                  <p class="datiaziendaB">Ditta UMA N. $$dittaUMA / $$umaTipoDitta</p>
+                  <p class="datiazienda">provincia di competenza $$provinciaUMA</p>
+                  <br>
+                    <input type="hidden" name="msg" value="$$msg">
+                      <table class="data">                        
+                        <tr>
+                          <th>Domanda di assegnazione</th>
+                          <td>
+                            <select name="select">
+                              <!--@@blkOptionDomAss-->
+                              <option value ="$$idDomAss" $$selected>$$anno - $$giorno/$$mese/$$anno - $$stato</option>
+                              <!--@@blkOptionDomAss-->
+                            </select>
+                          </td>
+                          <td>
+                            <input type="hidden" name="primoIdDomAss" value="$$primoIdDomAss">
+                            <input type="hidden" name="idDomAssChecked" value="$$idDomAssChecked">
+                            <input type="hidden" name="idStatoDomanda" value="$$idStatoDomanda">
+                            <input type="hidden" name="dataRifChecked" value="$$dataRifChecked">
+                            <input type="hidden" name="buoniPrelievo" value="">
+                            <a href="javascript:getBuoniDettaglio()" class="pulsante">Buoni di prelievo</a>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--@@blkPrelievo-->
+                      <br>
+                        <h3>Buoni di prelievo carburante</h3>
+                        <table class="dataCol">
+                          <tr>
+                            <td>&nbsp;</td>
+                            <th>Blocco N. / Buono N.</th>
+                            <th>Data emissione</th>
+                            <th>Quantit&agrave; concessa</th>
+                            <th>Quantit&agrave; prelevata</th>
+                            <th>Data restituzione</th>
+                            <th>Tipo utilizzo</th>
+                            <th>Ditta UMA di provenienza</th>
+                            <th>Ann.</th>
+                          </tr>
+                          <!--@@blkRigaPrelievo-->
+                          <tr>
+                            <td class="radio">
+                              <input type="radio" name="radiobuttonPrelievo" value="$$idBuono" $$checked>
+                            </td>
+                            <td>$$blocco/$$buono</td>
+                            <td>$$dataEmissione</td>
+                            <td>$$qtaConcessa</td>
+                            <td>$$qtaPrelevata</td>
+                            <td>$$dataRestituzione</td>
+                            <td>$$tipoUtilizzo</td>
+                            <td>$$prov $$dittaUma</td>
+                            <td>$$annullato</td>
+                          </tr>
+                          <!--@@blkRigaPrelievo-->
+                        </table>
+                        <!--table>
+                        <tr> <div class="bottone">
+                              <input type="submit" value="dettaglio" name="dettaglio1">
+                            </div>
+                          </td>
+                        </tr>
+                      </table-->
+                      <!--@@blkPrelievo-->
+                      <!--@@blkRestituzione-->
+                        <br>
+                        <h3>Buono di restituzione rimanenze per cessata attività</h3>
+                      <table class="dataCol">
+                        <tr>
+                          <td>&nbsp;</td>
+                          <th>Blocco N. / Buono N.</th>
+                          <th>Data emissione</th>
+                          <th>Quantit&agrave; restituita</th>
+                          <th>Ditta UMA di destinazione</th>
+                          <th>Ann.</th>
+                         </tr>
+                        <!--@@blkRigaRestituzione-->
+                        <tr>
+                          <td class="radio">
+                            <input type="radio" name="radiobuttonRest" value="$$idBuono" $$checked>
+                          </td>
+                          <td>$$blocco/$$buono</td>
+                          <td>$$dataEmissione</td>
+                          <td >$$qtaRestituita</td>
+                          <td>$$prov $$dittaUma</td>
+                          <td>$$annullato</td>
+                        </tr>
+                        <!--@@blkRigaRestituzione-->
+                      </table>
+                      <!--table >
+                        <tr> <div class="bottone">
+                              <input type="submit" value="dettaglio" name="dettaglio2">
+                            </div>
+                          </td>
+                        </tr>
+                      </table-->
+                        <!--@@blkRestituzione-->
+                      <!--br>
+                      <!--<table>		
+                        <tr class="bottone">
+                          <!--@@blkAnnulla-->
+                          <!--<td width="34%" class="bottone">
+                              <input type="submit" value="annulla" name="annulla">
+                            </div>
+                          </td>
+                          <!--@@blkAnnulla-->
+                          <!--@@blkRestituisci-->
+                          <!--<td width="33%" class="bottone">
+                              <input type="submit" value="restituisci" name="restituisci">
+                            </div>
+                          </td>
+                          <!--@@blkRestituisci-->
+                          <!--@@blkCancella-->
+                         <!-- <td width="33%" class="bottone">
+                              <input type="submit" value="cancella" name="cancella">
+                            </div>
+                          </td>
+                          <!--@@blkCancella-->
+                          <!--</tr>
+                        </table>-->
+                        <!--div align="center">
+                      <br>$$exc<br>
+                    </div-->
+                  </td>
+                </tr>
+              </table>
+              <!-- fine della tabella a due colonne -->
+      </div>
+    </form>
+    <form name="mod101" method="post" action="../../servlet/StampaServletMod101" target="mod101">
+      <input type="hidden" name="idBuonoPrelievo" value="##primoIdBuonoPrelievo">
+      <input type="hidden" name="fwdUrl" value="/domass/layout/elencoBuoniEmessi.htm">
+    </form>
+    
+    <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <hr />
+    <a name="footer"></a>
+    <div class="custom footerCsi row-fluid">
+      <div class="span3 col-sm-3"> <a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+      <div class="span9 col-sm-9"> Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+<script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+function stampaModello49A() {
+  var selezionato=false;
+  if (document.mod49A.idMovimentiTarga.value != null) {
+    selezionato = true;
+  } else {
+    selezionato = false;
+  }
+  if (selezionato) {
+    var d = new Date();
+    var unique = (d.getUTCHours()*60+d.getUTCMinutes())*60+d.getUTCSeconds();
+    var target = "mod49A"+unique;
+    popMod("",645,500,target);
+    document.mod49A.target = target;
+    document.mod49A.submit();
+    return;
+  }
+}
+
+function popMod(page,w,h,target) {
+  var winl = (screen.width - w) / 2;
+  var wint = (screen.height - h) / 2;
+  winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars=yes,resizable=yes';
+  win = window.open(page, target, winprops);
+  if (parseInt(navigator.appVersion) >= 4) {
+    win.window.focus();
+  }
+}
+
+</script>
+<script>var messaggio="Sei sicuro?";</script>
+$$messaggistica</head>
+<body onLoad="$$err_error">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+        <div id="navi"><a href="../../layout/index.htm">utenti motori agricoli </a>&gt; macchine &gt; movimentazione targhe &gt; stampa Modello 49</div>
+	    <!-- tabella a due colonne per il contenuto -->
+       <table id="contenuto">
+          <tr>
+             <td class="elenco">
+									
+            <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+	       			 <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca   macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                  <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta  UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+               <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                  <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+            </div>
+			 <!--						 @@blkMenuDittaUMA -->
+              <div class="menu"><span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span></div>
+               <!--						 @@blkMenuDittaUMA -->
+<!-- @@blkMenuAssegnazione -->
+              <div class="menu"><span class="etichettamenu"><a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante</a></span></div>
+							 <!--						 @@blkMenuAssegnazione -->
+<!-- @@blkMenuBuoni -->
+              <div class="menu"><span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span></div>
+							 <!--						 @@blkMenuBuoni -->
+<!-- @@blkMenuMacchine -->
+        <div class="menu">
+			  <span class="etichettamenu"><a href="../layout/elencoMacchine.htm">Macchine</a></span>
+			  <div class="sottomenu">
+<!-- @@blkVISUALIZZA_MACCHINA_DITTA -->
+        	<span class="voceAttiva">movimentazione targhe</span> <!--						 @@blkVISUALIZZA_MACCHINA_DITTA -->
+<!-- @@blkGEST_MACC_DITTA_CESS -->
+		 			<span class="inattivo2">stampa Modello 49</span> <!--						 @@blkGEST_MACC_DITTA_CESS -->
+        </div>
+				<br>
+        </div>
+<!-- @@blkMenuMacchine -->
+		</td>
+            <td>
+              <!-- cella di destra, contiene i "tabelloni"-->
+              <p class="datiazienda">azienda selezionata </p>
+              <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+              <p class="datiaziendaB">Ditta N. $$umaNumAzienda /$$umaTipoDitta</p>
+              <p class="datiazienda"> provincia di competenza $$umaProvinciaDitta</p>
+			 <br>
+                          <h3>Modello 49: </h3>  
+               <table class="data">
+                   <col width="25%" />
+                   <col width="75%" />
+                  
+                    <tr>
+                    <th>Anno </th>
+                    <td>$$annoModello</td>
+                    </tr>
+                    <tr>
+                    <th>Numero</th>
+                    <td>$$numeroModello</td>
+                    </tr>
+                 </table>
+            	<br>
+              	<h3>Indicare data e numero protocollo e premere conferma:</h3>
+                <br>
+                <form name="form1" method="post" action="Modello49.htm">
+                <table class="data">
+                   <col width="25%" />
+                   <col width="75%" />
+                   <tr>
+                   <th>Data protocollo *</th>
+                   <td><input type="text" maxlength="10" size="15" name="dataProtocollo" class="EDIT" value="$$dataProtocollo">$$err_dataProtocollo (gg/mm/aaaa)
+                    </td>
+                    </tr>
+                    <tr>
+                    <th>Numero protocollo *</th>
+                    <td><input type="text" maxlength="8" size="10" name="numeroProtocollo" class="EDIT" value="$$numeroProtocollo">$$err_numeroProtocollo
+                    </td>
+                    </tr>
+                 </table>
+				<br>
+                <div class="bottone">
+                     <div class="right"> <input type="submit" name="conferma" value="conferma"></div>
+                    </div>
+                <input type="hidden" name="idMovimentiTarga" value="$$idMovimentiTarga">
+             </form>
+            
+            
+            </td></tr>
+            </table><!-- fine della tabella a due colonne -->
+<form name="mod49A" method="post" action="/solmruma/servlet/StampaServletMod49A" target="Modello49A">
+  <input type="hidden" name="idMovimentiTarga" value="$$idMovimentiTarga">
+</form>
+</div>
+<script language="javascript1.2">
+$$scriptModello49
+</script>
+ <footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body></html>

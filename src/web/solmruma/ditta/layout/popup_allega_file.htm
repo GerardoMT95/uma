@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="Lombardia,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<script src="/staticresources/js/checktext.js"></script>
+
+<script language="JavaScript">
+   var operazioneincorso=false;
+   var chiusuraFinestra ='S';
+   function visualizzaMess(vis){
+	  console.log('visualizzaMess');  
+      var segnaposto=document.getElementById('messaggio');
+      if(vis == '')
+    	  segnaposto.style.display = 'none';
+	  
+      segnaposto.innerHTML =vis;
+   }
+   function chiusura()
+   {
+	  console.log('chiusura'); 
+	  document.formVis.chiamante.value = '$$chiamante';
+      if (chiusuraFinestra == 'S')
+      {
+    	//alert('chiusuraFinestra = S');
+        opener.hWin = null;    
+        console.log('chiamante ='+document.formVis.chiamante.value);    
+        if(document.formVis.chiamante.value != null){        	
+	        if(document.formVis.chiamante.value == 'variazioneDittaUma')
+	          opener.document.form1.azione.value = 'reloadAllegati';
+	        /*else if(document.formVis.chiamante.value == 'nuovoMonitoraggio'){            
+	          opener.document.variazioneDittaUma.azione.value = 'reloadAllegati';
+	        } */
+        } 
+        
+        <!-- @@blkReloadParent --> 
+        opener.reload();
+        <!-- @@blkReloadParent -->
+       }
+   }
+   function conferma(){  
+	  console.log('conferma');
+      if (operazioneincorso ==false)
+      {   
+        operazioneincorso = true;
+        var segnapostoConferma=document.getElementById('azione');
+        segnapostoConferma.disabled = true;    
+         
+        var segnaposto1=document.getElementById('pulsanti1');
+        segnaposto1.disabled = true;     
+      
+        visualizzaMess('Upload in corso.Attendere...');
+        //non deve ricaricare il padre perchè sto operando su questa finestra
+        chiusuraFinestra ='N';
+        
+        document.form1.funzione.value='$$OPERATION_CONFIRM';
+        document.form1.submit();
+      }    
+   }
+
+   function cancella(idFile)
+   {  
+	  console.log('cancella');    
+      chiusuraFinestra ='N';
+      document.formVis.idFile.value = idFile;
+      document.formVis.chiamante.value = '$$chiamante';
+      document.formVis.funzione.value='D';      
+      document.formVis.action = 'popup_allega_file.htm';
+      document.formVis.submit();
+   }
+   
+   function visualizzaFile(idFile)
+   {
+	  console.log('visualizzaFile');
+      document.formVis.idFile.value = idFile;
+      document.formVis.chiamante.value = '$$chiamante';
+      
+      document.formVis.action = 'visualizza_file_allegato.htm';
+      document.formVis.submit();
+   }
+
+</script>
+</head>
+<body id="popup" onload="javascript:visualizzaMess('')" onunload="javascript:chiusura()">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h3>
+						Allega file (massima dimensione consentita : 5 megabyte)
+					</h3>
+					
+</div>
+<!-- CORPO -->
+ <div id="corpo"> 
+ <br />
+	<form name="formVis" method="post" action="" >
+		<input type="hidden" name="funzione" />
+		<input type="hidden" name="idFile" />
+		<input type="hidden" name="chiamante"/>
+	</form>
+
+<form name="form1" method="post" action="popup_allega_file.htm" enctype="multipart/form-data">
+<input type="hidden" name="funzione" />
+<table cellspacing="3">    
+  <tr>
+	    <th scope="row"><label for="descrizione">Descrizione</label></th>
+		    <td>
+		      <textarea id="descrizione" name="descrizione" cols="70" rows="3">$$descrizione</textarea>
+		       $$err_note
+		    </td>
+   </tr>  
+  <tr>
+    <th scope="row"><label for="fileAllegato">File da allegare:</label></th>
+    <td><input name="fileAllegato" id="fileAllegato" type="file" size="50"/>$$err_fileAllegato</td>
+  </tr>
+</table>
+<div><p class="errore" id="messaggio">upload del file in corso...attendere</p></div>
+</form>
+<div class="bottone" id="pulsanti1">
+	<div id="azione"><a href="javascript:conferma()" class="pulsante" title="allega">Allega</a></div>
+</div>
+<!-- @@fileAllegatiBlk -->
+<h3>Elenco allegati</h3>
+<div class="scroll">
+ <table class="dataCol">
+   <col width="10%" /> 
+   <col width="40%" /> 
+   <col width="50%" />    
+  <tr>
+    <th></th>        
+    <th>Allegato</th>
+    <th>Descrizione</th>
+  </tr>
+  <!-- @@fileBlk -->
+  <tr>
+    <td><a href="javascript:cancella('$$idFile')" class="pulsante" title="elimina allegato">elimina</a></td>    
+    <td><a href="javascript:visualizzaFile('$$idFile')" >$$nome</a></td>
+    <td>$$descrizione</td>
+  </tr>
+  <!-- @@fileBlk -->
+</table> 
+</div>
+<!-- @@fileAllegatiBlk -->
+<div class="bottone">
+	<div class="right">
+		<input type="submit" value="Chiudi" onClick="window.close()">
+	</div>
+</div>	  
+</div>
+</body>
+</html>

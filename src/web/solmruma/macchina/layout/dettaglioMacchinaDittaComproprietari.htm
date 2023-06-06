@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<head>
+<script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+	function submitForm(tipoOperazione) {
+		document.form1.operazione.value = tipoOperazione;
+		document.form1.submit();
+	}
+	function pop(str) {
+		searchWin = window
+				.open(
+						str,
+						'dettaglio',
+						'scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+	}
+	function linkFormParameter(linkFolder) {
+		if (parseInt(linkFolder) == 1) {
+			indirizzo = "../layout/dettaglioMacchinaDittaDati.htm";
+		}
+		if (parseInt(linkFolder) == 2) {
+			indirizzo = "../layout/dettaglioMacchinaDittaUtilizzo.htm";
+		}
+		if (parseInt(linkFolder) == 3) {
+			indirizzo = "../layout/dettaglioMacchinaDittaComproprietari.htm";
+		}
+		if (parseInt(linkFolder) == 4) {
+			indirizzo = "../layout/dettaglioMacchinaDittaImmatricolazioni.htm";
+		}
+		document.form1.action = indirizzo;
+		document.form1.submit();
+		return false;
+	}
+
+	function checkSelected() {
+		var selezionato = false;
+
+		var radio = document.form1.radioAttestazione;
+		if (!radio) {
+			alert("Selezionare un attestato!");
+			return;
+		}
+
+		if (!radio.length) {
+			if (radio.checked)
+				selezionato = true;
+		} else {
+			for (i = 0; i < radio.length; i++)
+				if (radio[i].checked) {
+					selezionato = true;
+					break;
+				}
+		}
+
+		if (!selezionato)
+			alert("Selezionare un attestato!");
+		return selezionato;
+	}
+
+	function elimina() {
+		var radio = document.form1.radioAttestazione;
+		if (!radio) {
+			alert("Nessuna Attestazione di proprietà per la Macchina");
+			return;
+		}
+		if (checkSelected()) {
+			submitForm('elimina');
+		}
+	}
+
+	function mod72() {
+		var selezionato = false;
+
+		var radio = document.form1.radioAttestazione;
+		var hidden = document.mod72.idAttestatoProprieta;
+		if (!radio) {
+			alert("Nessuna Attestazione di proprietà per la Macchina");
+			return;
+		}
+
+		if (!radio.length) {
+			if (radio.checked) {
+				hidden.value = radio.value;
+				selezionato = true;
+			}
+		} else {
+			for (i = 0; i < radio.length; i++) {
+				if (radio[i].checked) {
+					hidden.value = radio[i].value;
+					selezionato = true;
+				}
+			}
+		}
+
+		if (selezionato) {
+			var d = new Date();
+			var unique = (d.getUTCHours() * 60 + d.getUTCMinutes()) * 60
+					+ d.getUTCSeconds();
+			var target = "mod72" + unique;
+			popPdf("", 645, 500, target);
+			document.mod72.target = target;
+			document.mod72.submit();
+		} else
+			alert("Selezionare un'Attestazione di Proprietà");
+
+		return;
+	}
+
+	function popPdf(page, w, h, target) {
+		var winl = (screen.width - w) / 2;
+		var wint = (screen.height - h) / 2;
+		var winprops = 'height=' + h + ',width=' + w + ',top=' + wint
+				+ ',left=' + winl + ',scrollbars=yes,resizable=yes';
+		var win = window.open(page, target, winprops);
+		if (parseInt(navigator.appVersion) >= 4)
+			win.window.focus();
+	}
+</script>
+<script>
+	var messaggio = "Sei sicuro?";
+</script>
+$$messaggistica</head>
+  <body>
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+  <form name="form1" method="post"
+		action="../../macchina/layout/dettaglioMacchinaDittaComproprietari.htm">
+		<input type="hidden" name="operazione"> <input type="hidden"
+			name="idMacchina" value="$$idMacchina">
+			
+							<div id="navi">
+								<a href="../../layout/index.htm">utenti motori agricoli </a>
+								&gt; macchine &gt; attestazioni di propriet&agrave
+							</div> <!-- tabella a due colonne per il contenuto -->
+							<table id="contenuto">		
+									<tr>
+										<td class="elenco">
+											<!-- cella che contiene i menu -->
+											
+											<div class="menu">
+												<!-- @@blkRICERCA_DITTA -->
+												<a href="../../anag/layout/ricercaAzienda.htm">Ricerca
+													ditta UMA</a>
+												<!-- @@blkRICERCA_DITTA -->
+												<!-- @@blkAZIENDE_TITOLARE -->
+												<a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco
+													ditte</a>
+												<!-- @@blkAZIENDE_TITOLARE -->
+												<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+												<a href="../../macchina/layout/ricercaMacchina.htm">Ricerca
+													macchina</a>
+												<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+												<!-- @@blkNUOVA_DITTA -->
+												<a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova
+													ditta UMA</a>
+												<!-- @@blkNUOVA_DITTA -->
+												<!-- @@blkSTAMPA_ELENCHI -->
+												<a href="../../layout/stampaElenchi.htm">Stampe elenchi</a>
+												<!-- @@blkSTAMPA_ELENCHI -->
+												<!-- @@blkMenuDatiSistema -->
+												<a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+												<!-- @@blkMenuDatiSistema -->
+											</div>  <!--						 @@blkMenuDittaUMA -->
+											<div class="menu">
+												<span class="etichettamenu"><a
+													href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span>
+											</div>
+											 <!--						 @@blkMenuDittaUMA --> <!-- @@blkMenuAssegnazione -->
+											<div class="menu">
+												<span class="etichettamenu"><a
+													href="../../domass/layout/assegnazioni.htm">Assegnazione
+														carburante </a></span>
+											</div>
+											 <!--						 @@blkMenuAssegnazione --> <!-- @@blkMenuBuoni -->
+											<div class="menu">
+												<span class="etichettamenu"> <a
+													href="../../domass/layout/elencoBuoniEmessi.htm">Buoni
+														di prelievo</a>
+												</span>
+											</div>
+											 <!--						 @@blkMenuBuoni --> <!-- @@blkMenuMacchine -->
+											<div class="menu">
+												<span class="etichettamenu"><a
+													href="../layout/elencoMacchine.htm">Macchine</a></span>
+												<div class="sottomenu">
+													<span class="voceAttiva">attestazioni di
+														propriet&agrave</span> <!--						 @@blkVISUALIZZA_MACCHINA_DITTA -->
+													<a
+														href="javascript:if(checkSelected()){submitForm('dettaglio');}">dettaglio</a>
+													<!--a href="javascript:submitForm('dettaglio');">dettaglio</a><br-->
+													<!-- @@blkVISUALIZZA_MACCHINA_DITTA -->
+													<!-- @@blkGESTIONE_MACCHINA -->
+													<a href="javascript:submitForm('inserisci');">inserisci</a>
+													<a href="javascript:elimina()">elimina</a>
+													<!-- @@blkGESTIONE_MACCHINA -->
+													<!-- @@blkGESTIONE_MACCHINA -->
+													<a href="javascript:mod72();">stampa Modello 72</a>
+													<!-- @@blkGESTIONE_MACCHINA -->
+												</div>
+												<!-- @@blkMenuMacchine -->
+											</div>
+										<td>
+											<!-- cella di destra, contiene i "tabelloni"-->
+											<p class="datiazienda">azienda selezionata</p>
+											<p class="datiaziendaB">$$CUAA $$denominazione</p>
+											<p class="datiaziendaB">Ditta UMA N. $$dittaUMA /
+												$$umaTipoDitta</p>
+											<p class="datiazienda">provincia di competenza
+												$$provincia</p> <br>
+											<table class="data">
+											 <col width="25%" />
+                                             <col width="75%" />
+												
+												<tr>
+													<th>Genere</th>
+													<td>$$genere</td>
+												</tr>
+												<tr>
+													<th>Categoria</th>
+													<td>$$categoria</td>
+												</tr>
+												<tr>
+													<th>Marca</th>
+													<td>$$marca</td>
+												</tr>
+												<tr>
+													<th>Tipo</th>
+													<td>$$tipo</td>
+												</tr>
+												<tr>
+													<th>Matricola telaio</th>
+													<td>$$matTelaio</td>
+												</tr>
+												<tr>
+													<th>Matricola motore</th>
+													<td>$$matMotore</td>
+												</tr>
+												<tr>
+													<th>Targa</th>
+													<td>$$targa</td>
+												</tr>
+												<tr>
+                          <td>Data prima immatricolazione</td>
+                          <td>$$dataPrimaImmatricolazione</td>
+                        </tr>
+											</table>
+											<br />
+
+                                                        <div class="tab">
+															<p class="etichette">
+																<a href="javascript: linkFormParameter(1)">Caratteristiche tecniche
+																</a>
+															</p>
+															<p class="etichette">
+																<a href="javascript: linkFormParameter(2)">Utilizzo</a>
+															</p>
+															<p class="etichette tabAttivo">
+																Attestazioni di propriet&agrave
+															</p>
+															<p class="etichette">
+																<a href="javascript: linkFormParameter(4)">Targhe/Movimentaz.</a>
+															</p>
+                                                            </div>
+                                                            
+											<!--@@blkProprieta-->
+											<table class="dataCol">
+												<tr>
+													<td>&nbsp;</td>
+													<th colspan=4>Modello 72</th>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+													<th>Prov.</th>
+													<th>Anno</th>
+													<th>Numero</th>
+													<th>Data</th>
+												</tr>
+												<!--@@blkRigaProprieta-->
+												<tr>
+													<td class="radio"><input type="radio" name="radioAttestazione"
+														value="$$idAttestazione" $$checked></td>
+													<td>$$prov</td>
+													<td>$$anno</td>
+													<td>$$numero</td>
+													<td>$$data</td>
+												</tr>
+												<!--@@blkRigaProprieta-->
+											</table> <!--@@blkProprieta-->
+										</td>
+									</tr>
+							</table>
+						<!-- fine della tabella a due colonne -->
+  </form>
+        	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+<form name="mod72" method="post"
+	action="/solmruma/servlet/StampaServletMod72" target="mod72">
+	<input type="hidden" name="idAttestatoProprieta">
+</form>
+</html>

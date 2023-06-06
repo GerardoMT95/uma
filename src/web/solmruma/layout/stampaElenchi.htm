@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+    <script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+<!--
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+
+function verificaModello() {
+    var selezionato = "";
+    //alert("verificaModello()");
+    var radio = document.frmStampe.radiobutton;
+    //alert("radio: "+radio);
+    //alert("radio.length: "+radio.length);
+    if (!radio.length) {
+    	//alert("if (!radio.length)");
+      if (radio.checked)
+      	//alert("if (radio.checked)");
+        selezionato="0";
+    } else {
+    	//alert("else (!radio.length)");
+      for(i=0;i<radio.length;i++) {
+      	//alert("i: "+i);
+        if (radio[i].checked) {
+        	//alert("if (radio[i].checked)");
+          selezionato=radio[i].value;
+        }
+      }
+    }
+    //alert("Before - if (selezionato=='')");
+    if (selezionato=="") {
+      //alert("Non è stato selezionato nessun modello ");
+    } else {
+      if (selezionato == "0") {
+       //modDistinta.submit();
+       document.frmStampe.action="modelloDistinta.htm";
+      } else if (selezionato == "1") {
+       //mod39.submit();
+       document.frmStampe.action="modello39.htm";
+      } else if (selezionato == "2") {
+       //mod73.submit();
+       document.frmStampe.action="modello73.htm";
+      } else if (selezionato == "3") {
+       //mod74.submit();
+       document.frmStampe.action="modello74.htm";
+      } else if (selezionato == "4") {
+       //modContatori.submit();
+       document.frmStampe.action="modelloContatori.htm";
+      } else if (selezionato == "5") {
+       //modVerifiche.submit();
+       document.frmStampe.action="modelloVerifiche##isIntermediario.htm";
+      } else if (selezionato == "17") {
+       //modVerificheNoAss.submit();
+       document.frmStampe.action="modelloVerificheNoAss##isIntermediario.htm";
+      } else if (selezionato == "6") {
+       //modReportBuoniEmessi.submit();
+       document.frmStampe.action="report_buoni_emessi.htm";
+      } else if (selezionato == "7") {
+       //modReportDitteCessate.submit();
+       frmStampe.tipoDitte.value="cessate";
+       document.frmStampe.action="reportDitte.htm";
+      } else if (selezionato == "8") {
+       //modReportDitteIscritte.submit();
+       frmStampe.tipoDitte.value="iscritte";
+       document.frmStampe.action="reportDitte.htm";
+      } else if (selezionato == "9") {
+       //modReportTrattoriNuoviInCarico.submit();
+       document.frmStampe.action="modelloTrattoriNuoviInCarico.htm";
+      } else if (selezionato == "10") {
+       //modReportBuoniNonUtilizzati.submit();
+       document.frmStampe.action="modelloBuoniNonUtilizzati.htm";
+      } else if (selezionato == "11") {
+       //modMacchineDemolite.submit();
+       document.frmStampe.action="modelloMacchineDemolite.htm";
+      } else if (selezionato == "12") {
+       //modMacchineLeasing.submit();
+       document.frmStampe.action="modelloMacchineLeasing.htm";
+      } else if (selezionato == "13") {
+       //modMacchineCaricoGenere.submit();
+       document.frmStampe.action="modelloMacchineCaricoGenere.htm";
+      } else if (selezionato == "14") {
+       //modMacchineCaricoMarca.submit();
+       document.frmStampe.action="modelloMacchineCaricoMarca.htm";
+      } else if (selezionato == "15") {
+       //modMovimentiMacchina.submit();
+       document.frmStampe.action="modelloMovimentiMacchine.htm";
+      } else if (selezionato == "16") {
+       //modASMInCarico.submit();
+       document.frmStampe.action="modelloASMInCarico.htm";
+      } else if (selezionato == "18") {
+       //modBuoniEmessiAnno.submit();
+       document.frmStampe.action="reportBuoniEmessiAnno.htm";
+      } else if (selezionato == "19") {
+       //modConsumiEmessiAnno.submit();
+       document.frmStampe.action="reportConsumiEmessiAnno.htm";
+      } else if (selezionato == "20") {
+       //distinteValidateCAA.submit();
+       document.frmStampe.action="distintaDomandeValidateCAA.htm";
+      } else if (selezionato == "21") {
+       //reportBuoniEmessiAnnoCAA.submit();
+       document.frmStampe.action="reportBuoniEmessiAnnoCAA.htm";
+      } else {
+       alert("Funzione non disponibile.");
+      }
+    }
+  }
+
+function annullaStampa() {
+
+}
+//-->
+</script>
+
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+          <div id="navi"> <a href="index.htm">utenti motori agricoli </a> &gt; stampa elenchi</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+              <!-- cella che contiene i menu -->
+              
+              <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                 <a href="../macchina/layout/ricercaMacchina.htm">Ricerca Macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                 <a href="../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                 <span class="inattivo">Stampa elenchi</span> <!--						 @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                 <a href="../layout/dati_sistema.htm">Dati di sistema</a>
+              </div>
+               <!--						 @@blkMenuDatiSistema -->
+              </td>
+            <td>
+              <!-- cella di destra, contiene i "tabelloni"-->
+                      <h3>Selezionare il modello di stampa desiderato e premere conferma:</h3>
+                <form name="frmStampe" method="post" >
+    						<input type="hidden" name="idMovimentiTarga" value="$$idMovimentiTarga">
+    						<input type="hidden" name="tipoDitte" value="cessate">
+                <table class="data">
+                 
+                 <!--@@blkSTAMPA_CAA-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="0"></td>
+                    <td>Distinta domande di assegnazione trasmesse alla PA</td>
+                  </tr>
+                 <!--@@blkSTAMPA_CAA-->
+                 <!--@@blkSTAMPA_CAA-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="20"></td>
+                    <td>Distinta domande di assegnazione validate dal CAA</td>
+                  </tr>
+                 <!--@@blkSTAMPA_CAA-->
+                 <!--@@blkSTAMPA_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="1"></td>
+                    <td>Modello 39 (Elenco assegnazioni carburante con assegnazione Foglio / Riga)</td>
+                  </tr>
+                 <!--@@blkSTAMPA_PV-->
+                 <!--@@blkSTAMPA_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="2"></td>
+                    <td>Modello 73 (Distinta macchine immatricolate)</td>
+                  </tr>
+                 <!--@@blkSTAMPA_PV-->
+                 <!--@@blkSTAMPA_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="3"></td>
+                    <td>Modello 74 (Distinta attestazioni di propriet&agrave;)</td>
+                  </tr>
+                 <!--@@blkSTAMPA_PV-->
+                 <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="4"></td>
+                    <td>Prospetto contatori</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <!--@@blkSTAMPA_PIE_RAS_PV_CAA-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="5"></td>
+                    <td>Report mensile assegnazioni validate</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV_CAA-->
+                  <!--@@blkSTAMPA_PIE_RAS_PV_CAA-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="17"></td>
+                    <td>Report mensile verifiche validate</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV_CAA-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="6"></td>
+                    <td>Report mensile buoni emessi</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="7"></td>
+                    <td>Report mensile ditte cessate</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="8"></td>
+                    <td>Report mensile ditte iscritte</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="9"></td>
+                    <td>Report mensile Trattrici nuove in carico</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="10"></td>
+                    <td>Report mensile buoni non utilizzati</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="11"></td>
+                    <td>Report elenco macchine demolite</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="12"></td>
+                    <td>Report elenco macchine in leasing</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="13"></td>
+                    <td>Report elenco macchine in carico suddivise per genere</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="14"></td>
+                    <td>Report elenco macchine in carico suddivise per marca</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="15"></td>
+                    <td>Report elenco dei movimenti del parco macchine</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="16"></td>
+                    <td>Report ASM in carico</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="18"></td>
+                    <td>Report buoni emessi per anno</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_PV-->
+                  <!--@@blkSTAMPA_PIE_RAS_PV_CAA-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="21"></td>
+                    <td>Report buoni emessi per anno dal CAA</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV_CAA-->
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  <tr>
+                    <td class="radio"><input type="radio" name="radiobutton" value="19"></td>
+                    <td>Report consumi verificati per anno</td>
+                  </tr>
+                  <!--@@blkSTAMPA_PIE_RAS_PV-->
+                  
+                </table>
+               
+                <div class="bottone">
+                <div class="right">
+                      <input onClick="verificaModello()" type="submit" name="confermaStampe" value="conferma">
+                    </div>
+                 </div>  
+                </form>
+                </td>
+          </tr>
+        </table>
+    </div>
+<form name="mod39" method="post" action="modello39.htm">
+  <input type="hidden" name="idMovimentiTarga" value="$$idMovimentiTarga">
+</form>
+<form name="modDistinta" method="post" action="modelloDistinta.htm">
+  <input type="hidden" name="idMovimentiTarga" value="$$idMovimentiTarga">
+</form>
+<form name="mod73" method="post" action="modello73.htm">
+</form>
+<form name="mod74" method="post" action="modello74.htm">
+</form>
+<form name="modContatori" method="post" action="modelloContatori.htm">
+</form>
+<form name="modVerifiche" method="post" action="modelloVerifiche##isIntermediario.htm">
+</form>
+<form name="modVerificheNoAss" method="post" action="modelloVerificheNoAss##isIntermediario.htm">
+</form>
+<form name="modReportBuoniEmessi" method="post" action="report_buoni_emessi.htm">
+</form>
+<form name="modReportBuoniNonUtilizzati" method="post" action="modelloBuoniNonUtilizzati.htm">
+</form>
+<form name="modReportTrattoriNuoviInCarico" method="post" action="modelloTrattoriNuoviInCarico.htm">
+</form>
+<form name="modReportDitteCessate" method="post" action="reportDitte.htm">
+  <input type="hidden" name="tipoDitte" value="cessate">
+</form>
+<form name="modReportDitteIscritte" method="post" action="reportDitte.htm">
+  <input type="hidden" name="tipoDitte" value="iscritte">
+</form>
+<form name="modMacchineDemolite" method="post" action="modelloMacchineDemolite.htm">
+</form>
+<form name="modMacchineCaricoGenere" method="post" action="modelloMacchineCaricoGenere.htm">
+</form>
+<form name="modMacchineCaricoMarca" method="post" action="modelloMacchineCaricoMarca.htm">
+</form>
+<form name="modMovimentiMacchina" method="post" action="modelloMovimentiMacchine.htm">
+</form>
+<form name="modMacchineLeasing" method="post" action="modelloMacchineLeasing.htm">
+</form>
+<form name="modASMInCarico" method="post" action="modelloASMInCarico.htm">
+</form>
+<form name="modBuoniEmessiAnno" method="post" action="reportBuoniEmessiAnno.htm">
+</form>
+<form name="modConsumiEmessiAnno" method="post" action="reportConsumiEmessiAnno.htm">
+</form>
+<form name="distinteValidateCAA" method="post" action="distintaDomandeValidateCAA.htm">
+</form>
+<form name="reportBuoniEmessiAnnoCAA" method="post" action="reportBuoniEmessiAnnoCAA.htm">
+</form>
+</body>
+	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</html>

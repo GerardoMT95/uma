@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+  function submitForm(valorePulsante){
+    document.form1.action = '../layout/elencoAziende.htm';
+    document.form1.target = '';
+    document.form1.valorePulsante.value = valorePulsante;
+    document.form1.submit();
+  }
+
+  function funzionalita(valoreForm, nomeFunzionalita)
+  {
+    document.form1.funzionalitaSelezionata.value = valoreForm;
+    document.form1.nomeFunzionalita.value = nomeFunzionalita;
+    doForm('funzionalita');
+
+  }
+
+
+</script>
+
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+
+<form name="form1" method="post" action="elencoAziende.htm">
+<input type="hidden" name="valorePulsante" value="$$valorePulsante">
+<input type="hidden" name="funzionalitaSelezionata" value="$$funzionalitaSelezionata">
+<input type="hidden" name="nomeFunzionalita" value="$$nomeFunzionalita">
+
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+          <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli
+            </a> &gt; ricerca ditta UMA &gt; risultato</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+                <!-- cella che contiene i menu -->
+                
+                <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                   <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca Macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                   <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova Ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                   <a href="../../layout/stampaElenchi.htm">Stampa Elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                   <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+                </div>
+                
+                <div class="menu">
+<span class="etichettamenu"><a href="javascript: funzionalita('/anag/layout/dettaglioAzienda.htm','dettaglio')">Ditta UMA</a></span>
+
+               <!--	 @@blkRICERCA_DITTA -->
+           <a href="javascript: funzionalita('/anag/layout/dettaglioAzienda.htm','dettaglio')">Dettaglio</a>
+            </div>
+<!-- @@blkRICERCA_DITTA -->
+
+             </td>
+              <td>
+                <!-- cella di destra, contiene i "tabelloni"-->
+                      <input type="hidden" name="paginaCorrente" value="$$currPage">
+              <input type="hidden" name="totalePagine" value="$$totPage">
+              <input type="hidden" name="numeroRecord" value="$$numeroRecord">
+              
+                     <div class="paginazione">
+                   <p class="left">Aziende estratte $$numeroRecord</p>
+                      <p class="right"> 
+                      <!--@@bottoneIndietro--><a href="javascript: submitForm('indietro') " class="pulsante">
+                        &lt;&lt;</a>
+                        <!--@@bottoneIndietro-->
+                        pagina
+                        $$currPage di $$totPage
+                      <!--@@bottoneAvanti--><a href="javascript: submitForm('avanti') " class="pulsante">
+                        &gt;&gt;</a>
+                       
+                        <!--@@bottoneAvanti-->
+                       </p>
+                       </div>
+                  <br />
+
+        <div class="scroll">
+                <table class="dataCol">
+                  <tr>
+                    <td rowspan="2">&nbsp;</td>
+                    <th rowspan="2">CUAA </th>
+                    <th rowspan="2">Partita IVA</th>
+                    <th rowspan="2">Denominazione</th>
+                    <th colspan="2">Sede legale</th>
+                    <th rowspan="2">Ditta UMA</th>
+                    <th rowspan="2">Data cessazione</th>
+                  </tr>
+                  <tr>
+                    <th>Comune </th>
+                    <th>Prov.</th>
+                  </tr>
+                  <!--@@rigaAziendaDitta-->
+                  <tr>
+                    <td>
+                      <!-- serve per reperire il dettaglio in quanto una stessa
+                       azienda potrebbe avere piu' ditte uma associate o nessuna -->
+                      <input type="radio" name="posizione" value="$$posizione">
+                    </td>
+                    <td>$$cuaa</td>
+                    <td>$$partitaIVA</td>
+                    <td>$$denominazione</td>
+                    <td>$$sedelegComune</td>
+                    <td>$$sedelegProv</td>
+                    <td>$$dittaUMA</td>
+                    <td>$$dataCessUMA</td>
+                  </tr>
+                  <!--@@rigaAziendaDitta-->
+                </table>
+        </div>
+              <div class="bottone">
+                        <!--input type="submit" value="dettaglio"-->
+                        <!--a href="#"><img src="../../##pathToFollow/b_dettaglio.gif" alt="visualizzazione del dettaglio"></a-->
+               </div>
+                    
+            </td>
+          </tr>
+        </table>
+        <!-- fine della tabella a due colonne -->
+    </div>
+        <div id="hiddenElement"></div>
+        </form>
+          
+     
+        
+               
+ <footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale xxxx </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+          </body>
+          </html>
+
+

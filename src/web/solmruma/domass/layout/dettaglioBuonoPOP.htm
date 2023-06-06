@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+    <script language="JavaScript">
+      function submitForm(tipoOperazione) {
+        document.form1.action = '../layout/elencoBuoniEmessi.htm';
+        document.form1.operazione.value = tipoOperazione;
+        document.form1.submit();
+        document.form1.action = '../layout/dettaglioBuonoPOP.htm';
+      }
+      function indietro() {
+        document.form1.action = '../layout/dettaglioBuonoPOP.htm';
+        document.form1.indietro.value = 'ok';
+        document.form1.submit();
+        document.form1.action = '../layout/dettaglioBuonoPOP.htm';
+      }
+
+      function mod101()  {
+        var d = new Date();
+        var unique = (d.getUTCHours()*60+d.getUTCMinutes())*60+d.getUTCSeconds();
+        var target = "mod101"+unique;
+        pop("",645,500,target);
+        document.mod101.target = target;
+        document.mod101.submit();
+      }
+
+      function pop(page,w,h,target)
+      {
+        var winl = (screen.width - w) / 2;
+        var wint = (screen.height - h) / 2;
+        var winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars=yes,resizable=yes';
+        var win = window.open(page, target, winprops);
+        if (parseInt(navigator.appVersion) >= 4)
+          win.window.focus();
+        //win.document.title = "Servizi on line per il mondo rurale";
+      }
+    </script>
+  </head>
+  <body onLoad="$$err_error; $$mod101open">
+    <form name="form1" method="post" action="../../domass/layout/dettaglioBuonoPOP.htm">
+    <input type="hidden" name="operazione" value="">
+    <input type="hidden" name="indietro" value="">
+    <input type="hidden" name="idBuonoPrelievo" value="$$idBuonoPrelievo">
+
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+          <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli </a> &gt; buoni di
+            prelievo &gt; dettaglio</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+              <!-- cella che contiene i menu -->
+              
+                <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                   <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca Macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                   <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova Ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                   <a href="../../layout/stampaElenchi.htm">Stampa Elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                   <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+                </div>
+<!-- @@blkMenuDittaUMA -->
+                <div class="menu"> <span class="etichettamenu"> <a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span></div>
+                 <!--						 @@blkMenuDittaUMA -->
+<!-- @@blkMenuAssegnazione -->
+                <div class="menu"><span class="etichettamenu">
+                  <a href="../layout/assegnazioni.htm">Assegnazione carburante</a></span></div>
+<!-- @@blkMenuAssegnazione -->
+<!-- @@blkMenuBuoni -->
+                <div class="menu"><span class="etichettamenu"><a href="javascript:indietro();">Buoni di prelievo</a></span>
+<!-- @@blkVISUALIZZA_BUONO -->
+                  <span class="inattivo">dettaglio</span>
+<!-- @@blkVISUALIZZA_BUONO -->
+<!-- @@blkRESTITUZIONE_BUONO -->
+                  <a href="javascript:submitForm('restituisci');">restituisci</a>
+<!-- @@blkRESTITUZIONE_BUONO -->
+<!-- @@blkEMISSIONE_BUONO_ANNULLA -->
+                  <a href="javascript:submitForm('annulla');">annulla</a>
+<!-- @@blkEMISSIONE_BUONO_ANNULLA -->
+<!-- @@blkRESTITUZIONE_BUONO -->
+                  <a href="javascript:submitForm('elimina');">cancella restituzione</a>
+<!-- @@blkRESTITUZIONE_BUONO -->
+<!-- @@blkSTAMPA_101 -->
+               <!--    <a href="javascript:mod101();">stampa Modello 101</a> -->
+<!-- @@blkSTAMPA_101 -->
+                </div>
+<!-- @@blkMenuBuoni -->
+<!-- @@blkMenuMacchine -->
+                <div class="menu"> <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span></div>
+<!-- @@blkMenuMacchine -->
+              </td>
+            <td>
+              <!-- cella di destra, contiene i "tabelloni"-->
+                <p class="datiazienda">azienda selezionata</p>
+                <p class="datiaziendaB">$$CUAA $$denominazione</p>
+                <p class="datiaziendaB">Ditta UMA N. $$dittaUMA / $$umaTipoDitta</p>
+                <p class="datiazienda">provincia di competenza $$provinciaUMA</p>
+                <br>
+                <table class="data">
+                 <col width="30%" />
+                 <col width="70%" />
+                   <tr>
+                    <th>Anno di riferimento</th>
+                    <td>$$anno</td>
+                  </tr>
+                  <tr>
+                    <th>Numero Blocco / Buono</th>
+                    <td>$$blocco/$$buono</td>
+                  </tr>
+                  <tr>
+                    <th>Data emissione </th>
+                    <td>$$dataEmissione</td>
+                  </tr>
+                  <tr>
+                    <th>Tipo utilizzo </th>
+                    <td>$$tipoUtilizzo</td>
+                  </tr>
+                  <!--@@blkNonReso-->
+                  <tr>
+                    <th>Data restituzione </th>
+                    <td>$$dataRestituzione</td>
+                  </tr>
+                  <!--@@blkNonReso-->
+                  <tr>
+                    <th>Data ultima stampa</th>
+                    <td>$$dataStampa</td>
+                  </tr>
+                  <tr>
+                    <th>Numero duplicati</th>
+                    <td>$$numeroDuplicati</td>
+                  </tr>
+                  <!--@@blkNonReso-->
+                  <tr>
+                    <th>Ditta UMA di provenienza </th>
+                    <td>$$prov $$dittaUMA </td>
+                  </tr>
+                  <!--@@blkNonReso-->
+                  <!--@@blkReso-->
+                  <tr>
+                    <th>Ditta UMA di destinazione </th>
+                    <td>$$prov $$dittaUMA </td>
+                  </tr>
+                  <!--@@blkReso-->
+                  <!--@@Aggiunta Andrea 24/11/2006 per CU-GUMA-15 (gestione buoni emessi)-->
+                  <tr>
+                    <th>Buono emesso da </th>
+                    <td>$$interm </td>
+                  </tr>
+                  <tr>
+                    <th>Utente </th>
+                    <td>$$utenteEm </td>
+                  </tr>
+                  <tr>
+                    <th>$$annullato</th>
+                    <td>$$carburanteSerra</td>
+                  </tr>
+                </table><br />
+
+                <table class="dataCol">
+                  <tr>
+                    <td>&nbsp;</td>
+                    <th>Quantit&agrave; $$quantita</th>
+                    <!--@@blkColonnaPrel-->
+                    <th>Quantit&agrave; prelevata</th>
+                    <!--@@blkColonnaPrel-->
+                    <th>Data ultimo prelievo</th>
+                    <th>Quantit&agrave; ultimo prelievo</th>
+                  </tr>
+                  <tr>
+                    <td class="text-right"><strong>Gasolio</strong></td>
+                    <td>$$gasolioConc </td>
+                    <!--@@blkGasolio-->
+                    <td>$$gasolioPrel </td>
+                    <td>$$dataUltimoPrel </td>
+                    <td>$$qtaUltimoPrel </td>
+                    <!--@@blkGasolio-->
+                  </tr>
+                  <tr>
+                    <td class="text-right"><strong>Benzina</strong></td>
+                    <td>$$benzinaConc </td>
+                    <!--@@blkBenzina-->
+                    <td>$$benzinaPrel </td>
+                    <td>$$dataUltimoPrel </td>
+                    <td>$$qtaUltimoPrel </td>
+                    <!--@@blkBenzina-->
+                  </tr>
+                  <tr>
+                    <td class="text-right"><strong>Totale</strong></td>
+                    <td>$$concTot </td>
+                    <!--@@blkTotale-->
+                    <td>$$prelTot </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <!--@@blkTotale-->
+                  </tr>
+                  <tr>
+                    <td class="text-right"><strong>Ultima modifica</strong></td>
+                    <td>$$dataModConc </td>
+                    <!--@@blkModifica-->
+                    <td>$$dataModPrel </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <!--@@blkModifica-->
+                  </tr>
+                </table><br />
+
+
+                <!--@@blkStampaExist-->
+                <table class="dataCol">
+                  <tr>
+                    <th>Stampa del Buono effettuata da:</th>
+                    <th>Data Stampa</th>
+                  </tr>
+                  <!--@@blkStampa-->
+                  <tr>
+                    <td>$$utente - $$ente</td>
+                    <td>$$data</td>
+                  </tr>
+                  <!--@@blkStampa-->
+                </table>
+                <!--@@blkStampaExist-->
+
+              </td>
+          </tr>
+        </table>
+        <!-- fine della tabella a due colonne -->
+    </div>
+    </form>
+    <form name="mod101" method="post" action="../../servlet/StampaServletMod101" target="mod101">
+      <input type="hidden" name="idBuonoPrelievo" value="$$idBuonoPrelievo">
+      <input type="hidden" name="fwdUrl" value="/domass/layout/dettaglioBuonoPOP.htm">
+    </form>
+    
+    <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <hr />
+    <a name="footer"></a>
+    <div class="custom footerCsi row-fluid">
+      <div class="span3 col-sm-3"> <a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+      <div class="span9 col-sm-9"> Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>

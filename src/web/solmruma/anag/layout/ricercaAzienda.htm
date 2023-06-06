@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" /><script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+
+  function scegliComune(mypage, myname, w, h, scroll,provincia,comune) {
+    NewWindowComuneAnag(mypage, myname, w, h, scroll,provincia,comune, '');
+  }
+
+  function NewWindowComuneAnag(mypage, myname, w, h, scroll,provincia,comune,obiettivo) {
+    var winl = (screen.width - w) / 2;
+    var wint = (screen.height - h) / 2;
+    if(provincia ==  '' && comune == '') {
+      alert('Inserire una provincia o un comune');
+    }
+    else if(!mappaOggetti(comune) || !mappaOggetti(provincia)) {
+    }
+    else {
+      winprops =    'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+',resizable';
+      win = window.open(mypage+'?obiettivo='+obiettivo+'&provincia='+provincia+'&comune='+comune, myname, winprops);
+      if (parseInt(navigator.appVersion) >= 4) {
+        win.window.focus();
+      }
+    }
+  }
+
+  function newWindowStatoAzienda(mypage, myname, w, h, scroll,stato) {
+    var winl = (screen.width - w) / 2;
+    var wint = (screen.height - h) / 2;
+
+    if(!mappaOggetti(stato)) {
+    }
+    else {
+      winprops =    'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+',resizable';
+      win = window.open('', myname, winprops);
+      if (parseInt(navigator.appVersion) >= 4) {
+        win.window.focus();
+      }
+      document.form1.stato.value = stato;
+      var target1 = document.form1.target;
+      var action1 = document.form1.action;
+      document.form1.target = myname;
+      document.form1.action = mypage;
+      document.form1.submit();
+      document.form1.target = target1;
+      document.form1.action = action1;
+    }
+  }
+
+</script>
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+<form name="form1" method="post" action="../layout/ricercaAzienda.htm">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+          <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli </a> &gt; ricerca ditta UMA</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+                <!-- cella che contiene i menu -->
+                
+                <div class="menu">
+                   <span class="inattivo">Ricerca Ditta UMA</span> <!--						 @@blkVISUALIZZA_DATI_MACCHINA -->
+                   <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca Macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                      <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova Ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                   <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                      <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+                </div>
+              </td>
+            <td>
+            <!-- cella di destra, contiene i "tabelloni"-->
+            <h3>Ricerca puntuale:</h3>
+               
+                <table class="data">
+                 <col width="25%" /> 
+                  <col width="75%" />                  
+                <tr>
+                  <th>Numero Ditta (*)</th>
+                  <td>
+                    <input type="text" maxlength="11" size="16" name="dittaUMAstr" value="$$dittaUMAstr">
+                    $$err_dittaUMAstr </td>
+                </tr>
+                <tr>
+                  <th>Provincia (*)</th>
+                  <td>
+                    <select name="provUMA">
+                      <option></option>
+                      <!--@@comboProvUMA-->
+                      <option value="$$idProvUMA" $$idProvUMASelPunt>$$provUMA</option>
+                      <!--@@comboProvUMA-->
+                    </select>
+                    $$err_provUMA </td>
+                </tr>
+              </table>
+                 <div class="bottone">
+                        <input type="submit" name="ricercaPuntuale" value="ricerca">
+                       
+                  $$exc </div>
+                   <br />
+
+                <h3>Ricerca per anagrafica azienda:</h3>
+                <table class="data">
+                 <col width="25%" />                  
+                 <col width="75%" />                  
+                  <tr>
+                    <th>CUAA(Codice fiscale) </th>
+                    <td> <input type="text" maxlength="16" name="cuaa" class="med" value="$$cuaa">
+                      $$err_cuaa </td>
+                  </tr>
+                  <tr>
+                    <th>Partita IVA</th>
+                    <td> <input type="text" maxlength="11"  name="partitaIVA" class="med" value="$$partitaIVA">
+                      $$err_partitaIVA</td>
+                  </tr>
+                  <tr>
+                    <th>Denominazione</th>
+                    <td> <input type="text" maxlength="100" name="denominazione" class="long" value="$$denominazione">
+                      $$err_denominazione </td>
+                  </tr>
+                  <tr>
+                    <th>Provincia sede legale</th>
+                    <td> <input type="text" name="sedelegProvincia" id="sedelegProvincia" size="4" maxlength="2" value="$$sedelegProvincia">
+                      $$err_sedelegProv </td>
+                  </tr>
+                  <tr>
+                    <th>Comune sede legale</th>
+                    <td> <input type="text" name="descComune" id="descComune" maxlength="50" class="med" value="$$descComune">
+                      <a href="javascript: scegliComune('../../layout/sceltaComune.htm','scegli_comune','600','300','yes',document.form1.sedelegProvincia.value,document.form1.descComune.value);" class="pulsante">cerca</a>
+                      <input type="hidden" name="istatComune" size="30" value="$$istatComune">
+                      <input type="hidden" name="cap" size="30" value="$$cap">
+                      $$err_descComune </td>
+                  </tr>
+                  <tr>
+                     <th>Stato estero sede legale </th>
+                     <td>
+                        <input type="text" name="sedelegEstero" class="med" maxlength="50" value="$$sedelegEstero">
+                        <a href="javascript: newWindowStatoAzienda('../../layout/sceltaStato.htm','scegliStato','600','300','yes',document.form1.sedelegEstero.value);" class="pulsante" >cerca</a>$$err_sedelegEstero
+                       <input type="hidden" name="stato" size="6" value="$$stato">
+                        <input type="hidden" name="istatStatoEstero" size="50" maxlength="100" value="$$istatStatoEstero">
+                      </td>
+                  </tr>
+                  <tr>
+                    <th>Ditta UMA in attivit&agrave;</th>
+                    <td><input type="checkbox" name="attivita" value="si" $$checked></td>
+                  </tr>
+                  </table>
+                 <div class="bottone">
+                        <input type="submit" name="ricercaAvanzata" value="ricerca">                       
+                        $$exc2</div>
+                   <br />
+
+                <h3>Ricerca per domanda di assegnazione:</h3>
+              <table class="data">
+                 <col width="25%" />                  
+                 <col width="75%" />                  
+
+                <tr>
+                  <th>Da data riferimento</th>
+                  <td>
+                    <input type="text" maxlength="10" size="10" name="dataRifDa" class="EDIT" value="$$dataRifDa">
+                    $$err_dataRifDa (gg/mm/aaaa)</td>
+                </tr>
+                <tr>
+                  <th>A data riferimento</th>
+                  <td>
+                    <input type="text" maxlength="10" size="10" name="dataRifA" class="EDIT" value="$$dataRifA">
+                    $$err_dataRifA (gg/mm/aaaa)</td>
+                </tr>
+                <tr>
+                  <th>Stato</th>
+                  <td>
+                     <select name="tipiStatoDomanda">
+                      <option></option>
+                      <!--@@comboTipiStatoDomanda-->
+                      <option value="$$idStatoDomanda" $$idStatoDomandaSel>$$statoDomanda</option>
+                      <!--@@comboTipiStatoDomanda-->
+                    </select> 
+                  	$$err_tipiStatoDomanda 
+                  </td>
+                </tr>
+                <!--@@blkNoIntermediario-->
+                <!--tr>
+                  <td>Ente compilatore</td>
+                  <td> $$cmb_tipiIntermediarioUmaProv $$err_tipiIntermediarioUmaProv
+                  </td>
+                </tr-->
+                <tr>
+                  <th>Ente compilatore</th>
+                  <td>
+                    <select name="intermUmaProv">
+                      <option></option>
+                      <!--@@comboIntermUmaProv-->
+                      <option value="$$idIntermUmaProv" $$idIntermUmaProvSel>$$intermUmaProv</option>
+                      <!--@@comboIntermUmaProv-->
+                    </select>
+                    </td>
+                </tr>
+                <!--@@blkNoIntermediario-->
+                <!--@@blkIntermediario-->
+                <tr>
+                  <th>Ente compilatore</th>
+                  <td> $$intermediario
+                  </td>
+                </tr>
+                <!--@@blkIntermediario-->
+                <tr>
+                  <th>Ufficio UMA</th>
+                  <td>
+                    <select name="uffUMADomAss">
+                      <option></option>
+                      <!--@@comboUfficioUma-->
+                      <option value="$$idUfficoUma" $$idUfficoUmaSel>$$ufficioUma</option>
+                      <!--@@comboUfficioUma-->
+                    </select>
+                    $$err_uffUMADomAss</td>
+                </tr>
+                <tr>
+                  <th>Provincia Ditta UMA</th>
+                  <td>
+                    <select name="provUMADomAss">
+                      <option></option>
+                      <!--@@comboProvUMADomAss-->
+                      <option value="$$idProvUMADomAss" $$idProvUMAda>$$provUMADomAss</option>
+                      <!--@@comboProvUMADomAss-->
+                    </select>
+                    $$err_provUMADomAss</td>
+                </tr>
+                <tr>
+                  <th>Stato del libretto</th>
+                  <td>
+                    <select name="statoLibrettoDomAss">
+                      <option></option>
+                      <!--@@comboStatoLibrettoDomAss-->
+                      <option value="$$idStatoLibrettoDomAss" $$idStatoLibrettoSel>$$statoLibrettoDomAss</option>
+                      <!--@@comboStatoLibrettoDomAss-->
+                    </select>
+                    $$err_statoLibrettoDomAss</td>
+                </tr>
+              </table>
+                 <div class="bottone">
+                        <input type="submit" name="ricercaDomAss" value="ricerca">
+                        <!--img src="../##pathToFollowim/b_cerca2.gif" width="58" height="16"-->
+                      
+                        $$exc3 </div>
+                   
+            </td>
+          </tr>
+        </table>
+        <!-- fine della tabella a due colonne -->
+    </div>
+        </form>
+          
+       
+
+               
+        
+               
+ <footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+          </body>
+          </html>
+
+

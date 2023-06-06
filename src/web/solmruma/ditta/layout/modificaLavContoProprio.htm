@@ -1,0 +1,463 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+    <script src="/staticresources/js/checktext.js"></script>
+<script language="JavaScript">
+	
+	function calcoloCarburante(idLavContoProprio) {
+	  //alert('sono in calcoloCarburante');
+				 					  				 
+	  var eseguiCalcolaCarb = window.document.getElementById("eseguiCalcolaCarb");			
+			
+	  var flagEscludiEsecuzioni = window.document.getElementById("flagEscludiEsecuzioni"+idLavContoProprio).value;				
+	  var tipoUnitaMisura = window.document.getElementById("tipoUnitaMisura"+idLavContoProprio).value;
+						
+	  var litriCarburante = window.document.getElementById("litriCarburante"+idLavContoProprio);
+	  var litriAcclivitaCalcolati =  window.document.getElementById("litriAcclivita"+idLavContoProprio);
+	  var litriBaseCalcolati = window.document.getElementById("litriBaseCalcolati"+idLavContoProprio);
+	  var litriMedioImpastoCalcolati = window.document.getElementById("litriMedioImpastoCalcolati"+idLavContoProprio);
+			
+	  var litriBase = Number(window.document.getElementById("litriBase"+idLavContoProprio).value);
+	  //alert('tipoUnitaMisura vale: '+tipoUnitaMisura);			
+	  var litriMedioImpasto = Number(window.document.getElementById("litriMedioImpasto"+idLavContoProprio).value);
+	  //alert('litriMedioImpasto:' +litriMedioImpasto);
+	  var litriTerDeclivi = Number(window.document.getElementById("litriTerDeclivi"+idLavContoProprio).value);
+	  //alert('litriTerDeclivi:' +litriTerDeclivi);			
+	  var ettariTemp = window.document.getElementById("supOreStr"+idLavContoProprio).value;
+	  var ettari = Number(ettariTemp.replace(",", "."));				
+	  var supOre = window.document.getElementById("supOreStr"+idLavContoProprio);
+	  //alert('ettari: '+ettari);
+	  var numEsecuzioniTemp = window.document.getElementById("esecuzioniStr"+idLavContoProprio).value;
+	  var numeroEsecuzioni = Number(numEsecuzioniTemp.replace(".", ","));	
+	  var cavalli = Number(window.document.getElementById("cavalli"+idLavContoProprio).value);
+	  //alert('cavalli: '+cavalli);
+	  var coefficiente = Number(window.document.getElementById("coefficiente"+idLavContoProprio).value);
+	  //alert('coefficiente: '+coefficiente);									
+					
+	  var supTotaleCalcolataTmp = window.document.getElementById("supTotaleCalcolata"+idLavContoProprio).value;
+	  var supTotaleCalcolata = Number(supTotaleCalcolataTmp.replace(",", "."));
+			
+	  var supMontagnaCalcolataTmp = window.document.getElementById("supMontagnaCalcolata"+idLavContoProprio).value; 	
+	  var supMontagnaCalcolata = Number(supMontagnaCalcolataTmp.replace(",", "."));	
+				
+	  var carburante = 0;
+	  var litriAcclivita = 0;
+							
+	  // ----------- ********* CALCOLO CARBURANTE PER SUPERFICIE ************ ------------
+	  if (tipoUnitaMisura == 'S') {
+		/*alert('* CALCOLO CARBURANTE PER SUPERFICIE *');	
+		alert('litriBase : '+litriBase);
+		alert('litriMedioImpasto: '+litriMedioImpasto);
+		alert('litriTerDeclivi: '+litriTerDeclivi);
+		alert('ettari: '+ettari);		
+		alert('numeroEsecuzioni : '+numeroEsecuzioni);		
+		alert('supTotaleCalcolata : '+supTotaleCalcolata);
+		alert('supMontagnaCalcolata : '+supMontagnaCalcolata);
+		*/
+		//alert('numeroEsecuzioni ='+numeroEsecuzioni);
+		if(numeroEsecuzioni != null && numeroEsecuzioni != ''){
+		 // alert('calcolo i litri base');
+		  litriBase *= numeroEsecuzioni;
+		  litriBase *= ettari;
+		  litriBase = arrotondamento(litriBase);
+		  //alert('litriBase calcolati ='+litriBase);
+		  
+		  litriMedioImpasto *= numeroEsecuzioni;
+		  litriMedioImpasto *= ettari;
+		  litriMedioImpasto = arrotondamento(litriMedioImpasto);
+		}
+		else{
+		  litriBase = 0;
+		  litriMedioImpasto = 0;
+		}
+				
+		// Calcolo litri per acclivita (se la superficie totale calcolata è valorizzata): 
+		if(supTotaleCalcolata != null && supTotaleCalcolata != '' && supTotaleCalcolata != '0'){
+		  //alert('ettari ='+ettari);
+		  //alert('supMontagnaCalcolata ='+supMontagnaCalcolata);
+		  //alert('supTotaleCalcolata ='+supTotaleCalcolata);
+		  var supMontagnaPerEttari = (ettari * supMontagnaCalcolata) / supTotaleCalcolata;
+				  
+		  //alert('litriTerDeclivi ='+litriTerDeclivi);
+		  litriAcclivita = supMontagnaPerEttari * litriTerDeclivi;
+		  litriAcclivita *= numeroEsecuzioni;
+		  litriAcclivita = arrotondamento(litriAcclivita);
+		}
+			
+		//alert('litriBase arrotondati ='+litriBase);
+		//alert('litriMedioImpasto  arrotondati ='+litriMedioImpasto);
+		//alert('litriAcclivita arrotondati ='+litriAcclivita);
+		carburante = litriBase + litriMedioImpasto + litriAcclivita;											
+	  }
+	  // ----------- ********* CALCOLO CARBURANTE PER ORE ************ ------------ 
+	  else if (tipoUnitaMisura == 'T') {		
+		  /* alert('* CALCOLO CARBURANTE PER TEMPO *');	    
+		alert('ettari :'+ettari);
+		alert('coefficiente :'+coefficiente);
+		alert('cavalli :'+cavalli);	
+		alert('flagEscludiEsecuzioni :'+flagEscludiEsecuzioni);
+		alert('numeroEsecuzioni :'+numeroEsecuzioni);
+		*/
+				
+		carburante = ettari * cavalli * coefficiente;
+		if(numeroEsecuzioni != null && numeroEsecuzioni != '') {
+			if (flagEscludiEsecuzioni == null
+					|| flagEscludiEsecuzioni == ''
+					|| flagEscludiEsecuzioni == 'N') {							
+				carburante = carburante * numeroEsecuzioni;
+			} 
+			else {
+			  //alert('tipoUnitaMisura=T && flagEscludiEsecuzioni==S');
+			}
+		}
+		// nel caso in cui si deve moltiplicare anche per il numero esecuzioni ed il numero non è indicato, forzare 0
+		else{
+		  if (flagEscludiEsecuzioni == null
+					|| flagEscludiEsecuzioni == ''
+					|| flagEscludiEsecuzioni == 'N') {
+					carburante = 0;							
+		  }			
+		}
+		//alert('carburante calcolato :'+carburante);								
+	  }					
+	  // ----------- ********* CALCOLO CARBURANTE PER PESO ************ ------------ 
+    else if (tipoUnitaMisura == 'P' || tipoUnitaMisura == 'K') {    
+      /* alert('* CALCOLO CARBURANTE PER PESO *');      
+            alert('litriBase :'+litriBase);
+        */
+        
+    carburante = ettari * litriBase;
+    if(numeroEsecuzioni != null && numeroEsecuzioni != '') {
+      if (flagEscludiEsecuzioni == null
+          || flagEscludiEsecuzioni == ''
+          || flagEscludiEsecuzioni == 'N') {              
+        carburante = carburante * numeroEsecuzioni;
+      } 
+      else {
+        //alert('tipoUnitaMisura=T && flagEscludiEsecuzioni==S');
+      }
+    }
+	  // ----------- ********* CALCOLO CARBURANTE PER METRO LINEARE ************ ------------
+	  else if(tipoUnitaMisura == 'M') {
+			if(numeroEsecuzioni != null && numeroEsecuzioni != ''){
+					litriBase *= numeroEsecuzioni;
+					litriBase *= ettari;
+					litriBase = arrotondamento(litriBase);
+					  
+					litriMedioImpasto *= numeroEsecuzioni;
+					litriMedioImpasto *= ettari;
+					litriMedioImpasto = arrotondamento(litriMedioImpasto);
+				}
+				else{
+				  litriBase = 0;
+				  litriMedioImpasto = 0;
+				}
+				
+				litriAcclivita = 0;
+			
+				carburante = litriBase + litriMedioImpasto + litriAcclivita;
+	  }
+    // nel caso in cui si deve moltiplicare anche per il numero esecuzioni ed il numero non è indicato, forzare 0
+    else{
+      if (flagEscludiEsecuzioni == null
+          || flagEscludiEsecuzioni == ''
+          || flagEscludiEsecuzioni == 'N') {
+          carburante = 0;             
+      }     
+    }
+    //alert('carburante calcolato :'+carburante);               
+    }
+			
+	  //alert('carburante calcolato :'+carburante);	
+	  if (isNaN(carburante)) {
+		carburante = "";
+	  } 
+	  else {
+		carburante = arrotondamentoLitro(carburante);
+	  }
+	  //alert('carburante arrotondato :'+carburante);							
+			
+	  if (eseguiCalcolaCarb.value != 'false') {
+		if (tipoUnitaMisura == 'S' || tipoUnitaMisura=='M') {
+		  litriCarburante.value = carburante;	
+		  //alert('litriCarburante ='+litriCarburante.value);
+			  	  
+		  if(isNaN(litriBase)){
+		    litriBaseCalcolati.value = "";			  	    
+		  }
+		  else{
+		    litriBaseCalcolati.value = arrotondamento(litriBase);
+		     //alert('litriBaseCalcolati ='+litriBaseCalcolati.value);
+		  }
+			  	  
+		  if(isNaN(litriMedioImpasto)) {	
+		    litriMedioImpastoCalcolati.value = "";		  	    
+		  }
+		  else{
+		    litriMedioImpastoCalcolati.value = arrotondamento(litriMedioImpasto);
+		    //alert('litriMedioImpastoCalcolati ='+litriMedioImpastoCalcolati.value);
+		  }
+			  	  
+		  if(isNaN(litriAcclivita)) {
+		   litriAcclivitaCalcolati.value = "";
+		  } 
+		  else{
+		    litriAcclivitaCalcolati.value = arrotondamento(litriAcclivita);
+		    //alert('litriAcclivitaCalcolati ='+litriAcclivitaCalcolati.value);
+		  } 
+	  }
+	  // in questo caso valorizzo solo i campi 'Litri carburante' e 'Litri base'
+	  else if (tipoUnitaMisura == 'T' || tipoUnitaMisura == 'P' || tipoUnitaMisura == 'K') {
+		 litriCarburante.value = carburante;	
+		 //alert('litriCarburante ='+litriCarburante.value);
+		 // Nel campo 'Litri base' visualizzare il valore calcolato per 'Litri carburante'
+		 litriBaseCalcolati.value = carburante;
+		 //alert('litriBaseCalcolati ='+litriBaseCalcolati.value);
+	  }
+	}
+	else{
+	  eseguiCalcolaCarb.value = "true";
+	}										
+  }
+	
+	
+	/*function onChangeMacchina(idLavContoTerzi,maggiorazione,tipoUnitaMisura,flagEscludiEsecuzioni){
+		var macchina = window.document.getElementById("idMacchina"+idLavContoTerzi).value;
+		var cavalli = window.document.getElementById("cavalli"+idLavContoTerzi);
+		var tipoCarburante = window.document.getElementById("tipoCarburante"+idLavContoTerzi);
+		
+		var idMacchina = macchina.split("|");
+		cavalli.value = idMacchina[1];
+		tipoCarburante.value = idMacchina[2];
+		
+		calcoloCarburante(idLavContoTerzi,maggiorazione,tipoUnitaMisura,flagEscludiEsecuzioni);
+	}*/
+	
+	function arrotondamento(num) {
+		//alert('sono in arrotondamento');		
+		num = Math.round(num * 100) / 100
+		return num;
+	}
+	
+	function arrotondamentoLitro(num) {
+    num = num + 0.9999;
+    num = Math.abs(Math.floor(num));
+    return num;
+  }
+</script>
+$$messaggistica</head>
+<body onLoad="$$err_error;">
+	<form method="post" name="form1"
+		action="../layout/modificaLavContoProprio.htm">		
+		<input type="hidden" name="pageFrom" value="$$pageFrom">
+		<input type="hidden" name="eseguiCalcolaCarb" id="eseguiCalcolaCarb" value="$$eseguiCalcolaCarb">
+
+			
+					     <div id="corpo"> 
+						<div id="navi">
+							<a href="../../layout/index.htm">utenti motori agricoli </a> &gt;
+							ditta UMA &gt; Lavorazioni Conto Proprio &gt; modifica
+						</div> <!-- tabella a due colonne per il contenuto -->
+						<table id="contenuto">
+       <tr>
+             <td class="elenco">
+									<!-- cella che contiene i menu -->
+									
+									<div class="menu">
+										<!-- @@blkRICERCA_DITTA -->
+										<a href="../../anag/layout/ricercaAzienda.htm">Ricerca
+											ditta UMA</a>
+										<!-- @@blkRICERCA_DITTA -->
+										<!-- @@blkAZIENDE_TITOLARE -->
+										<a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco
+											ditte</a>
+										<!-- @@blkAZIENDE_TITOLARE -->
+										<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+										<a href="../../macchina/layout/ricercaMacchina.htm">Ricerca
+											macchina</a>
+										<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+										<!-- @@blkNUOVA_DITTA -->
+										<a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova
+											ditta UMA</a>
+										<!-- @@blkNUOVA_DITTA -->
+										<!-- @@blkSTAMPA_ELENCHI -->
+										<a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+										<!-- @@blkSTAMPA_ELENCHI -->
+										<!-- @@blkMenuDatiSistema -->
+										<a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+										<!-- @@blkMenuDatiSistema -->
+									</div> <div class="menu">
+										<span class="etichettamenu"><a
+											href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA </a></span>
+										<div class="sottomenu">
+											<a href="elencoLavContoProprio.htm" id="ocra">Lavorazioni Conto Proprio</a> <span class="inattivo2">modifica</span>
+										</div>
+									</div> <!-- @@blkMenuAssegnazione --> <div class="menu">
+										<span class="etichettamenu"><a
+											href="../../domass/layout/assegnazioni.htm">Assegnazione
+												carburante</a></span>
+									</div> <!-- @@blkMenuAssegnazione --> <!-- @@blkMenuBuoni --> <div class="menu">
+										<span class="etichettamenu"><a
+											href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di
+												prelievo</a></span>
+									</div> <!-- @@blkMenuBuoni --> <!-- @@blkMenuMacchine --> <div class="menu">
+										<span class="etichettamenu"><a
+											href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span>
+									</div> <!-- @@blkMenuMacchine -->
+								</td>
+								<td>
+									<!-- cella di destra, contiene i "tabelloni"-->
+									<p class="datiazienda">azienda selezionata</p>
+									<p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+									<p class="datiaziendaB">Ditta N. $$umaNumAzienda
+										/$$umaTipoDitta</p>
+									<p class="datiazienda">provincia di competenza
+										$$umaProvinciaDitta</p> <br>
+									</p>
+
+									<div class="scroll">
+										<table class="dataCol">
+										   <tr>
+												<th scope="col" class="center">Uso del suolo</th>
+      											<th scope="col" class="center">Lavorazione</th>
+      											<th scope="col" class="center">Motivo lavorazione</th>
+      											<th scope="col" class="center">Sup.(ha) / Ore / Peso (t)</th>
+      											<th scope="col" class="center">U.d.M.</th>
+      											<th scope="col" class="center">Num. esec.</th>      											
+      											<th scope="col" class="center">Litri carburante</th>
+      											<th scope="col" class="center">Litri base</th>
+      											<th scope="col" class="center">Litri medio impasto</th>
+      											<th scope="col" class="center">Litri acclività</th>
+      											<th scope="col" class="center">Macchina utilizzata</th>
+      											<th scope="col" class="center">Note</th>
+      										</tr>																																											
+											<!--@@blkLavorazione-->
+												<input type="hidden" name="litriBase$$idLavContoProprio" id="litriBase$$idLavContoProprio" value="$$litriBase">										
+												<input type="hidden" name="litriMedioImpasto$$idLavContoProprio" id="litriMedioImpasto$$idLavContoProprio" value="$$litriMedioImpasto">
+												<input type="hidden" name="litriTerDeclivi$$idLavContoProprio" id="litriTerDeclivi$$idLavContoProprio" value="$$litriTerDeclivi">
+												<input type="hidden" name="flagAsservimento$$idLavContoProprio" id="flagAsservimento$$idLavContoProprio" value="$$flagAsservimento">										
+												<input type="hidden" name="supTotaleCalcolata$$idLavContoProprio" id="supTotaleCalcolata$$idLavContoProprio" value="$$supTotaleCalcolata">
+												<input type="hidden" name="supMontagnaCalcolata$$idLavContoProprio" id="supMontagnaCalcolata$$idLavContoProprio" value="$$supMontagnaCalcolata">												
+												<input type="hidden" name="flagEscludiEsecuzioni$$idLavContoProprio" id="flagEscludiEsecuzioni$$idLavContoProprio" value="$$flagEscludiEsecuzioni">
+												<input type="hidden" name="cavalli$$idLavContoProprio" id="cavalli$$idLavContoProprio" value="$$cavalli">										
+												<input type="hidden" name="maggiorazione$$idLavContoProprio" id="maggiorazione$$idLavContoProprio" value="$$maggiorazione">												
+											    <input type="hidden" name="maxCarburante$$idLavContoProprio" id="maxCarburante$$idLavContoProprio" value="$$maxCarburante"> 
+												
+												<input type="hidden" name="tipoUnitaMisura$$idLavContoProprio" id="tipoUnitaMisura$$idLavContoProprio" value="$$tipoUnitaMisura">
+												<input type="hidden" name="maxEsecuzione$$idLavContoProprio" id="maxEsecuzione$$idLavContoProprio" value="$$maxEsecuzione"> 
+												<input type="hidden" name="coefficiente$$idLavContoProprio" id="coefficiente$$idLavContoProprio" value="$$coefficiente">																						
+																															
+											<tr>												
+												<td align="center">$$usoDelSuolo</td>
+												<td align="center">$$lavorazione</td>
+												<td align="center">$$motivoLavorazione</td>
+												<td>
+												  <input type="text"
+													name="supOreStr$$idLavContoProprio"
+													id="supOreStr$$idLavContoProprio" size="10"
+													value="$$supOreStr"
+													onKeyUp="calcoloCarburante('$$idLavContoProprio')">
+													$$err_supOreStr
+												</td>
+												<td align="center">$$unitaDiMisura</td>
+												<td>
+												  <input type="text"
+													name="esecuzioniStr$$idLavContoProprio"
+													id="esecuzioniStr$$idLavContoProprio" size="2"
+													value="$$esecuzioniStr"
+													onKeyUp="calcoloCarburante('$$idLavContoProprio')"
+													maxlength="4"> $$err_esecuzioniStr
+												</td>																							
+												<td align="right">
+												   <input type="text" name="litriCarburante$$idLavContoProprio"
+													id="litriCarburante$$idLavContoProprio" size="10" value="$$litriCarburante"
+													maxlength="10" readonly>
+												</td>
+												<td align="right">
+												  <input type="text" name="litriBaseCalcolati$$idLavContoProprio"
+													id="litriBaseCalcolati$$idLavContoProprio" size="10" value="$$litriBaseCalcolati"
+													maxlength="10" readonly>
+												</td>
+												<td align="right">
+												  <input type="text" name="litriMedioImpastoCalcolati$$idLavContoProprio"
+													id="litriMedioImpastoCalcolati$$idLavContoProprio" size="10" value="$$litriMedioImpastoCalcolati"
+													maxlength="10" readonly>
+												</td>
+												<td align="right">
+												  <input type="text" name="litriAcclivita$$idLavContoProprio"
+													id="litriAcclivita$$idLavContoProprio" size="10" value="$$litriAcclivita"
+													maxlength="10" readonly>
+												</td>
+												<td>
+												  <!--@@blkMacchina-->
+												  <select name="idMacchina$$idLavContoProprio"
+													id="idMacchina$$idLavContoProprio" class=""													
+													disabled>
+														<option value="">- Selezionare -</option>
+														<!--@@blkComboMacchina-->
+														  <option value="$$id" $$selected>$$desc</option>
+														<!--@@blkComboMacchina-->
+												   </select> $$err_idMacchina
+												  <!--@@blkMacchina-->  
+												</td>
+												<td>
+												  <textarea name="note$$idLavContoProprio" id="note$$idLavContoProprio" cols="30">$$noteStr</textarea>
+													$$err_note</td>												
+											</tr>
+											<!--@@blkLavorazione-->										
+										</table>
+									</div>
+									<table>		
+										<tr> <div class="bottone">
+												<div class="left">
+													<input type="submit" name="operation" value="salva">
+												</div>
+											</td> <div class="bottone"><div align="right">
+													<input type="submit" name="operation" value="annulla">
+												</div></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table><!-- fine della tabella a due colonne -->
+		</div>
+		<div id="hiddenElement"></div>
+	</form>
+	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>

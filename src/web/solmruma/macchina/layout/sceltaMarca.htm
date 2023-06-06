@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+ <script language="javascript1.2">
+  function sceltaMarca()
+  {
+    var radio=document.form1.radiobutton;
+    //name="radiobutton"
+    //var radio=document.getElementsByName("idMarca");
+    var marcaCnt=-1;
+    if (!radio)
+    {
+      return false;
+    }
+    if (!radio.length)
+    {
+      if (radio.checked)
+      {
+        //idMarca=radio.value;
+        marcaCnt=0;
+      }
+    }
+    else
+    {
+      for(i=0;i<radio.length;i++)
+      {
+        if (radio[i].checked)
+        {
+          //idMarca=radio[i].value;
+          marcaCnt=i;
+        }
+      }
+    }
+
+  if(marcaCnt==-1)
+  {
+    return(false);
+  }
+
+  //window.alert("marcaCnt: "+marcaCnt);
+
+  //element=document.getElementsByName("idMarca");
+  //window.alert("radio.length: "+radio.length);
+  var idMarca;
+  if (!radio.length)
+    {
+    //window.alert('if (!radio.length)');
+    idMarca=radio.value;
+    //window.alert('1idMarca: '+idMarca);
+  }
+  else{
+    //window.alert('else (!radio.length)');
+    idMarca=radio[marcaCnt].value;
+    //window.alert('2idMarca: '+idMarca);
+  }
+
+  element=document.getElementsByName("marcaDesc");
+  var marcaDesc=element[marcaCnt].innerHTML;
+
+  //window.alert("idMarca: "+idMarca);
+  //window.alert("marcaDesc: "+marcaDesc);
+
+  var idMarcaOpener=window.opener.document.getElementById("idMarca");
+  var marcaDescOpener=window.opener.document.getElementById("marcaDesc");
+
+  //window.alert("idMarcaOpener: "+idMarcaOpener);
+  //window.alert("marcaDescOpener: "+marcaDescOpener);
+
+    if (idMarcaOpener)
+    {
+      idMarcaOpener.value=idMarca;
+    }
+    if (marcaDescOpener)
+    {
+      marcaDescOpener.value=marcaDesc.replace("&amp;","&");
+    }
+    window.close();
+  }
+</script>
+  $$messaggistica</head>
+  <body>
+   <form name="form1">
+
+<div id="titoloEmenu">
+					<h3>Scelta marca</h3>
+				</div>
+ 
+ <div id="corpo">
+  
+    
+          <div class="bottone">
+                    <div class="left">
+                      <input type="button" name="Seleziona" value="conferma" onClick="sceltaMarca()">
+                    </div>
+                      <div class="right">
+                        <input type="button" name="Chiudi" value="chiudi" onClick="window.close()">
+                      </div>
+              </div>
+                <table class="dataCol">
+                  <tr>
+                    <td class="radio">&nbsp;</td>
+                    <th>Marca</th>
+                  </tr>
+                  @@blkSceltaMarca
+                  <tr>
+                    <td class="radio">
+                      <input type="radio" name="radiobutton" value="$$idMarca">
+                    </td>
+                    <td name="marcaDesc">$$marcaDesc</td>
+                  </tr>
+                  @@blkSceltaMarca
+                </table>
+               
+                    <div class="bottone">
+                    <div class="left">
+                      <input type="button" name="Seleziona" value="conferma" onClick="sceltaMarca()">
+                    </div>
+                   <div class="right">
+                        <input type="button" name="Chiudi" value="chiudi" onClick="window.close()">
+                      </div>
+                    </div>
+                 
+            
+          
+    </div>
+</form>
+  </body>
+</html>
+

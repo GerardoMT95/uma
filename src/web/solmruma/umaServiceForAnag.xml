@@ -1,0 +1,17 @@
+<isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment"
+    id="urn:protocol-umaServiceForAnag">
+  <isd:provider type="it.csi.csi.porte.soap.apache.StatelessEJBProvider"
+                scope="Application" methods="invokeSynch invokeAsynch">
+    <isd:option key="JNDIName" value="solmr/uma/PA_UmaFacade"/>
+    <!--isd:option key="ContextProviderURL"
+                value="t3://csisvil4.csi.it:7150" /-->
+    <isd:option key="ContextProviderURL"
+                value="t3://csitest4.csi.it:7404" />
+    <isd:option key="FullContextFactoryName"
+                value="weblogic.jndi.WLInitialContextFactory" />
+  </isd:provider>
+  <isd:faultListener>org.apache.soap.server.ExceptionFaultListener</isd:faultListener>
+  <isd:mappings
+      defaultRegistryClass="it.csi.csi.porte.soap.apache.GeneralizedMappingRegistry">
+  </isd:mappings>
+</isd:service>

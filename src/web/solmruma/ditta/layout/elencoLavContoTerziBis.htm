@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script language="javascript1.2" src="/staticresources/js/checktext.js">
+</script>
+<script language="javascript1.2">
+  function checkForXls()
+  {
+    if (!document.form1.checkbox)
+    {
+      alert("Non ci sono lavorazioni da esportare");
+      return false;
+    }
+    return true;
+  }
+  
+ function ricarica()
+  {
+    doForm('ricarica.x');
+  }  
+  function inserisci()
+  {
+    doForm('inserisci.x');
+  }
+
+  function allegaFattura(){
+	doForm('allegaFattura.x');
+  }
+
+  function modifica()
+  {
+    var check=document.form1.checkbox;
+    if (!check)
+    {
+      alert("Nessun'azienda selezionata!");
+      return;
+    }
+    if (!check.length)
+    {
+      if (check.checked)
+      {
+        doForm('modifica.x');
+        return;
+//        return true;
+      }
+    }
+    else
+    {
+      for(i=0;i<check.length;i++)
+      {
+        if (check[i].checked)
+        {
+          doForm('modifica.x');
+          return;
+//        return true;
+        }
+      }
+    }
+    alert("Selezionare una lavorazione!");
+//    return false;
+  }
+  function elimina()
+  {
+    var check=document.form1.checkbox;
+    if (!check)
+    {
+      alert("Nessun'azienda selezionata!");
+      return;
+    }
+    if (!check.length)
+    {
+      if (check.checked)
+      {
+        doForm("elimina.x");
+        return;
+      }
+    }
+    else
+    {
+      for(i=0;i<check.length;i++)
+      {
+        if (check[i].checked)
+        {
+          doForm("elimina.x");
+          return;
+        }
+      }
+    }
+    alert("Selezionare una lavorazione!");
+  }
+ function checkStorico()
+    {
+    //alert('sono in check storico e il chech e settato.. ');
+      if (document.form1.storico.checked)
+      {
+      	//alert('sono in check storico e il chech e settato.. ');
+        //window.location.href='../layout/elencoLavContoTerziBis.htm';
+         doForm('storico.x');
+      }
+      else
+      {
+        doForm('tornaElenco.x');
+      }
+    }
+    
+  function dettaglio()
+  {
+    var check=document.form1.checkbox;
+    var idLavContoTerzi;
+    var count=0;
+    if (!check)
+    {
+      alert("Nessun'azienda selezionata!");
+      return;
+    }
+    if (check.length)
+    {
+      count=0;
+      for(i=0;i<check.length;i++)
+      {
+        if (check[i].checked&&count==0)
+        {
+          idLavContoTerzi=check[i].value;
+          count++;
+        }
+        else 
+         if(check[i].checked&&count>0) {
+        	alert("Selezionare una sola lavorazione!");
+        	return;
+       	 }
+      }
+    }
+    else
+    {
+      if (check.checked)
+      {
+        idLavContoTerzi=check.value;
+      }
+    }
+    if (!idLavContoTerzi)
+    {
+      alert("Selezionare una lavorazione!");
+    }
+    else
+    {
+      popR('../layout/dettaglioLavContoPOP.htm?idLavContoTerzi='+idLavContoTerzi,640,480,'dettaglioLavContoPOPView');
+    }
+  }
+
+ 	function setFilter()
+  {
+  	//alert('setFilter');
+  	paginazione.annoRiferimento.value = form1.annoRiferimento.options[form1.annoRiferimento.selectedIndex];
+  	paginazione.annoRiferimento.value = form1.annoRiferimento.value;
+  	paginazione.cuaaFiltroStr.value = form1.cuaaFiltroStr.value;
+  	paginazione.partitaIvaFiltroStr.value = form1.partitaIvaFiltroStr.value;
+  	paginazione.denominazioneFiltroStr.value = form1.denominazioneFiltroStr.value;
+  }
+</script>
+  $$messaggistica</head>
+    <body onLoad="$$err_error">
+
+   <form  method="post" name="form1" action="../layout/elencoLavContoTerziBis.htm">
+   <input type="hidden" name="currentSel" value="">
+
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+ 
+ <div id="corpo">
+  <div id="navi"> <a href="../../layout/index.htm">utenti motori agricoli</a> &gt; ditta UMA &gt; Lavorazioni eseguite per Conto Terzi</div>
+        <!-- tabella a due colonne per il contenuto -->
+        <table id="contenuto">
+       <tr>
+             <td class="elenco">
+              <!-- cella che contiene i menu -->
+              
+              <div class="menu">
+<!-- @@blkRICERCA_DITTA -->
+                <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+<!-- @@blkRICERCA_DITTA -->
+<!-- @@blkAZIENDE_TITOLARE -->
+                <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+<!-- @@blkAZIENDE_TITOLARE -->
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+                <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca macchina</a>
+<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+<!-- @@blkNUOVA_DITTA -->
+                <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+<!-- @@blkNUOVA_DITTA -->
+<!-- @@blkSTAMPA_ELENCHI -->
+                <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+<!-- @@blkSTAMPA_ELENCHI -->
+<!-- @@blkMenuDatiSistema -->
+                   <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+<!-- @@blkMenuDatiSistema -->
+</div>
+ <!-- @@blkMenuDittaUMA -->
+<div class="menu">
+  <span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span>
+  <div class="sottomenu">
+    <span class="voceAttiva">Lavorazioni eseguite per Conto Terzi</span> 
+    <!-- @@blkVISUALIZZA_CONTOTERZI-->
+    <a href="javascript: dettaglio();">dettaglio</a>
+    <a href="../xls/lavorazioni_per_conto_terzi_storico.xls" onclick="return checkForXls()">esporta dati</a>
+<!-- @@blkVISUALIZZA_CONTOTERZI-->
+<!-- @@blkAGGIORNA_LAV_PER_CONTOTERZI-->
+    <a href="javascript: modifica()">modifica</a>
+    <a href="javascript: elimina()">elimina</a>
+    <a href="javascript: inserisci()" id="inserisci">inserisci</a>
+    <a href="javascript: allegaFattura()" id="allega">allega fattura</a>
+<!-- @@blkAGGIORNA_LAV_PER_CONTOTERZI-->
+  </div>
+</div>
+ <!-- @@blkMenuDittaUMA -->
+<!-- @@blkMenuAssegnazione -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante</a></span></div>
+<!-- @@blkMenuAssegnazione -->
+<!-- @@blkMenuBuoni -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span></div>
+<!-- @@blkMenuBuoni -->
+<!-- @@blkMenuMacchine -->
+              <div class="menu"> <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span></div>
+<!-- @@blkMenuMacchine -->
+</td>
+            <td><!-- cella di destra, contiene i "tabelloni"-->
+               <p class="datiazienda">azienda selezionata </p>
+
+              <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+                <p class="datiaziendaB">Ditta N. $$umaNumAzienda /$$umaTipoDitta</p>
+              <p class="datiazienda"> provincia di competenza $$umaProvinciaDitta</p>
+        <br>
+          <table class="data">		
+				<tr>
+                    <th>Anno di riferimento:</th>
+					<td colspan="3">
+						<select name="annoRiferimento" onChange="javascript:ricarica()"  $$disabled>
+							@@blkComboAnno
+							<option value="$$idAnnoRiferimento" $$annoRiferimentoSel>$$annoRiferimentoDesc</option>
+							@@blkComboAnno
+						</select>					</td>
+                  </tr>
+                  
+                  <tr>
+                    <th> CUAA</th>
+                    <td>
+                    	 <input type="text" name="cuaaFiltroStr" class="med" value="$$cuaaFiltroStr" >
+                      	$$err_cuaaFiltroStr                    </td>
+                  
+                    <th><input type="hidden" name="extIdAxienda" value="$$extIdAxienda">
+                      Partita IVA</th>
+                    <td> <input type="text" name="partitaIvaFiltroStr" class="med" value="$$partitaIvaFiltroStr">
+                      $$err_partitaFiltroIvaStr </td> 
+                  </tr>
+                  <tr>
+                    <th>Denominazione</th>
+                    <td> <input type="text" name="denominazioneFiltroStr" class="long" value="$$denominazioneFiltroStr" >
+                      $$err_denominazioneFiltroStr </td>
+                
+                    <td colspan="2"> <input type="checkbox" name="storico" value="storico" checked >
+                      <strong>Visualizza variazioni storiche</strong></td>
+                 </tr>
+                </table>
+                
+          <div class="bottone"><a href="javascript: checkStorico()" class="pulsante">aggiorna </a></div>
+          
+                 <div class="paginazione">
+                  @@prev<a href="javascript: setFilter();goToLine($$prevPage)" class="pulsante">&lt;&lt;</a>@@prev
+                  pag.$$currentPage di $$maxPage @@next<a href="javascript: setFilter();goToLine($$nextPage)" class="pulsante" >&gt;&gt;</a>@@next
+                 </div>
+          
+				<div class="alert-info">
+                  Le lavorazioni evidenziate in rosso sono state indicate a preventivo dalle singole aziende clienti
+                </div>
+   
+					
+				<br>
+				@@blkNoLavorazioni
+				<div class="alert-danger">
+				Nessuna lavorazione indicata
+				</div>
+				@@blkNoLavorazioni
+				
+				@@blkSiLavorazioni
+				<div class="alert-info">
+				L'azienda per la campagna $$campagna ha effettuato le seguenti lavorazioni per le aziende elencate:
+				</div>
+				@@blkSiLavorazioni
+				
+				<div class="scroll">
+					<table class="dataCol">
+					@@blkIntestazione
+					<tr>
+					  <td>&nbsp;</td>
+					  <th>CUAA</th>
+					  <th>Denominazione</th>
+					  <th>Lavorazione</th>
+					  <th>Cons. amm. (lt)</th>
+            <th>Cons. calc.(lt)</th>
+            <th>Cons. dich. (lt)</th>
+            <th>Ecc. (lt)</th>
+					  <th>Partita IVA</th>
+					  <th>Sede legale</th>
+					  <th>Indirizzo sede legale</th>
+					  <th>Uso del suolo</th>
+					  <th>U.d.M.</th>
+					  <th>Sup.(ha) / Ore / Peso(t) / Pot.(kw) Fattura</th>
+                      <th>Sup.(ha) / Pot.(kw) Fascicolo</th>
+					  <th>N. Fatture</th>
+					  <th>Inizio validità</th>
+					  <th>Fine validità</th>
+					  <th>Cessazione</th>
+					</tr>
+					@@blkIntestazione
+					
+					@@blkDati
+					
+					@@blkLavorazione
+					<tr>
+					  <td> <input type="checkbox" name="checkbox" value="$$idLavContoTerzi" $$checked>
+					  </td>
+					  <td>$$cuaa</td>
+					  <td>$$denominazione</td>
+					  <td>$$lavorazione</td>
+					  <td>$$gasolio</td>
+					  <td>$$consumoCalcolato</td>
+            <td>$$consumoDichiarato</td>
+            <td>$$eccedenza</td>
+					  <td>$$partitaIva</td>
+					  <td>$$sedeLegale</td>
+					  <td>$$indirizzoSedeLegale</td>
+					  <td>$$usoDelSuolo</td>
+					  <td>$$unitaDiMisura</td>
+					  <td>$$supOreFattura</td>
+					  <td>$$supOre</td>
+					  <td>$$fatture</td>
+					  
+					  <td>$$inizioValidita</td>
+					  <td>$$fineValidita</td>
+					  <td>$$dataCessazione</td>
+					</tr>
+					@@blkLavorazione
+					<tr>
+					  <td colspan="4" class="text-right"><strong>TOTALE:</strong></td>
+					  <td class="text-right"><strong>$$totaleGasolioCalc</strong></td>
+					  <td class="text-right"><strong>$$totaleConsCalc</strong></td>
+					  <td class="text-right"><strong>$$totaleConsDich</strong></td>
+					  <td class="text-right"><strong>$$totaleEccedenza</strong></td>
+					  <td colspan="11" class="text-right">&nbsp;</td>
+					</tr>
+					<!-- @@blkVisTotDichiarato  -->
+					<tr >
+					  <td colspan="4" class="text-right"><strong>TOTALE DICHIARATO:</strong></td>
+					  <td colspan="2" class="text-right">&nbsp;</td>
+					  <td colspan="1" class="text-right"><strong>$$totaleGasolioDich</strong></td>
+					  <td colspan="12" class="text-right">&nbsp;</td>
+					</tr>
+					<!-- @@blkVisTotDichiarato  -->
+					@@blkDati
+					</table>
+					
+				</div>
+        </td>
+          </tr>
+        </table>
+        <!-- fine della tabella a due colonne -->
+    </div>
+   <div id="hiddenElement"><!-- necessario per l'invio dei dati --></div>
+  </form>
+        <form action="elencoLavContoTerziBis.htm" method="post" name="paginazione">
+          <input type="hidden" name="startRow" value="">
+          <input type="hidden" name="annoRiferimento" value="">
+          <input type="hidden" name="cuaaFiltroStr" value="">
+          <input type="hidden" name="partitaIvaFiltroStr" value="">
+          <input type="hidden" name="denominazioneFiltroStr" value="">
+        </form>
+  	<footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>
+

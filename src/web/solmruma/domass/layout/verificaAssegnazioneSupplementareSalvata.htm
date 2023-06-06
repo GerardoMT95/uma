@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" />
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+<script src="/staticresources/js/checktext.js"></script>
+<script language="javascript1.2">
+          function dettaglio()
+          {
+            var oldAction=document.form1.action;
+            document.form1.action="../layout/carburanteAssegnabile.htm";
+            document.form1.submit();
+            document.form1.action=oldAction;
+          }
+          function pop(page,w,h,target)
+          {
+            var winl = (screen.width - w) / 2;
+            var wint = (screen.height - h) / 2;
+            winprops =    'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars=yes,resizable=yes';
+            win = window.open(page, target, winprops);
+            if (parseInt(navigator.appVersion) >= 4)
+            {
+              win.window.focus();
+            }
+          }
+</script>
+$$messaggistica</head>
+<body onLoad="$$err_error">
+<form name="form1" method="post" action="$$pageFrom">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+  <div id="titoloEmenu">
+    <h2> UMA - Utenti motori agricoli </h2>
+    <p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+  </div>
+  <div id="corpo">
+    <div id="navi">
+     <a href="../../layout/index.htm">utenti motori agricoli </a> &gt;
+      assegnazione carburante &gt; assegnazione supplementare
+      $$annoCorrente </div>
+    <!-- tabella a due colonne per il contenuto -->
+    <table id="contenuto">
+      <tr>
+        <td class="elenco"><!-- cella che contiene i menu -->
+          <div class="menu">
+            <!-- @@blkRICERCA_DITTA -->
+            <a href="../../anag/layout/ricercaAzienda.htm">Ricerca ditta UMA</a>
+            <!-- @@blkRICERCA_DITTA -->
+            <!-- @@blkAZIENDE_TITOLARE -->
+            <a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco ditte</a>
+            <!-- @@blkAZIENDE_TITOLARE -->
+            <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+            <a href="../../macchina/layout/ricercaMacchina.htm">Ricerca  macchina</a>
+            <!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+            <!-- @@blkNUOVA_DITTA -->
+            <a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova ditta UMA</a>
+            <!-- @@blkNUOVA_DITTA -->
+            <!-- @@blkSTAMPA_ELENCHI -->
+            <a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+            <!-- @@blkSTAMPA_ELENCHI -->
+            <!-- @@blkMenuDatiSistema -->
+            <a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+            <!-- @@blkMenuDatiSistema -->
+          </div>
+          <!-- @@blkMenuDittaUMA -->
+          <div class="menu">
+           <span class="etichettamenu"><a href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a></span> </div>
+          <!-- @@blkMenuDittaUMA -->
+          <!-- @@blkMenuAssegnazione -->
+          <div class="menu">
+           <span class="etichettamenu"> <a href="../../domass/layout/assegnazioni.htm">Assegnazione carburante</a></span>
+            <!--@@blkASSEGNAZIONE_SUPPLEMENTO -->
+            <span class="inattivo">assegnazione supplementare $$annoDiRiferimento</span>
+            <!--	@@blkASSEGNAZIONE_SUPPLEMENTO -->
+            
+            <!--@@blkASSEGNAZIONE_SUPPLEMENTOMAGGIORAZIONE -->
+  				<span class="inattivo">$$titoloMaggiorazione</span>  
+			<!--@@blkASSEGNAZIONE_SUPPLEMENTOMAGGIORAZIONE --> 
+          </div>
+          <!-- @@blkMenuAssegnazione -->
+          <!-- @@blkMenuBuoni -->
+          <div class="menu">
+           <span class="etichettamenu"><a href="../../domass/layout/elencoBuoniEmessi.htm">Buoni di prelievo</a></span>
+           </div>
+          <!-- @@blkMenuBuoni -->
+          <!-- @@blkMenuMacchine -->
+          <div class="menu">
+           <span class="etichettamenu"><a href="../../macchina/layout/elencoMacchine.htm">Macchine</a></span>
+          </div>
+          <!-- @@blkMenuMacchine -->
+        </td>
+        <td><!-- cella di destra, contiene i "tabelloni"-->
+          <p class="datiazienda">azienda selezionata</p>
+          <p class="datiaziendaB">$$umaDittaCUAA - $$umaNomeAzienda</p>
+          <p class="datiaziendaB">Ditta N. $$umaNumAzienda /$$umaTipoDitta</p>
+          <p class="datiazienda">provincia di competenza  $$umaProvinciaDitta</p>
+          <input type="hidden" name="fromVerificaAssegnazione" value="1">
+          <input type="hidden" name="pageFrom" value="$$pageFrom">
+          <input type="hidden" name="idDomAss" value="$$idDomandaAssegnazione">
+          <input type="hidden" name="idDomandaAssegnazione" value="$$idDomandaAssegnazione">
+          <input type="hidden" name="idDomandaassegnazione" value="$$idDomandaAssegnazione">
+          <input type="hidden" name="carbLavorazione" value="$$carbLavorazione">
+          <input type="hidden" name="carbAllevamento" value="$$carbAllevamento">
+          <input type="hidden" name="totLavorazAllevam" value="$$totLavorazAllevam">
+          <input type="hidden" name="carbAssegnato" value="$$carbAssegnato">
+          <input type="hidden" name="quantMaxAssLavorazAllevam" value="$$quantMaxAssLavorazAllevam">
+          <input type="hidden" name="quantMaxAssMietitrebb" value="$$quantMaxAssMietitrebb">
+          <input type="hidden" name="quantMaxAssEssicaz" value="$$quantMaxAssEssicaz">
+          <input type="hidden" name="quantMaxAssContoProp" value="$$quantMaxAssContoProp">
+          <input type="hidden" name="quantMaxAssContoPropSuccess" value="$$quantMaxAssContoPropSuccess">
+          <input type="hidden" name="percAssContoPropSuccess" value="$$percAssContoPropSuccess">
+          <input type="hidden" name="dataRif" value="$$dataRif">
+          <input type="hidden" name="altreMacchine" value="$$altreMacchine">
+          <input type="hidden" name="quantMaxAssRiscaldam" value="$$quantMaxAssRiscaldam">
+          <input type="hidden"name="quantMaxAssContoProprio" value="$$quantMaxAssContoProprio">
+          <input type="hidden" name="quantMaxAssSerre" value="$$quantMaxAssSerre">
+          <input type="hidden" name="numeroSupplemento" value="$$numeroSupplemento">
+          
+          <!-- @@blkTitoloAssSuppl -->
+            <h4>ASSEGNAZIONE SUPPLEMENTARE: $$annoCorrente</h4>
+          <!-- @@blkTitoloAssSuppl -->
+          <!-- @@blkTitoloAssSupplementareMaggiorazione -->
+           	 <h4>$$titoloAssSupplMagg</h4>
+          <!-- @@blkTitoloAssSupplementareMaggiorazione -->
+         
+          <!--@@blkTestoBO-->
+          <div class="alert-warning"> Controllare i dati della domanda di assegnazione e confermarli
+            con il pulsante "Trasmetti all'ufficio UMA" per trasmetterli
+            all'ufficio UMA della provincia competente<br>
+          </div>
+          <!--@@blkTestoBO-->
+        
+          <table class="data">
+          <col width="40%" />
+          <col width="60%" />
+             <tr>
+              <th>Quantitativo massimo assegnabile conto proprio</th>
+              <td>$$quantMaxAssContoProprio</td>
+            </tr>
+            <tr>
+              <th>Quantitativo massimo assegnabile serre</th>
+              <td>$$quantMaxAssSerre</td>
+            </tr>
+          </table>
+          <br>
+          <table class="dataCol">
+            <tr>
+              <td></td>
+              <th>GASOLIO</th>
+              <th colspan="2">BENZINA</th>
+            </tr>
+            <tr>
+              <td><h3>Rimanenza attuale:</h3></td>
+              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Rimanenza Conto Proprio</strong></td>
+              <td>$$rimanenzaContoProprioGasolio
+                <input type="hidden" value="$$rimanenzaContoProprioGasolio"
+												name="rimanenzaContoProprioGasolio">
+              </td>
+              <td colspan="2">$$rimanenzaContoProprioBenzina
+                <input type="hidden" value="$$rimanenzaContoProprioBenzina"
+												name="rimanenzaContoProprioBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Rimanenza Conto Terzi</strong></td>
+              <td>$$rimanenzaContoTerziGasolio
+                <input type="hidden" value="$$rimanenzaContoTerziGasolio"
+												name="rimanenzaContoTerziGasolio">
+              </td>
+              <td colspan="2">$$rimanenzaContoTerziBenzina
+                <input
+												type="hidden" value="$$rimanenzaContoTerziBenzina"
+												name="rimanenzaContoTerziBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Totale</strong></td>
+              <td>$$totRimanenzaGasolio</td>
+              <td colspan="2">$$totRimanenzaBenzina</td>
+            </tr>
+            <tr>
+              <td><h3>Assegnazione netta:</h3></td>
+              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Conto Proprio</strong></td>
+              <td>$$assNettaContoProprioGasolio
+                <input type="hidden"
+												value="$$assNettaContoProprioGasolio"
+												name="assNettaContoProprioGasolio">
+              </td>
+              <td colspan="2">$$assNettaContoProprioBenzina
+                <input
+												type="hidden" value="$$assNettaContoProprioBenzina"
+												name="assNettaContoProprioBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Conto Terzi</strong></td>
+              <td>$$assNettaContoTerziGasolio
+                <input type="hidden"
+												value="$$assNettaContoTerziGasolio"
+												name="assNettaContoTerziGasolio">
+              </td>
+              <td colspan="2">$$assNettaContoTerziBenzina
+                <input
+												type="hidden" value="$$assNettaContoTerziBenzina"
+												name="assNettaContoTerziBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Riscaldamento Serre</strong></td>
+              <td>$$assNettaRiscSerraGasolio
+                <input type="hidden"
+												value="$$assNettaRiscSerraGasolio"
+												name="assNettaRiscSerraGasolio">
+              </td>
+              <td colspan="2">$$assNettaRiscSerraBenzina
+                <input
+												type="hidden" value="$$assNettaRiscSerraBenzina"
+												name="assNettaRiscSerraBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Totale</strong></td>
+              <td>$$totAssNettaGasolio</td>
+              <td colspan="2">$$totAssNettaBenzina</td>
+            </tr>
+            <tr>
+              <td><h3>Assegnazioni supplementari precedenti:</h3></td>
+              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Conto Proprio</strong></td>
+              <td>$$assSupplPrecContoProprioGasolio
+                <input
+												type="hidden" value="$$assSupplPrecContoProprioGasolio"
+												name="assSupplPrecContoProprioGasolio">
+              </td>
+              <td colspan="2">$$assSupplPrecContoProprioBenzina
+                <input
+												type="hidden" value="$$assSupplPrecContoProprioBenzina"
+												name="assSupplPrecContoProprioBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Conto Terzi</strong></td>
+              <td>$$assSupplPrecContoTerziGasolio
+                <input type="hidden" value="$$assSupplPrecContoTerziGasolio"
+												name="assSupplPrecContoTerziGasolio">
+              </td>
+              <td colspan="2">$$assSupplPrecContoTerziBenzina
+                <input type="hidden" value="$$assSupplPrecContoTerziBenzina"
+												name="assSupplPrecContoTerziBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Riscaldamento Serre</strong></td>
+              <td>$$assSupplPrecRiscSerraGasolio
+                <input type="hidden" value="$$assSupplPrecRiscSerraGasolio"
+												name="assSupplPrecRiscSerraGasolio">
+              </td>
+              <td colspan="2">$$assSupplPrecRiscSerraBenzina
+                <input 	type="hidden" value="$$assSupplPrecRiscSerraBenzina" name="assSupplPrecRiscSerraBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Totale</strong></td>
+              <td>$$totAssSupplPrecGasolio</td>
+              <td colspan="2">$$totAssSupplPrecGasolio</td>
+            </tr>
+            <tr>
+              <td><h3>Nuova Assegnazione Supplementare :</h3></td>
+              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Conto Proprio</strong></td>
+              <td>$$assSupplContoProprioGasolio
+                <input type="hidden"
+												value="$$assSupplContoProprioGasolio"
+												name="assSupplContoProprioGasolio">
+              </td>
+              <td colspan="2">$$assSupplContoProprioBenzina
+                <input
+												type="hidden" value="$$assSupplContoProprioBenzina"
+												name="assSupplContoProprioBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Conto Terzi</strong></td>
+              <td>$$assSupplContoTerziGasolio
+                <input type="hidden"
+												value="$$assSupplContoTerziGasolio"
+												name="assSupplContoTerziGasolio">
+              </td>
+              <td colspan="2">$$assSupplContoTerziBenzina
+                <input
+												type="hidden" value="$$assSupplContoTerziBenzina"
+												name="assSupplContoTerziBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Riscaldamento Serre</strong></td>
+              <td>$$assSupplRiscSerraGasolio
+                <input type="hidden"
+												value="$$assSupplRiscSerraGasolio"
+												name="assSupplRiscSerraGasolio">
+              </td>
+              <td colspan="2">$$assSupplRiscSerraBenzina
+                <input
+												type="hidden" value="$$assSupplRiscSerraBenzina"
+												name="assSupplRiscSerraBenzina">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Totale</strong></td>
+              <td>$$totAssSupplGasolio</td>
+              <td colspan="2">$$totAssSupplBenzina</td>
+            </tr>
+            <tr>
+              <td><h3>Motivazione Supplemento :</h3></td>
+              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Tipo Supplemento</strong></td>
+              <td colspan="3">$$descTipiSupplemento
+                <input
+												type="hidden" value="$$tipiSupplemento"
+												name="tipiSupplemento">
+                <input type="hidden"
+												value="$$descTipiSupplemento" name="descTipiSupplemento">
+              </td>
+            </tr>
+            <tr rowspan="3">
+              <td class="text-right"><strong>Motivazione</strong></td>
+              <td colspan="3">$$motivazioneSupplemento
+                <input
+												type="hidden" value="$$motivazioneSupplemento"
+												name="motivazioneSupplemento">
+              </td>
+            </tr>
+          </table>
+          <br>
+          <table>
+            <!--@@blk_BO-->
+            <tr>
+              <td colspan="2" class="bottone"></td>
+              <td colspan="2" class="bottone"></td>
+            </tr>
+            <!--@@blk_BO-->
+          </table>
+          <!--@@blk_FO-->
+          <div class="bottone">
+            <div class="left">
+              <input type="submit" name="indietro.x" value="indietro">
+            </div>
+            <div class="right">
+              <input type="submit" name="trasmetti.x" value="trasmetti all'ufficio UMA">
+            </div>
+          </div>
+          <!--@@blk_FO-->
+    </table>
+    </td>
+    </tr>
+    </table>
+    <!-- fine della tabella a due colonne -->
+  </div>
+</form>
+<footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <hr />
+    <a name="footer"></a>
+    <div class="custom footerCsi row-fluid">
+      <div class="span3 col-sm-3"> <a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+      <div class="span9 col-sm-9"> Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

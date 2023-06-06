@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+		
+		<script src="/staticresources/js/checktext.js"></script>
+		<script language="JavaScript">
+<!--
+    /*function clearData()
+        {
+          var visPartitaIVA=document.getElementById("visPartitaIVA");
+          var visDenominazione=document.getElementById("visDenominazione");
+          var visIndirizzo=document.getElementById("visIndirizzo");
+          var visRappresentanteLegale=document.getElementById("visRappresentanteLegale");
+          visPartitaIVA.innerHTML="";
+          visDenominazione.innerHTML="";
+          visIndirizzo.innerHTML="";
+          visRappresentanteLegale.innerHTML="";
+          document.form1.partitaIVABak.value="";
+          document.form1.ragioneSocialeBak.value="";
+          document.form1.partitaIVA.value="";
+          document.form1.ragioneSociale.value="";
+          document.form1.idSocietaLeasing.value="";
+          document.form1.dataScadenzaLeasing.value="";
+    }*/
+
+    function checkDati()
+    {
+      var ragioneSociale=document.form1.ragioneSociale.value;
+      var ragioneSocialeBak=document.form1.ragioneSocialeBak.value;
+      var partitaIVA=document.form1.partitaIVA.value;
+      var partitaIVABak=document.form1.partitaIVABak.value;
+      if (ragioneSociale!=ragioneSocialeBak || partitaIVA!=partitaIVABak)
+      {
+        alert("La ragione sociale e/o la partita iva non corrispondono alla ditta di leasing selezionata tramite il pulsante cerca");
+        return false;
+      }
+    }
+
+    function findLeasing()
+    {
+      var w=640;
+      var h=480;
+      var wint = (screen.width - w) / 2;
+      var winl = (screen.height - h) / 2;
+      wint = wint - 40;
+      window.open('elencoSocietaLeasing.htm?partitaIVA='+document.form1.partitaIVA.value+'&ragioneSociale='+document.form1.ragioneSociale.value,'elencoSocieta','scrollbars=yes,resizable=yes,top='+wint+',left='+winl+',width=640,height=480,status=no,location=no,toolbar=no');
+    }
+
+    /*function checkCombo()
+    {
+      var combo=document.form1.idFormaPossesso;
+      var index=combo[combo.selectedIndex].value;
+      showLeasing(index=="4");
+    }
+    
+    function showLeasing(show)
+    {
+      var textScadenza=document.getElementById("textScadenza");
+      var textDitta=document.getElementById("textDitta");
+      var textDatiAzienda=document.getElementById("textDatiAzienda");
+      var sceltaScadenza=document.getElementById("sceltaScadenza");
+      var sceltaDitta=document.getElementById("sceltaDitta");
+      var datiAzienda=document.getElementById("datiAzienda");
+      if (show)
+      {
+        textScadenza.style.visibility="visible";
+        textDitta.style.visibility="visible";
+        textDatiAzienda.style.visibility="visible";
+        sceltaScadenza.style.visibility="visible";
+        sceltaDitta.style.visibility="visible";
+        datiAzienda.style.visibility="visible";
+      }
+      else
+      {
+        clearData();
+        textScadenza.style.visibility="hidden";
+        textDitta.style.visibility="hidden";
+        textDatiAzienda.style.visibility="hidden";
+        sceltaScadenza.style.visibility="hidden";
+        sceltaDitta.style.visibility="hidden";
+        datiAzienda.style.visibility="hidden";
+      }
+    }*/
+    
+    
+    function checkCombo()
+    {
+      var combo=document.form1.idFormaPossesso;
+      var formaPossesso=combo[combo.selectedIndex].value;
+      showCampiNascosti(formaPossesso);
+    }
+    
+    
+    function showCampiNascosti(formaPossesso)
+    {
+      var textScadenza=document.getElementById("textScadenza");
+      var textDitta=document.getElementById("textDitta");
+      //var textDatiAzienda=document.getElementById("textDatiAzienda");
+      var sceltaScadenza=document.getElementById("sceltaScadenza");
+      var sceltaDitta=document.getElementById("sceltaDitta");
+      var datiAzienda=document.getElementById("datiAzienda");
+      
+      // Attenzione : se dataScarico e' valorizzata i campi del 'Possesso' verranno tutti disabilitati dalla View
+      
+      // --- formaPossesso = 'leasing'
+      if (formaPossesso != "" && formaPossesso == "4") 
+      {
+        textScadenza.style.visibility="visible";
+        textDitta.style.visibility="visible";
+        sceltaScadenza.style.visibility="visible";
+        sceltaDitta.style.visibility="visible";
+        datiAzienda.style.display="";        
+      }
+      else
+      {
+        // --- formaPossesso = 'noleggio', 'comodato d'uso', 'prestiti d'uso'
+        if(formaPossesso != "" && (formaPossesso == "3" || formaPossesso =="5" || formaPossesso =="6" ))
+        {        
+          clearData2();
+          
+          textScadenza.style.visibility="visible";
+          sceltaScadenza.style.visibility="visible";
+                   
+          textDitta.style.visibility="hidden";
+          sceltaDitta.style.visibility="hidden";
+          datiAzienda.style.display="none";
+        } 
+        else
+        {
+          clearData();
+          textScadenza.style.visibility="hidden";
+          textDitta.style.visibility="hidden";
+          sceltaScadenza.style.visibility="hidden";
+          sceltaDitta.style.visibility="hidden";
+          datiAzienda.style.display="none";
+        }
+      }
+    }
+    
+    
+    function clearData()
+    {
+      var visPartitaIVA=document.getElementById("visPartitaIVA");
+      var visDenominazione=document.getElementById("visDenominazione");
+      var visIndirizzo=document.getElementById("visIndirizzo");
+      var visRappresentanteLegale=document.getElementById("visRappresentanteLegale");
+      visPartitaIVA.innerHTML="";
+      visDenominazione.innerHTML="";
+      visIndirizzo.innerHTML="";
+      visRappresentanteLegale.innerHTML="";
+      document.form1.partitaIVABak.value="";
+      document.form1.ragioneSocialeBak.value="";
+      document.form1.partitaIVA.value="";
+      document.form1.ragioneSociale.value="";
+      document.form1.idSocietaLeasing.value="";
+      document.form1.dataScadenzaLeasing.value="";
+    }
+    
+    function clearData2()
+    {
+      var visPartitaIVA=document.getElementById("visPartitaIVA");
+      var visDenominazione=document.getElementById("visDenominazione");
+      var visIndirizzo=document.getElementById("visIndirizzo");
+      var visRappresentanteLegale=document.getElementById("visRappresentanteLegale");
+      visPartitaIVA.innerHTML="";
+      visDenominazione.innerHTML="";
+      visIndirizzo.innerHTML="";
+      visRappresentanteLegale.innerHTML="";
+      document.form1.partitaIVABak.value="";
+      document.form1.ragioneSocialeBak.value="";
+      document.form1.partitaIVA.value="";
+      document.form1.ragioneSociale.value="";
+      document.form1.idSocietaLeasing.value="";      
+    }
+
+    
+
+    function showTarga(show)
+    {
+      var radioMc824=document.form1.mc824;
+      var textCambioTarga=document.getElementById("textCambioTarga");
+      var sceltaTarga=document.getElementById("sceltaTarga");
+      var textMc824=document.getElementById("textMc824");
+      var sceltaMc824=document.getElementById("sceltaMc824");
+      var numeroTarga1=document.getElementById("numeroTarga1");
+      var numeroTarga2=document.getElementById("numeroTarga2");
+      var numeroTarga3=document.getElementById("numeroTarga3");
+      var numeroTarga4=document.getElementById("numeroTarga4");
+      if (show)
+      {
+        textCambioTarga.style.visibility="visible";
+        sceltaTarga.style.visibility="visible";
+        textMc824.style.visibility="visible";
+        sceltaMc824.style.visibility="visible";
+        numeroTarga1.style.visibility="visible";
+        numeroTarga2.style.visibility="visible";
+        numeroTarga3.style.visibility="visible";
+        numeroTarga4.style.visibility="visible";
+      }
+      else
+      {
+        textCambioTarga.style.visibility="hidden";
+        sceltaTarga.style.visibility="hidden";
+        textMc824.style.visibility="hidden";
+        sceltaMc824.style.visibility="hidden";
+        numeroTarga1.style.visibility="hidden";
+        numeroTarga2.style.visibility="hidden";
+        numeroTarga3.style.visibility="hidden";
+        numeroTarga4.style.visibility="hidden";
+      }
+    }
+
+    function init()
+    {
+      showTarga(document.form1.nuovaTarga[0].checked);
+      checkCombo();
+      switchTarga("$$radioTarga");
+    }
+
+  //Abilita la casella di testo per la targa
+  function switchTarga(value)
+  {
+    if(value == "auto" || value=="")
+    {
+      document.form1.nuovoNumeroTarga.value='';
+      document.form1.nuovoNumeroTarga.disabled = true;
+      document.form1.radioTarga[0].checked =  true;
+    }
+    if(value == "spec")
+    {
+      document.form1.nuovoNumeroTarga.disabled = false;
+      document.form1.radioTarga[1].checked =  true;
+    }
+  }
+
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+//-->
+</script>
+		
+		
+	$$messaggistica</head>
+	<body onLoad="init();$$err_error">
+<div id="portalHeader">
+  <noscript class="alert_js">
+  <p>ATTENZIONE! Il browser in uso non supporta le applicazioni Javascript.<br />
+    Per usufruire in maniera completa di alcuni servizi presenti in RuparTOBECONFIG,
+    potrebbe essere necessario l&acute;utilizzo dei Javascript.</p>
+  </noscript>
+  <!--<div id="intestazione">-->
+  <div class="row-fluid menupaprivati">
+    <ul class="nav menu pull-right">
+      <li class="active parent"> </li>
+    </ul>
+    <ul class="nav menu pull-right">
+      <li class="parent"> </li>
+    </ul>
+    <ul class="nav menu menuTopSx pull-left">
+      <li> </li>
+      <li>  </li>
+    </ul>
+  </div>
+  <div class="header">
+    <h1>Regione TOBECONFIG</h1>
+  </div>
+</div>
+<div id="titoloEmenu">
+					<h2>
+						UMA - Utenti motori agricoli
+					</h2>
+					<p class="grigio"> utente: $$utente <span class="ente"> ente: $$ente</span></p>
+				</div>
+                
+                 <div id="corpo">   
+    
+    
+    
+		<form name="form1"
+			action="macchinaUsataTrovataUtilizzoCasoMatrice.htm" method="post">
+			<input type="hidden" name="idSocietaLeasing" value="$$idAzienda">
+			<input type="hidden" name="partitaIVABak" value="$$partitaIVA">
+			<input type="hidden" name="ragioneSocialeBak"
+				value="$$ragioneSociale">
+			
+							<div id="navi">
+								<a href="../../layout/index.htm">utenti motori agricoli </a>
+								&gt; macchine &gt; acquisto macchina usata
+							</div>
+							<!-- tabella a due colonne per il contenuto -->
+							<table id="contenuto">
+       <tr>
+             <td class="elenco">
+										<!-- cella che contiene i menu -->
+										
+										<div class="menu">
+											<!-- @@blkRICERCA_DITTA -->
+											<a href="../../anag/layout/ricercaAzienda.htm">Ricerca
+												ditta UMA</a>
+											<!-- @@blkRICERCA_DITTA -->
+											<!-- @@blkAZIENDE_TITOLARE -->
+											<a href="../../anag/layout/elencoAziendeRapLegale.htm">Elenco
+												ditte</a>
+											<!-- @@blkAZIENDE_TITOLARE -->
+											<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+											<a href="../../macchina/layout/ricercaMacchina.htm">Ricerca
+												macchina</a>
+											<!-- @@blkVISUALIZZA_DATI_MACCHINA -->
+											<!-- @@blkNUOVA_DITTA -->
+											<a href="../../ditta/layout/nuovaDittaUmaAnagrafica.htm">Nuova
+												ditta UMA</a>
+											<!-- @@blkNUOVA_DITTA -->
+											<!-- @@blkSTAMPA_ELENCHI -->
+											<a href="../../layout/stampaElenchi.htm">Stampa elenchi</a>
+											<!-- @@blkSTAMPA_ELENCHI -->
+											<!-- @@blkMenuDatiSistema -->
+											<a href="../../layout/dati_sistema.htm">Dati di sistema</a>
+											<!-- @@blkMenuDatiSistema -->
+										</div>
+										 <!--						 @@blkMenuDittaUMA -->
+										<div class="menu">
+											<span class="etichettamenu"><a
+												href="../../anag/layout/dettaglioAzienda.htm">Ditta UMA</a>
+											</span>
+										</div>
+										<!-- @@blkMenuDittaUMA -->
+										<!-- @@blkMenuAssegnazione -->
+										<div class="menu">
+											<span class="etichettamenu"><a
+												href="../../domass/layout/assegnazioni.htm">Assegnazione
+													carburante</a>
+											</span>
+										</div>
+										<!-- @@blkMenuAssegnazione -->
+										<!-- @@blkMenuBuoni -->
+										<div class="menu">
+											<span class="etichettamenu"><a
+												href="../../domass/layout/elencoBuoniEmessi.htm">Buoni
+													di prelievo</a>
+											</span>
+										</div>
+										<!-- @@blkMenuBuoni -->
+										<!-- @@blkMenuMacchine -->
+										<div class="menu">
+											<span class="etichettamenu"><a
+												href="../layout/elencoMacchine.htm">Macchine</a>
+											</span>
+											<!-- @@blkGESTIONE_MACCHINA -->
+											<span class="inattivo">Acquisto macchina usata</span>
+										</div>
+										<!-- @@blkGESTIONE_MACCHINA -->
+										<!-- @@blkMenuMacchine -->
+									</td>
+									<td>
+										<!-- cella di destra, contiene i "tabelloni"-->
+										<p class="datiazienda">
+											azienda selezionata
+										</p>
+
+										<p class="datiaziendaB">
+											$$umaDittaCUAA - $$umaNomeAzienda
+										</p>
+										<p class="datiaziendaB">
+											Ditta N. $$umaNumAzienda /$$umaTipoDitta
+										</p>
+										<p class="datiazienda">
+											provincia di competenza $$umaProvinciaDitta
+										</p>
+										<br>
+										<table>		
+											<tr>
+												<td>
+													<p class="etichette">
+														&nbsp;Caratteristiche
+														tecniche&nbsp;
+													</p>
+													<p class="etichette">
+														&nbsp;Immatricolazione/Utilizzo&nbsp;
+													</p>
+												</td>
+											</tr>
+										</table>
+										<table class="data">
+											
+											
+											<tr>
+												<td>
+													Genere
+												</td>
+												<td>
+													$$descGenereMacchina
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Categoria
+												</td>
+												<td>
+													$$descCategoria
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Marca
+												</td>
+												<td>
+													$$descMarca
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Tipo
+												</td>
+												<td>
+													$$tipoMacchina
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Numero matrice
+												</td>
+												<td>
+													$$numeroMatrice
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<h2>
+														Provenienza:
+													</h2>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Targa di provenienza
+												</td>
+												<td>
+													$$numeroTarga
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Ditta UMA di provenienza
+												</td>
+												<td>
+													$$provincia $$dittaUMA
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<h2>
+														Immatricolazione:
+													</h2>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Assegnare nuova targa
+												</td>
+												<td>
+													<input type="radio" name="nuovaTarga" value="yes"
+														onClick="showTarga(true)" $$checkedNuovaTargaYes>
+													Si
+													<input type="radio" name="nuovaTarga" value="no"
+														onClick="showTarga(false)" $$checkedNuovaTargaNo>
+													No
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div id="textCambioTarga" >
+														Tipo targa *
+													</div>
+												</td>
+												<td>
+													<div id="sceltaTarga" >
+														<input type="radio" name="tipoTarga" value="Stradale"
+															$$checkedStradale $$disabledTipoTarga>
+														Stradale
+														<input type="radio" name="tipoTarga" value="UMA"
+															$$checkedUMA $$disabledTipoTarga>
+														UMA
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div id="numeroTarga1">
+														Numero targa *
+													</div>
+												</td>
+												<td>
+													<div id="numeroTarga2">
+														<input type="radio" name="radioTarga" value="auto"
+															onClick="switchTarga('auto')" checked>
+														Assegnata Automaticamente
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div id="numeroTarga3">
+														&nbsp;
+													</div>
+												</td>
+												<td>
+													<div id="numeroTarga4">
+														<input type="radio" name="radioTarga" value="spec"
+															onClick="switchTarga('spec')">
+														Macchina gi&agrave; dotata di numero targa
+														<input name="nuovoNumeroTarga" value="$$nuovoNumeroTarga"
+															type="text" id="nuovoNumeroTarga">
+														$$err_nuovoNumeroTarga
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div id="textMc824" >
+														MC. 824
+													</div>
+												</td>
+												<td>
+													<div id="sceltaMc824" >
+														<input type="radio" name="mc824" value="S"
+															$$checkMc824Yes $$disableMc824>
+														Si
+														<input type="radio" name="mc824" value="N"
+															$$checkMc824No $$disableMc824>
+														No
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<h2>
+														Utilizzo:
+													</h2>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Forma possesso *
+												</td>
+												<td>
+													<select name="idFormaPossesso" onChange="checkCombo()"
+														class="lista">
+														@@blkTipoFormaPossesso
+														<option value="$$idFormaPossesso" $$selected>
+															$$descrizione
+														</option>
+														@@blkTipoFormaPossesso
+													</select>
+													$$err_idFormaPossesso
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Data carico *
+												</td>
+												<td>
+													<input type="text" name="dataCarico" size="10"
+														value="$$dataCarico" maxlength="10">
+													$$err_dataCarico
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div id="textScadenza" >
+														Data scadenza contratto
+													</div>
+												</td>
+												<td>
+													<div id="sceltaScadenza" >
+														<input type="text" name="dataScadenzaLeasing"
+															value="$$dataScadenzaLeasing" size="10" maxlength="10">
+														$$err_dataScadenzaLeasing
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div id="textDitta" >
+														Ditta di leasing o noleggio*
+													</div>
+												</td>
+												<td>
+													<div id="sceltaDitta" >
+														Partita I.V.A.
+														<input type="text" name="partitaIVA" size="8"
+															value="$$partitaIVA" maxlength="11">
+														Ragione sociale
+														<input type="text" name="ragioneSociale" size="10"
+															value="$$ragioneSociale" maxlength="120">
+														$$err_idSocietaLeasing
+														<a href="javascript: findLeasing();" class="pulsante"
+															>cerca</a>
+													</div>
+												</td>
+											</tr>
+										</table>
+										<br>
+										<table class="data" id="datiAzienda">
+										  <tr>
+                        <td colspan="2"><h2>Ditta locataria selezionata</h2></td>
+                      </tr>
+											
+											
+											<tr>
+												<td>
+													Partita I.V.A.
+												</td>
+												<td id="visPartitaIVA">
+													$$partitaIVA
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Ragione sociale
+												</td>
+												<td id="visDenominazione">
+													$$denominazione
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Indirizzo
+												</td>
+												<td id="visIndirizzo">
+													$$sedelegIndirizzo $$descComune
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Rappresentante legale
+												</td>
+												<td id="visRappresentanteLegale">
+													$$rappresentanteLegale
+												</td>
+											</tr>
+										</table>
+										<br>
+										<br>
+									
+                                    
+                                             <div class="bottone">
+													<div class="left">
+														<input type="submit" value="indietro" name="indietro">
+													</div>
+												
+												
+                                                
+													<div class="right">
+														<input name="salva" type="submit" value="salva"
+															onClick="return checkDati()">
+													</div>
+												</div>
+									</tr>
+										</table>
+									
+			</form>
+            </div>
+        
+               
+ <footer class="footer" role="contentinfo">
+		<div class="container-fluid">
+			<hr /><a name="footer"></a>
+<div class="custom footerCsi row-fluid">
+	<div class="span3 col-sm-3">
+	<a href="http://www.regione.TOBECONFIG.it"><img alt="regione TOBECONFIG" src="/staticresources/assets/application/psrpratiche/css/images/TOBECONFIG.png" width="180px" /></a></div>
+<div class="span9 col-sm-9">
+	Regione TOBECONFIG - Partita Iva xxxx - Codice fiscale 80002950766 </div<
+</div>
+		</div>
+	</footer>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7226140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+          </body>
+          </html>
+
+

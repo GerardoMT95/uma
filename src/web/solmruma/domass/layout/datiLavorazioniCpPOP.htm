@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<title>Regione TOBECONFIG - Utenti motori agricoli</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="TOBECONFIG" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="index,nofollow" /> 
+<meta name="description" content="Regione TOBECONFIG - Utenti motori agricoli" />
+<meta name="keywords" content="TOBECONFIG,Utenti motori agricoli" />
+<link href="/staticresources/css/srmuma/srmuma.css" rel="stylesheet" type="text/css" media="screen" id="skin" />
+
+    <script src="/staticresources/js/checktext.js"></script>
+        <script language="JavaScript">
+<!--
+function pop(str) {
+        searchWin = window.open(str,'dettaglio','scrollbars=yes,resizable=yes,width=800,height=600,status=no,location=no,toolbar=no');
+}
+//-->
+</script>
+  </head>
+  <body>
+<form name="form1" method="post" action="">
+ <div id="titoloEmenu">
+					<h3>
+						Dati lavorazione
+					</h3>
+</div>
+      <div id="corpo" class="pop">
+      
+          <h4>Anno $$annoDiRiferimento - Lavorazioni Conto Proprio</h4>
+                 
+                <!--@@blkNoLavorazioni-->
+			      <div class="alert-warning">
+					 Nessuna lavorazione indicata
+				   </div> 
+				<!--@@blkNoLavorazioni-->
+                 <!-- @@blkLavorazioni-->
+                     <h3>Elenco lavorazioni Conto Proprio</h3>
+                   <table class="dataCol">
+											<tr>      											
+      											<th scope="col" class="text-center">Uso del suolo</th>
+      											<th scope="col" class="text-center">Lavorazione</th>
+      											<th scope="col" class="text-center">Sup.(ha)/Ore</th>
+      											<th scope="col" class="text-center">U.d.M.</th>
+      											<th scope="col" class="text-center">Numero esecuzioni</th>
+      											<th scope="col" class="text-center">Litri carburante</th>
+      											<th scope="col" class="text-center">Litri base</th>
+      											<th scope="col" class="text-center">Litri medio impasto</th>
+      											<th scope="col" class="text-center">Litri acclività</th>      											
+    										</tr>
+    										<!--@@blkLavContoProprio-->
+											  <tr>											      
+											      <td>$$usoDelSuolo</td>
+											      <td>$$lavorazione</td>
+												  <td>$$superficie</td>
+												  <td>$$unitaMisura</td>
+												  <td class="text-right">$$numEsecuzioni</td>
+												  <td class="text-right">$$litriCarburante</td>
+												  <td class="text-right">$$litriBase</td>
+												  <td class="text-right">$$litriMedioImpasto</td>
+												  <td class="text-right">$$litriAcclivita</td>												  
+											   </tr>
+										  <!--@@blkLavContoProprio-->
+											  <tr>
+													<td colspan="5" class="text-right"><strong>Totale (lt)</strong></td>
+													<td class="text-right">$$totaleLitriCarburante</td>																										
+													<td colspan="3">&nbsp;</td>													  													
+											  </tr>
+										  </table>
+									<!--@@blkLavorazioni-->	
+									 <!--@@blkFrammentazioni-->
+                    <h3>Carburante per frammentazione</h3>
+                  <table class="data">
+							<tr>      											
+      							<th scope="col" class="center">Uso del suolo</th>      											
+      						    <th scope="col" class="center">Superf.(ha)</th>
+      							<th scope="col" class="center">Litri frammentazione</th>      											   										
+    						</tr>
+    						<!--@@blkUsiDelSuoloFramm-->
+							  <tr>											      
+							      <td class="text-right">$$usoDelSuolo</td>
+								  <td class="text-right">$$superficie</td>  
+								  <td class="text-right">$$litriFrammentazione</td>												  												 
+							   </tr>
+							<!--@@blkUsiDelSuoloFramm-->
+							   <tr>
+								  <td class="text-right"><strong>Totale</strong></td>
+								  <td class="text-right">$$totSuperficie</td>																										
+								  <td class="text-right">$$totLitriFrammentazione</td>													  													
+							   </tr>
+					 </table>
+				<!--@@blkFrammentazioni-->	   
+              <br />
+
+                 <div class="bottone"> <a href="javascript:window.close();" class="pulsante">chiudi</a></div>
+       </div>                   
+     </form>
+
+  </body>
+</html>
+
